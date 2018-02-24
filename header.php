@@ -3,7 +3,7 @@
 session_start();
 include 'connection.php';
 if ($_SESSION["Username"] == ""){
-	  $header_menu = "		<a href'form_login.ph'>เข้าสู่ระบบ</a>
+	  $header_menu = "		<a href='form_login.php'>เข้าสู่ระบบ</a>
 		<a href='Register.html'>ลงทะเบียนฟรี</a>";
 
 }else{
@@ -22,8 +22,12 @@ if ($_SESSION["Username"] == ""){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <style type="text/css">
+body{
+	background-color: #424A55;
+	color : white;
+}
 .header{
-	background-color: black;
+	background-color: white;
 	color : white;
 	padding: 20px;
 	margin:0px auto;
@@ -36,7 +40,7 @@ if ($_SESSION["Username"] == ""){
 .header_logo{
 	font-size: 2em;
 	display: inline;
-	color: #FF002B;
+	color: #4483DF;
 }
 .header_menu{
 	display: inline;
@@ -46,20 +50,27 @@ if ($_SESSION["Username"] == ""){
     width: auto;
     padding-top: 15px;
 }
-.header a{
-	color: #dddddd;
+.header_menu a{
+	color: #646D79;
 	text-decoration: none;
 	padding: 0px 15px;
 	transition: 0.25s;
 }
-.header a:hover{
-	color: #FF002B;
-	border-bottom: 2px solid #FF002B;
+.header_menu a:hover{
+	color: #4483DF;
+	border-bottom: 2px solid #4483DF;
+}
+.header_menu p{
+	display: inline;
+	color: #646D79;
+	text-decoration: none;
+	padding: 0px 15px;
+	transition: 0.25s;
 }
 
 </style>
 <div class='header'>
-	<div class='header_logo'>logo</div>
+	<div class='header_logo'><a href="index.php">logo</a></div>
 	<div class='header_menu'>
 		<? echo$header_menu;?>
 	</div>
