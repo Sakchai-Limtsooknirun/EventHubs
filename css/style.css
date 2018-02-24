@@ -1,0 +1,47 @@
+.loginbg {
+    background-color: white;
+    color: black;
+    padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-bottom: 5px solid #beeaea;
+}
+.loginbg h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.btnlogin {
+    padding: 10px 40px;
+    font-size: 15px;
+    line-height: 1.4;
+    border-radius: 24px;
+    border-width: 0px;
+    background-color: #669393;
+    color: white;
+    transition: 0.5s;
+}
+.btnlogin:hover {
+    background-color: #98C8C8;
+}
+.loginbg input {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 3px 10px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #260d31;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.loginbg #resetpassword {
+    position: absolute;
+    right: 50px;
+    display: inline;
+    color: #669393;
+}
+.errorlogin{
+    color: red;
+}

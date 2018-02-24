@@ -27,20 +27,21 @@ if (isset($_REQUEST['Username'])) {
             $_SESSION['role']   = $row['role'];
 
             echo "<script type='text/javascript'>";
-            echo "alert('Login to Member Succesfuly');";
             echo "window.location = 'index.php'; ";
             echo "</script>";
-            // header( "location: http://www.ireallyhost.com" );
             exit;
 
         } else {
-            echo "<script>";
-            echo "alert(\" user หรือ  password ไม่ถูกต้อง\");";
-            echo "window.history.back()";
+            echo "<script type='text/javascript'>";
+            echo "window.location = 'form_login.php?st=1'; ";
             echo "</script>";
+            exit;
 
         }
     } else {
-        Header("Location: form_login.php"); //user & password incorrect back to login again
+        echo "<script type='text/javascript'>";
+        echo "window.location = 'form_login.php?st=1'; ";
+        echo "</script>";
+        exit;
     }
 }
