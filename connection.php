@@ -10,3 +10,31 @@ if ($con->connect_errno) {
 	exit();
 }
 $con->set_charset("utf8");
+
+function t()
+{
+    echo "pass";
+}
+
+function getOneValue($string)
+{
+    global $con;
+    $data = $con->query($string)->fetch_assoc();
+    $get  = $data['get'];
+    // mysql_close();
+    return $get;
+}
+
+function checkType($user)
+{
+    $type = getOneValue("SELECT `role` AS 'get' FROM `user` WHERE `Username` = '$user'");
+    if ($type == "A") {
+        return "Admin";
+    } else if ($type == "M") {
+        return "User";
+    } else if ($type == "O") {
+        return "Organizer";
+    } else {
+        return "NotLogin";
+    }
+}

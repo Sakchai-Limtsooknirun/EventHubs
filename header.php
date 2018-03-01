@@ -1,20 +1,20 @@
 <?php
 session_start();
 include 'connection.php';
-if (empty($_SESSION["Username"])){
-	  $header_menu = "		<a href='form_login.php'>เข้าสู่ระบบ</a>
-		<a href='signup.php'>ลงทะเบียนฟรี</a>";
-		
+$username = $_SESSION["Username"];
+$type     = checkType($username);
 
-}else{
-	$username = $_SESSION["Username"];
-	$header_menu ="		<p>สวัสดีคุณ $username</p>
-		<a href='Edit.php'>แก้ไขข้อมูลส่วนตัว</a>
-		<a href='logout.php'>ออกจากระบบ</a>";
+if (empty($_SESSION["Username"])) {
+    $header_menu = "
+	  	<li><a href='form_login.php'>เข้าสู่ระบบ</a></li>
+		<li><a href='signup.php'>ลงทะเบียนฟรี</a></li>";
 
-
+} else {
+    $username    = $_SESSION["Username"];
+    $header_menu = "
+		<li><a href='profile.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 }
-
 
 ?>
 
@@ -73,11 +73,46 @@ body{
 	padding: 0px 15px;
 	transition: 0.25s;
 }
-
+.header_menu li{
+    display:inline-block;
+}
+.show-menu {
+    text-decoration: none;
+    color:#709292;
+    text-align: center;
+    display: none;
+}
+@media screen and (max-width : 760px){
+    .header_menu ul {
+        position: static;
+        display: none;
+    }
+    .header_menu li {
+        margin-bottom: 1px;
+    }
+    .header_menu ul li, li a {
+        width: 100%;
+    }
+    .show-menu {
+        display:block;
+    }
+}
+input[type=checkbox]{
+    display: none;
+}
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+    background-color: #fff;
+    padding:20px;
+}
 </style>
 <div class='header'>
 	<div class='header_logo'><a href="index.php">EventHubs</a></div>
 	<div class='header_menu'>
-		<? echo$header_menu;?>
+		<label for="show-menu" class="show-menu"><span class="glyphicon glyphicon-menu-hamburger"></span></label>
+    	<input type="checkbox" id="show-menu" role="button">
+		<ul id="menu">
+		<?echo $header_menu; ?>
+		</ul>
 	</div>
 </div>
