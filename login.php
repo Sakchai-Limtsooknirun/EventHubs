@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'header.php';
 if (isset($_REQUEST['Username'])) {
     //connection
     include "connection.php";

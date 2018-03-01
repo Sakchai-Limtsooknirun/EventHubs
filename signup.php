@@ -1,9 +1,9 @@
 <?php
 
-session_start();
+
 include 'header.php';
 
-if ($_SESSION["Username"] != "") {
+if (isset($_SESSION["Username"])) {
     echo "<script type='text/javascript'>";
     echo "window.location = 'index.php'; ";
     echo "</script>";

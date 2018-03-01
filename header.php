@@ -1,15 +1,17 @@
-<?
-
+<?php
 session_start();
 include 'connection.php';
-if ($_SESSION["Username"] == ""){
+if (empty($_SESSION["Username"])){
 	  $header_menu = "		<a href='form_login.php'>เข้าสู่ระบบ</a>
 		<a href='signup.php'>ลงทะเบียนฟรี</a>";
+		
 
 }else{
 	$username = $_SESSION["Username"];
 	$header_menu ="		<p>สวัสดีคุณ $username</p>
+		<a href='Edit.php'>แก้ไขข้อมูลส่วนตัว</a>
 		<a href='logout.php'>ออกจากระบบ</a>";
+
 
 }
 
