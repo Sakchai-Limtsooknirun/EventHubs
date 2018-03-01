@@ -38,13 +38,13 @@ if ($_SESSION["Username"] == $username){
 <div class="form-group">
     <tr>
         <td class="form-control"><label>ID</label></td>
-        <td><input type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+        <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
 </div>
 <div class="form-group">
     <tr>
         <td class="form-control"><label>Username</label></td>
-        <td><input type="text" name="Editusername" value="<?php echo $meResult['Username']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+        <td><input style="color:#260d31" type="text" name="Editusername" value="<?php echo $meResult['Username']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
 </div>
 
@@ -52,7 +52,7 @@ if ($_SESSION["Username"] == $username){
     <abbr style="color:red;">* </abbr>
     <tr>
         <td class="form-control"><label>Firstname</label></td>
-        <td><input type="text" name="Editfirstname" value="<?php echo $meResult['Firstname']; ?>" size="40" required/></td>
+        <td><input style="color:#260d31" type="text" name="Editfirstname" value="<?php echo $meResult['Firstname']; ?>" size="40" required/></td>
     </tr>
 </div>
 
@@ -60,7 +60,7 @@ if ($_SESSION["Username"] == $username){
     <abbr style="color:red;">* </abbr>
     <tr>
         <td class="form-control"><label>Lastname</label></td>
-        <td><input type="text" name="Editlastname" value="<?php echo $meResult['Lastname']; ?>" size="40" required/></td>
+        <td><input style="color:#260d31" type="text" name="Editlastname" value="<?php echo $meResult['Lastname']; ?>" size="40" required/></td>
     </tr>
 </div>
 
@@ -68,14 +68,14 @@ if ($_SESSION["Username"] == $username){
     <tr>
         <td class="form-control"><label>Sex</label></td>
     <td>
-        <input type="radio" name="Editsex" value="m" required
+        <input style="color:#260d31" type="radio" name="Editsex" value="m" required
         <?php
         if ($meResult['sex'] == 'm') {
         echo 'checked';
         }
         ?>
         /> ชาย  | 
-        <input type="radio" name="Editsex" value="w" required
+        <input style="color:#260d31" type="radio" name="Editsex" value="w" required
         <?php
     if ($meResult['sex'] == 'w') {
         echo 'checked';
@@ -90,14 +90,14 @@ if ($_SESSION["Username"] == $username){
 <div class="form-group">
     <tr><abbr style="color:red;">* </abbr>
         <td class="form-control"><label>Telephone</label></td>
-        <td><input minlength="9" data-format="+66 dd ddd-dddd" class="input-medium bfh-phone" type="text" name="Editphone" value="<?php echo $meResult['telephone']; ?>" size="40" required/></td>
+        <td><input style="color:#260d31" minlength="9" data-format="+66 dd ddd-dddd" class="input-medium bfh-phone" type="text" name="Editphone" value="<?php echo $meResult['telephone']; ?>" size="40" required/></td>
 </tr>
 </div>
 
 <div class="form-group">
     <tr>
         <td class="form-control"><label>E-mail</label></td>
-        <td><input type="text" name="Editemail" value="<?php echo $meResult['email']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+        <td><input style="color:#260d31" type="text" name="Editemail" value="<?php echo $meResult['email']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
 </div>
 
