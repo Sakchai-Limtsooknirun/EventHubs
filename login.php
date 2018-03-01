@@ -1,5 +1,6 @@
 <?php
-include 'header.php';
+session_start();
+include 'connection.php';
 if (isset($_REQUEST['Username'])) {
     //รับค่า user & password
     $Username = $_REQUEST['Username'];
