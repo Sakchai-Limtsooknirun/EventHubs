@@ -41,7 +41,7 @@ if ($_GET['error'] == "1") {
         <?echo $error; ?>
         <div class="form-group">
             <abbr style="color:red;">* </abbr><label>อีเมล์</label>
-            <input type="email" class="form-control" name="email" required>
+            <input type="email" class="form-control" name="email" required style="color:#260d31;">
         </div>
         <div class="form-group">
             <abbr style="color:red;">* </abbr><label>ชื่อผู้ใช้</label>

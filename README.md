@@ -8,5 +8,3 @@
 
 ## หน้า Signup
 ![หน้า Signup](https://uppic.cc/d/M77)
-
-------------------

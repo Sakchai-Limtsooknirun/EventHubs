@@ -13,12 +13,11 @@ if (empty($_SESSION["Username"])) {
     $username    = $_SESSION["Username"];
     $header_menu = "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
-		
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 }
 
 ?>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="//code.jquery.com/jquery.js"></script>
@@ -26,8 +25,14 @@ if (empty($_SESSION["Username"])) {
 <link href="css/bootstrap-form-helpers.min.css" rel="stylesheet">
 <script src="js/bootstrap-formhelpers.min.js"></script>
 <style type="text/css">
+
+:root {
+  --main-bg-color: #98C8C8;
+  --main-color-dark: #669393;
+  --main-color-light: #83B4B4;
+}
 body{
-	background-color: #98C8C8;
+	background-color: var(--main-bg-color);
 	color : white;
 	font-family: 'Prompt', sans-serif;
 }
@@ -47,7 +52,7 @@ body{
 	padding-left: 20px;
 }
 .header_logo a{
-	color:#709292;
+	color:var(--main-color-dark);
 }
 .header_menu{
 	display: inline;
@@ -64,8 +69,8 @@ body{
 	transition: 0.25s;
 }
 .header_menu a:hover{
-	color: #83B4B4;
-	border-bottom: 2px solid #83B4B4;
+	color: var(--main-color-dark);
+	border-bottom: 2px solid var(--main-color-dark);
 }
 .header_menu p{
 	display: inline;
@@ -79,7 +84,7 @@ body{
 }
 .show-menu {
     text-decoration: none;
-    color:#709292;
+    color:var(--main-color-dark);
     text-align: center;
     display: none;
 }

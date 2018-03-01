@@ -4,7 +4,7 @@
     padding: 50px;
     margin-top: 50px;
     margin-bottom: 50px;
-    border-bottom: 5px solid #beeaea;
+    border-bottom: 5px solid var(--main-color-dark);
 }
 .loginbg h2 {
     margin-bottom: 30px;
@@ -16,12 +16,12 @@
     line-height: 1.4;
     border-radius: 24px;
     border-width: 0px;
-    background-color: #669393;
+    background-color: var(--main-color-dark);
     color: white;
     transition: 0.5s;
 }
 .btnlogin:hover {
-    background-color: #98C8C8;
+    background-color: var(--main-color-light);
 }
 .loginbg input {
     display: block;
@@ -67,6 +67,11 @@
     left: 800px;
     top: 150px;
 }
+@media screen and (min-width : 1600px){
+    .textHome {
+        left: 1100px;
+    }
+}
 @media screen and (max-width : 1000px){
     .textHome {
         left: 300px;
@@ -80,20 +85,18 @@
 .btnHome {
     color: #fff;
     width: 200px;
-    background: #669393;
-    border-color: #98C8C8;
-    padding: 10px 40px;
-    font-size: 15px;
-    line-height: 1.4;
+    background: var(--main-color-dark);
+    padding: 10px 45px;
+    font-size: 25px;
+    line-height: 2;
     border-radius: 10px;
-    border-width: 0px;
     text-align: center;
     transition: 0.5s;
 }
 .btnHome:hover {
     color: #fff;
     width: 200px;
-    background: #98C8C8;
+    background: var(--main-color-light);
 }
 .contain {
     background-color: white;
@@ -101,5 +104,43 @@
     padding: 30px;
     margin-top:10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #beeaea;
+    border-bottom: 5px solid var(--main-color-dark);
+}
+.webboard{
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    min-height: 500px;
+}
+.webboard h2{
+    text-align:center;
+    border-bottom:2px solid var(--main-color-light);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.webboard #notfound{
+    text-align:center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.inputwebboard{
+    margin-top: 40px;
+}
+.wbTopic{
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    margin-top: 10px;
+    transition:0.5s;
+}
+.wbTopic:hover{
+    background-color: #efefef;
+}
+.wb{
+    margin-bottom: 50px;
+}
+.Topicshow{
+    background-color: #efefef;
+    padding: 40px 40px;
+    margin-top: 10px;
+    text-align:center;
 }
