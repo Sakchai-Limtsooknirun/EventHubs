@@ -2,7 +2,7 @@
 
 
 include 'header.php';
-
+$error = "";
 if (isset($_SESSION["Username"])){
     echo "<script type='text/javascript'>";
     echo "window.location = 'index.php'; ";

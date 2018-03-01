@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
 if (isset($_REQUEST['Username'])) {
-    //connection
-    include "connection.php";
     //รับค่า user & password
     $Username = $_REQUEST['Username'];
     $Password = $_REQUEST['Password'];
