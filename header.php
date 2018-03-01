@@ -12,8 +12,8 @@ if (empty($_SESSION["Username"])) {
 } else {
     $username    = $_SESSION["Username"];
     $header_menu = "
-		<li><a href='profile.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
-		<li><a href='Edit.php'>แก้ไขข้อมูลส่วนตัว</a></li>
+		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 }
 
