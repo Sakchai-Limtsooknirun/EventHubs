@@ -26,7 +26,7 @@ if (isset($_REQUEST['Username'])) {
             $_SESSION['role']   = $row['role'];
 
             echo "<script type='text/javascript'>";
-            echo "window.location = 'index.php'; ";
+            echo "window.location = 'index.php?'; ";
             echo "</script>";
             exit;
 

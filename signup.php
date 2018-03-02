@@ -11,14 +11,16 @@ if (isset($_SESSION["Username"])) {
 } else {
 
 }
-if ($_GET['error'] == "1") {
-    $error = "<p class='errorlogin'>ชื่อผู้ใช้ซ้ำ กรุณาเปลี่ยนใหม่</p>";
-} else if ($_GET['error'] == "2") {
-    $error = "<p class='errorlogin'>รหัสผ่านกับยืนยันรหัสผ่านไม่ถูกต้อง</p>";
-} else if ($_GET['error'] == "3") {
-    $error = "<p class='errorlogin'>พบข้อผิดพลาดในการสมัครสมาชิก</p>";
-} else {
-    $error = "";
+if(isset($_GET['error'])){
+    if ($_GET['error'] == "1") {
+        $error = "<p class='errorlogin'>ชื่อผู้ใช้ซ้ำ กรุณาเปลี่ยนใหม่</p>";
+    } else if ($_GET['error'] == "2") {
+        $error = "<p class='errorlogin'>รหัสผ่านกับยืนยันรหัสผ่านไม่ถูกต้อง</p>";
+    } else if ($_GET['error'] == "3") {
+        $error = "<p class='errorlogin'>พบข้อผิดพลาดในการสมัครสมาชิก</p>";
+    }
+}else {
+    $error = null;
 }
 
 ?>

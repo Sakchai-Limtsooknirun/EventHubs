@@ -1,6 +1,4 @@
 <?php
-
-
 include 'header.php';
 $error = "";
 if (isset($_SESSION["Username"])){
@@ -11,15 +9,18 @@ if (isset($_SESSION["Username"])){
 }else{
 
 }
-if($_GET['st'] == "1"){
-  $error = "<p class='errorlogin'>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>";
-}else if($_GET['st'] == "2"){
-  $error = "<h4>สมัครสมาชิกเรียบร้อย</h4>";
-}else if($_GET['st'] == "3"){
-  $error = "<h4>กรุณาเข้าสู่ระบบก่อน</h4>";
-}else{
-  $error = "";
+if(isset($_GET['st'])){
+  if($_GET['st'] == "1"){
+    $error = "<p class='errorlogin'>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>";
+  }else if($_GET['st'] == "2"){
+    $error = "<h4>สมัครสมาชิกเรียบร้อย</h4>";
+  }else if($_GET['st'] == "3"){
+    $error = "<h4>กรุณาเข้าสู่ระบบก่อน</h4>";
+  }else{
+    $error = "";
 }
+  }
+
 
 ?>
 <!doctype html>
