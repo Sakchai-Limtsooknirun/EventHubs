@@ -41,6 +41,23 @@ if ($_SESSION["Username"] == $username){
         <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
 </div>
+
+<div class="form-group">
+    <tr>
+        <td class="form-control"><label>ระดับสมาชิก</label></td>
+        <td><input style="color:#260d31" type="text" name="Editusername" value="<?php 
+        if($meResult['role']=='A'){
+            echo 'Admin' ;
+        }
+        elseif($meResult['role']=='M'){
+            echo 'Member';
+        }else{
+            echo $meResult['role'];
+        }
+        ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+    </tr>
+</div> 
+
 <div class="form-group">
     <tr>
         <td class="form-control"><label>Username</label></td>
