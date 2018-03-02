@@ -75,9 +75,9 @@ if ($_SESSION["Username"] == $username){
         }
         ?>
         /> ชาย  | 
-        <input style="color:#260d31" type="radio" name="Editsex" value="w" required
+        <input style="color:#260d31" type="radio" name="Editsex" value="f" required
         <?php
-        if ($meResult['sex'] == 'w') {
+        if ($meResult['sex'] == 'f') {
             echo 'checked';
     }
     
