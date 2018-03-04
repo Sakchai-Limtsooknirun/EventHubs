@@ -4,17 +4,23 @@ include 'connection.php';
 $username = null ;
 $type = checkType($username);
 if (empty($_SESSION["Username"])) {
-	
     $header_menu = "
 	  	<li><a href='form_login.php'>เข้าสู่ระบบ</a></li>
 		<li><a href='signup.php'>ลงทะเบียนฟรี</a></li>";
 
 } else {
-	$username    = $_SESSION["Username"];
+	$username = $_SESSION["Username"];
 	$type     = checkType($username);
+	if($_SESSION["role"]=="A"){
+		$header_menu = "
+		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li><a href='userManage.php'>เมนูจัดการสมาชิก</a></li>
+		<li><a href='logout.php'>ออกจากระบบ</a></li>";
+	}else{
     $header_menu = "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
+	}
 }
 
 ?>
