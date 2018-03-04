@@ -17,7 +17,7 @@ if ($type == "NotLogin") {
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain">
-		<center><h2>ไม่พบหน้าเว็บบอร์ดของงานอบรมดังกล่าวหรือไม่เปิดให้ใช้งาน</h2></center>
+		<center><h2>ไม่พบหน้าเว็บบอร์ดของกิจกรรมดังกล่าวหรือไม่เปิดให้ใช้งาน</h2></center>
 	</div>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
@@ -41,11 +41,12 @@ if ($type == "NotLogin") {
         <div class="Topicshow">
             <h1><?echo $getwbTitle;?></h1>
             <h3><?echo $getwbDesc;?></h3>
-            <?echo$owner; ?> | <?echo$date; ?>
+            <br>
+            <h6>โดย <?echo$owner; ?> เมื่อ <?echo$date; ?></h6>
         </div>
 		<div class="wb">
 		<?
-        $result = mysqli_query($con, "SELECT * FROM `Webboard` WHERE `wbType` = '1' AND `wbTitle` = '$wbID' ORDER BY wbID DESC");
+        $result = mysqli_query($con, "SELECT * FROM `Webboard` WHERE `wbType` = '1' AND `wbTitle` = '$wbID'");
         while ($row = mysqli_fetch_assoc($result)) {
      		$status = 1;
      		$wbID = $row['wbID'];

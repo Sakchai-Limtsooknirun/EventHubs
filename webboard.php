@@ -17,7 +17,7 @@ if ($type == "NotLogin") {
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain">
-		<center><h2>ไม่พบหน้าเว็บบอร์ดของงานอบรมดังกล่าวหรือไม่เปิดให้ใช้งาน</h2></center>
+		<center><h2>ไม่พบหน้าเว็บบอร์ดของกิจกรรมดังกล่าวหรือไม่เปิดให้ใช้งาน</h2></center>
 	</div>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
@@ -27,13 +27,14 @@ if ($type == "NotLogin") {
     } else {
         $getEventID = getOneValue("SELECT `ID` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
         $getEventShort = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$getEventID'");
+        $urlEvent = "eventview/".$getEventShort;
         ?>
 
 <body>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
-		<a href="#waiting"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getEventName; ?></a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กระดานสนทนา
+		<a href="<? echo $urlEvent; ?>"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getEventName; ?></a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กระดานสนทนา
 		<h2><?echo $getEventName; ?></h2>
 		<div class="wb">
 		<?

@@ -24,9 +24,13 @@ if (isset($_REQUEST['Username'])) {
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['user']   = $row['Firstname'] . " " . $row['Lastname'];
             $_SESSION['role']   = $row['role'];
-
+            if ($_POST['go'] != ""){
+                $url = "eventview/".$_POST['go'];
+            }else{
+                $url = "index.php";
+            }
             echo "<script type='text/javascript'>";
-            echo "window.location = 'index.php'; ";
+            echo "window.location = '$url'; ";
             echo "</script>";
             exit;
 
