@@ -142,5 +142,70 @@
     background-color: #efefef;
     padding: 40px 40px;
     margin-top: 10px;
-    text-align:center;
 }
+.btnFill a{
+    color: white;
+    background-color: var(--main-color-dark);
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+.btnFill a:hover{
+    color: white;
+    background-color: var(--main-color-light);
+}
+.eventCard{
+    line-height: 1;
+    min-height: 300px;
+    color: var(--font-gray);
+
+}
+
+.eventTopic{
+    background-color: #f9f9f9;
+    color:black;
+    padding: 10px 20px;
+    padding-top: 20px;
+    transition:0.5s;
+    font-size: 20px;
+    position:relative;
+
+}
+.eventCard #eventInfo{
+    margin-top: 20px;
+}
+.eventCard #eventStatus{
+    font-size: 15px;
+    display: block;
+    right:20;
+    top:20;
+    position:absolute;
+    display: inline;
+}
+.btnBuy{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 10px 80px;
+    font-size: 1.5vw;
+    line-height: 1.4;
+    border-radius: 24px;
+    background-color: var(--main-color-dark);
+    transition: 0.5s;
+}
+.btnBuy:hover{
+    background-color: var(--main-color-light);
+}
+.btnBuy a{
+    color: white;
+    text-decoration: none;
+}
+.noBorder{
+    border-bottom: 0px;
+}
+.eventDesc{
+    line-height: 2;
+}
+

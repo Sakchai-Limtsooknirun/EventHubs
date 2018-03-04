@@ -3,16 +3,22 @@ session_start();
 include 'connection.php';
 $username = null ;
 $type = checkType($username);
+$header_menu = "";
 if (empty($_SESSION["Username"])) {
-	
-    $header_menu = "
+
+    $header_menu .= "
 	  	<li><a href='form_login.php'>เข้าสู่ระบบ</a></li>
 		<li><a href='signup.php'>ลงทะเบียนฟรี</a></li>";
 
 } else {
 	$username    = $_SESSION["Username"];
 	$type     = checkType($username);
-    $header_menu = "
+	if ($type == "Organizer"){
+		$header_menu .= "
+		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
+		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>";
+	}
+    $header_menu .= "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 }
@@ -31,6 +37,7 @@ if (empty($_SESSION["Username"])) {
   --main-bg-color: #98C8C8;
   --main-color-dark: #669393;
   --main-color-light: #83B4B4;
+  --font-gray: #646D79;
 }
 body{
 	background-color: var(--main-bg-color);
@@ -47,6 +54,7 @@ body{
     right:0;
 
 }
+
 .header_logo{
 	font-size: 2.3em;
 	display: inline;
@@ -54,6 +62,7 @@ body{
 }
 .header_logo a{
 	color:var(--main-color-dark);
+	text-decoration: none;
 }
 .header_menu{
 	display: inline;
@@ -64,7 +73,7 @@ body{
     padding-top: 15px;
 }
 .header_menu a{
-	color: #646D79;
+	color: var(--font-gray);
 	text-decoration: none;
 	padding: 0px 15px;
 	transition: 0.25s;
@@ -83,11 +92,13 @@ body{
 .header_menu li{
     display:inline-block;
 }
+
 .show-menu {
     text-decoration: none;
     color:var(--main-color-dark);
     text-align: center;
     display: none;
+
 }
 @media screen and (max-width : 760px){
     .header_menu ul {
@@ -104,6 +115,7 @@ body{
         display:block;
     }
 }
+
 input[type=checkbox]{
     display: none;
 }
@@ -111,6 +123,7 @@ input[type=checkbox]:checked ~ #menu{
     display: block;
     background-color: #fff;
     padding:20px;
+    line-height: 3;
 }
 </style>
 <div class='header'>
