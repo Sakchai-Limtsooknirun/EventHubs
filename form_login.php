@@ -20,7 +20,11 @@ if (isset($_GET['st'])) {
         $error = "";
     }
 }
-$go = $_GET['go'];
+if(isset($_GET['go'])){ 
+  $go = $_GET['go'];
+}else{
+  $go = null ;
+}
 
 ?>
 <!doctype html>
