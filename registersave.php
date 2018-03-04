@@ -44,3 +44,6 @@ if ($get_rows >= 1) {
             echo "</script>";        }
     }
 }
+mysqli_close($con);
+
+?>

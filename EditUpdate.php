@@ -43,7 +43,8 @@ include 'connection.php';
             echo "window.location = 'login.php'; ";
             echo "</script>";
             }
-            
+
+mysqli_close($con);
 ?>
         
 

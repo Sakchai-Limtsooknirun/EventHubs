@@ -1,12 +1,3 @@
-<style>
-textarea:focus, input:focus {
-    color: #ff0000;
-}
-
-input, select, textarea{
-    color: #000;
-}
-</style>
 <?php
 include 'header.php';
 
@@ -125,7 +116,7 @@ if ($_SESSION["Username"] == $username){
 
 <div class="form-group">
     <tr>
-        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง</td><td><?php echo $meResult['ts']; ?></td>
+        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง </td><td><?php echo $meResult['ts']; ?></td>
     </tr>
 </div>
 
