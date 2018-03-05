@@ -19,10 +19,7 @@ if (empty($_SESSION["Username"])) {
 		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
 		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>";
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> 0043ac7c34750a964a63c0244be9fecbc81c52ab
 	if ($type=="Admin"){
 		$header_menu .= "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
