@@ -15,15 +15,16 @@ if (empty($_SESSION["Username"])) {
 	$type     = checkType($username);
 	if ($type == "Organizer"){
 		$header_menu .= "
+		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
 		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>";
 	}
-	if ($type == "Organizer"){
-		$header_menu .= "<li><a href='userManage.php'><span class='glyphicon glyphicon-list'></span> เมนูจัดการสมาชิก</a></li>";
-	}
+	
 	if ($type=="Admin"){
 		$header_menu .= "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
+		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>
 		<li><a href='userManage.php'>การจัดการสมาชิก</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 	}else{

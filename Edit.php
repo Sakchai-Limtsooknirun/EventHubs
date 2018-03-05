@@ -110,7 +110,7 @@ if ($_SESSION["Username"] == $username){
 </div>
 
 <div class="form-group"><abbr style="color:red;">* </abbr>
-            <label>วันเกิด (เดือน/วัน/ปีค.ศ.)</label></td><td></td>
+            <label>วันเกิด (วัน/เดือน/ปี ค.ศ.)</label></td><td></td>
             <input type="date" class="form-control" name="Editdob" value = <?php echo $meResult['dob']; ?> required>
         </div>
 
