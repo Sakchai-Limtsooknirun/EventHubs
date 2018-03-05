@@ -27,6 +27,7 @@ if ($type == "NotLogin") {
             $DateStart = DateThai($row['DateStart']);
             $CapacityNow = $row['CapacityNow'];
             $MaximumCapacity = $row['MaximumCapacity'];
+            $Picture = $row['Picture'];
             $ShortURL = $row['ShortURL'];
             $ShortURL = $actual_link = "http://$_SERVER[HTTP_HOST]/".$path."/eventview/".$ShortURL;
             echo "
@@ -36,7 +37,7 @@ if ($type == "NotLogin") {
         <p id='eventStatus'>สถาณะ : $EventStatus</p>
     </div>
     <div class='col-lg-4'>
-        <img src='img/event/bnk48.png' alt='' width='100%'>
+        <img src='img/event/$Picture' alt='' width='100%'>
     </div>
     <div class='col-lg-8'>
         <p id='eventInfo'><span class='glyphicon glyphicon-pushpin'></span> $Location</p>

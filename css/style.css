@@ -208,4 +208,7 @@
 .eventDesc{
     line-height: 2;
 }
-
+.eventCreate{
+    padding:10px 50px;
+    line-height: 2;
+}

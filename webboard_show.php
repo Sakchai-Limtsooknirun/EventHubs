@@ -31,13 +31,14 @@ if ($type == "NotLogin") {
         $getwbDesc = getOneValue("SELECT `wbDesc` AS 'get' FROM `Webboard` WHERE `wbID` = '$wbID'");
         $owner = getOneValue("SELECT `ownerID` AS 'get' FROM `Webboard` WHERE `wbID` = '$wbID'");
         $date = getOneValue("SELECT `timeCreated` AS 'get' FROM `Webboard` WHERE `wbID` = '$wbID'");
+        $urlEvent = "eventview/".$getEventShort;
         ?>
 
 <body>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	</div>
 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
-		<a href="#waiting"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getEventName; ?></a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <a href="webboard/<?echo $getEventShort; ?>">กระดานสนทนา</a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getwbTitle;?>
+		<a href="<?echo $urlEvent;?>"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getEventName; ?></a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <a href="webboard/<?echo $getEventShort; ?>">กระดานสนทนา</a> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <?echo $getwbTitle;?>
         <div class="Topicshow">
             <h1><?echo $getwbTitle;?></h1>
             <h3><?echo $getwbDesc;?></h3>
