@@ -20,6 +20,8 @@ if (isset($_GET['st'])) {
         $error = "";
     }
 }
+
+//สวัสดี
 if(isset($_GET['go'])){ 
   $go = $_GET['go'];
 }else{
