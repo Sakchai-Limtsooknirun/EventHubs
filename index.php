@@ -27,7 +27,7 @@ if ($type == "NotLogin"){
 </div>
    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
-        $result = mysqli_query($con, "SELECT * FROM `EventOrganizers`");
+        $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` ORDER BY `DateStart` ASC");
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
@@ -43,12 +43,11 @@ if ($type == "NotLogin"){
 <div class='eventCard'>
     <div class='eventTopic'>
         <p><a href='$ShortURL'>$EventName</a></p>
-        <p id='eventStatus'>สถาณะ : $EventStatus</p>
     </div>
-    <div class='col-lg-4'>
+    <div class='col-lg-6'>
         <a href='$ShortURL'><img src='img/event/$Eventpic' alt='' width='100%'></a>
     </div>
-    <div class='col-lg-8'>
+    <div class='col-lg-6'>
         <p id='eventInfo'><span class='glyphicon glyphicon-pushpin'></span> $Location</p>
         <p id='eventInfo'><span class='glyphicon glyphicon-calendar'></span> $DateStart</p>
         <p id='eventInfo'><span class='glyphicon glyphicon-user'></span> $CapacityNow / $MaximumCapacity คน</p>
