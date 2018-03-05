@@ -21,7 +21,7 @@ if (isset($_GET['st'])) {
     }
 }
 
-//สวัสดี
+
 if(isset($_GET['go'])){ 
   $go = $_GET['go'];
 }else{

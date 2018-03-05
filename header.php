@@ -44,6 +44,7 @@ if (empty($_SESSION["Username"])) {
 <script src="js/bootstrap-formhelpers.min.js"></script>
 <style type="text/css">
 
+
 :root {
   --main-bg-color: #98C8C8;
   --main-color-dark: #669393;
