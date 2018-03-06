@@ -2,15 +2,15 @@
 session_start();
 include 'connection.php';
  if (isset($_SESSION["Username"])){
-    if (isset($_SESSION['frmAction']) == isset($_POST['frmAction'])) {
+    if (isset($_SESSION['adminEdit']) == isset($_POST['adminEdit'])) {
         
-        $firstname = mysql_real_escape_string(trim($_POST['Editfirstname']));
-        $lastname = mysql_real_escape_string(trim($_POST['Editlastname']));
-        $sex = mysql_real_escape_string(trim($_POST['Editsex']));
-        $phone = mysql_real_escape_string(trim($_POST['Editphone']));
+        $firstname = mysql_real_escape_string(trim($_POST['adminEditfirstname']));
+        $lastname = mysql_real_escape_string(trim($_POST['adminEditlastname']));
+        $sex = mysql_real_escape_string(trim($_POST['adminEditsex']));
+        $phone = mysql_real_escape_string(trim($_POST['adminEditphone']));
         //$email = mysql_real_escape_string(trim($_POST['Editemail']));
-        $modified_date = $_POST['Editdob'];
-        $date = date("Y-m-d");
+        $modified_date = $_POST['adminEditdob'];
+        $date = date("Y-m-d ");
         unset($_SESSION['frmAction']);
         $meSQL = "UPDATE user ";
         $meSQL .= "SET Firstname='{$firstname}', ";
@@ -19,22 +19,22 @@ include 'connection.php';
         $meSQL .= "telephone='{$phone}', ";
         //$meSQL .= "email='{$email}', ";
         $meSQL .= "dob='{$modified_date}' ";
-        $meSQL .= "WHERE Username ='{$_SESSION['Username']}' ";
+        $meSQL .= "WHERE ID ='{$_POST['adminEdit']}' ";
         $userData = mysqli_query($con,$meSQL);
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'index.php'; ";
+                echo "window.location = 'adminEdit.php'; ";
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'Edit.php'; ";
+                echo "window.location = 'adminEdit.php'; ";
                 echo "</script>";
             }
             mysql_close();
             } 
         else {
             echo "<script type='text/javascript'>";
-            echo "window.location = 'Edit.php'; ";
+            echo "window.location = 'adminEdit.php'; ";
             echo "</script>";
             }
          } 
@@ -47,5 +47,3 @@ include 'connection.php';
 mysqli_close($con);
 ?>
         
-
- 

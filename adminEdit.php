@@ -2,8 +2,9 @@
 include 'header.php';
 
 if ($_SESSION["Username"] == $username){
-    $_SESSION['frmAction'] = md5('brabra' . rand(1, 9999));
-    echo $id = $_GET["IDedit"];
+    $_SESSION['adminEdit'] = md5('brabra' . rand(1, 9999));
+    $id = $_GET["IDedit"];
+    $_POST['idb']=$id ;
     $meSQL = "SELECT * FROM user WHERE ID='{$id}' ";
     $userData = mysqli_query($con,$meSQL);
     if ($userData == TRUE) {
@@ -23,20 +24,20 @@ if ($_SESSION["Username"] == $username){
     <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
     </div>
     <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 loginbg">
-    <form name="EditForm" action="EditUpdate.php" method="POST">
+    <form name="adminEditForm" action="adminEditUpdate.php" method="POST">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
 <div class="form-group">
     <tr>
         <td class="form-control"><label>ID</label></td>
-        <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+        <td><input style="color:#260d31" type="text" name="adminEditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
 </div>
 
 <div class="form-group">
     <tr>
         <td class="form-control"><label>ระดับสมาชิก</label></td>
-        <td><input style="color:#260d31" type="text" name="Editusername" value="<?php 
+        <td><input style="color:#260d31" type="text" name="adminEditusername" value="<?php 
         if($meResult['role']=='A'){
             echo 'Admin' ;
         }
@@ -52,7 +53,7 @@ if ($_SESSION["Username"] == $username){
 <div class="form-group">
     <tr>
         <td class="form-control"><label>Username</label></td>
-        <td><input style="color:#260d31" type="text" name="Editusername" value="<?php echo $meResult['Username']; ?>" size="40" required/></td>
+        <td><input style="color:#260d31" type="text" name="adminEditusername" value="<?php echo $meResult['Username']; ?>" size="40" required/></td>
     </tr>
 </div>
 
@@ -60,7 +61,7 @@ if ($_SESSION["Username"] == $username){
     <abbr style="color:red;">* </abbr>
     <tr>
         <td class="form-control"><label>Firstname</label></td>
-        <td><input style="color:#260d31" type="text" name="Editfirstname" value="<?php echo $meResult['Firstname']; ?>" size="40" /></td>
+        <td><input style="color:#260d31" type="text" name="adminEditfirstname" value="<?php echo $meResult['Firstname']; ?>" size="40" /></td>
     </tr>
 </div>
 
@@ -68,7 +69,7 @@ if ($_SESSION["Username"] == $username){
     <abbr style="color:red;">* </abbr>
     <tr>
         <td class="form-control"><label>Lastname</label></td>
-        <td><input style="color:#260d31" type="text" name="Editlastname" value="<?php echo $meResult['Lastname']; ?>" size="40" /></td>
+        <td><input style="color:#260d31" type="text" name="adminEditlastname" value="<?php echo $meResult['Lastname']; ?>" size="40" /></td>
     </tr>
 </div>
 
@@ -76,14 +77,14 @@ if ($_SESSION["Username"] == $username){
     <tr>
         <td class="form-control"><label>Sex</label></td>
     <td>
-        <input style="color:#260d31" type="radio" name="Editsex" value="m" required
+        <input style="color:#260d31" type="radio" name="adminEditsex" value="m" required
         <?php
         if ($meResult['sex'] == 'm') {
         echo 'checked';
         }
         ?>
         /> ชาย  | 
-        <input style="color:#260d31" type="radio" name="Editsex" value="f" required
+        <input style="color:#260d31" type="radio" name="adminEditsex" value="f" required
         <?php
         if ($meResult['sex'] == 'f') {
             echo 'checked';
@@ -98,20 +99,20 @@ if ($_SESSION["Username"] == $username){
 <div class="form-group">
     <tr><abbr style="color:red;">* </abbr>
         <td class="form-control"><label>Telephone</label></td>
-        <td><input style="color:#260d31" minlength="9" data-format="+66 dd ddd-dddd" class="input-medium bfh-phone" type="text" name="Editphone" value="<?php echo $meResult['telephone']; ?>" size="40"/></td>
+        <td><input style="color:#260d31" minlength="9" data-format="+66 dd ddd-dddd" class="input-medium bfh-phone" type="text" name="adminEditphone" value="<?php echo $meResult['telephone']; ?>" size="40"/></td>
 </tr>
 </div>
 
 <div class="form-group">
     <tr>
         <td class="form-control"><label>E-mail</label></td>
-        <td><input style="color:#260d31" type="email" name="Editemail" value="<?php echo $meResult['email']; ?>" size="40"/></td>
+        <td><input style="color:#260d31" type="email" name="adminEditemail" value="<?php echo $meResult['email']; ?>" size="40"/></td>
     </tr>
 </div>
 
 <div class="form-group"><abbr style="color:red;">* </abbr>
             <label>วันเกิด (วัน/เดือน/ปี ค.ศ.)</label></td><td></td>
-            <input type="date" class="form-control" name="Editdob" value = <?php echo $meResult['dob']; ?> >
+            <input type="date" class="form-control" name="adminEditdob" value = <?php echo $meResult['dob']; ?> >
         </div>
 
 <div class="form-group">
@@ -126,7 +127,7 @@ if ($_SESSION["Username"] == $username){
     <td><input class="btnlogin" type="submit" name="submit" value="บันทึกข้อมูล" /></td>
 </tr>
 
-<input type="hidden" name="frmAction" value="<?php echo $_SESSION['frmAction']; ?>" />
+<input type="hidden" name="adminEdit" value="<?php echo $_GET["IDedit"] ;  ?>" />
 </form>
 <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>          
   </div>
