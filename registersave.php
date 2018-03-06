@@ -12,10 +12,10 @@ $sex     = $_POST["sex"];
 
 print_r($_POST);
 $password_ec = password_hash($_POST["password"], PASSWORD_BCRYPT);
-$date = date("Y-m-d H:i:s");
+$date = date("Y-m-d");
 
 //เพิ่มเข้าไปในฐานข้อมูล
-$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex')";
+$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','')";
 echo $sql;
 
 $mysql_get_users = mysqli_query($con, "select* from user where Username = '$username'");

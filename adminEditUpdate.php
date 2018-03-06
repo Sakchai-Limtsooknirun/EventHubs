@@ -23,11 +23,11 @@ include 'connection.php';
         $userData = mysqli_query($con,$meSQL);
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'adminEdit.php'; ";
+                echo "window.location = 'index.php'; ";
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'adminEdit.php'; ";
+                echo "window.location = 'Edit.php'; ";
                 echo "</script>";
             }
             mysql_close();
