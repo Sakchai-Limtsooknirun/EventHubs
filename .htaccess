@@ -2,4 +2,4 @@ RewriteEngine On
 
 RewriteRule ^webboard/(.*)/(.*) webboard_show.php?id=$2
 RewriteRule ^webboard/(.*) webboard.php?eventid=$1
-
+RewriteRule ^eventview/(.*) event/detail.php?id=$1
