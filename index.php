@@ -55,10 +55,17 @@ if ($type == "NotLogin"){
 
     </figure>
 </div>
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1">
 </div>
-   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
-        <?
+   <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+    <div class="row searchBar">
+        <div class="md-form">
+            <input class="form-control transparent-input" type="text" placeholder="ค้นหากิจกรรม" aria-label="ค้นหากิจกรรม">
+        </div>
+    </div>
+    <div class="row eventIndex">
+<?
+
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` ORDER BY `DateStart` ASC");
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
@@ -72,35 +79,24 @@ if ($type == "NotLogin"){
             $ShortURL = $row['ShortURL'];
             $ShortURL = $actual_link = "eventview/".$ShortURL;
             echo "
-<div class='eventCard'>
-    <div class='eventTopic'>
-        <p><a href='$ShortURL'>$EventName</a></p>
+
+    <div class='col-lg-6 box eventIndexShow'>
+        <h4>$EventName</h4>
+        <h6 id='eventIndexShowDate'><p style='font-size:15px' class='fas fa-calendar-alt'></p> $DateStart</h6>
+        <a href='$ShortURL'><img src='img/event/$Eventpic' id='eventIndexPic' alt='' width='100%'></a>
+        <h6><p style='font-size:12px' class='fas fa-location-arrow'></p> $Location</h6>
     </div>
-    <div class='col-lg-6'>
-        <a href='$ShortURL'><img src='img/event/$Eventpic' alt='' width='100%'></a>
-    </div>
-    <div class='col-lg-6'>
-        <p id='eventInfo'><span class='glyphicon glyphicon-pushpin'></span> $Location</p>
-        <p id='eventInfo'><span class='glyphicon glyphicon-calendar'></span> $DateStart</p>
-        <p id='eventInfo'><span class='glyphicon glyphicon-user'></span> $CapacityNow / $MaximumCapacity คน</p>
-        <br>
-        <a class='btnlogin'href='#event-showtimes'>เข้าร่วม</a>
-    </div>
-</div>
 
             ";
         }
-        if ($status != 1) {
-            echo "
-            <p id='notfound'>ไม่มีกิจกรรม</p>
-            <p id='notfound'><a href='#'>สร้างกิจกรรมใหม่</a></p>";
-        } else {
-        }
-        ?>
+
+?>
+</div>
 
 
     </div>
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1">
 </div>
+
 </body>
 </html>

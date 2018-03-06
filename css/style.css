@@ -45,7 +45,6 @@
 .errorlogin {
     color: red;
 }
-
 .textHome {
     position: absolute;
     left: 800px;
@@ -268,4 +267,47 @@ figure.slider figure figcaption {
     width: 100%;
     font-size: 2rem;
     padding: .6rem;
+}
+.eventIndex {
+    margin-bottom: 100px;
+    margin-top: 0px;
+    color: var(--font-gray);
+}
+.eventIndexShow {
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 5px 0px;
+}
+.eventIndexShow h4 {
+    color: black;
+    text-align: center;
+}
+.box {
+    border: 5px solid transparent;
+    background-clip: padding-box;
+}
+.eventIndexShow img {
+    max-height: 350px;
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+.eventIndexShow #eventIndexShowDate {
+    position: absolute;
+    top: 48px;
+    left: 10px;
+    background-color: white;
+    padding: 10px 20px;
+}
+.searchBar{
+    background-color: white;
+    margin:10px -10px;
+    margin-bottom: 0px;
+    padding:20px 50px;
+    color: black;
+}
+input.transparent-input{
+       background-color:transparent !important;
+       border:none;
 }
