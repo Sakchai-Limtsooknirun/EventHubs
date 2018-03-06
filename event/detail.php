@@ -40,7 +40,10 @@ if ($getEventName == "") {
     $getMapLat = getOneValue("SELECT `MapLat` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getMapLng = getOneValue("SELECT `MapLng` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getDetail = getOneValue("SELECT `Detail` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
-
+    $getEventOrName = getOneValue("SELECT `EventOrganizersName` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    $getEventOrTel = getOneValue("SELECT `EventContactTell` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    $getEventOrEmail = getOneValue("SELECT `EventContactEmail` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    $getEventOrFB = getOneValue("SELECT `EventFacebook` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     ?>
 
 <body>
@@ -51,7 +54,7 @@ if ($getEventName == "") {
             <img src="img/event/<?echo $getEventPic; ?>" alt="" width='100%'>
             <center>
                 <h2><?echo $getEventName ?></h2>
-                <h6>จัดงานโดย <?echo $getOwner ?></h6>
+                <h6>จัดงานโดย <?echo $getEventOrName ?></h6>
             </center>
             <hr>
             <div class="row">
@@ -63,9 +66,9 @@ if ($getEventName == "") {
                     <?
     if ($type != "NotLogin") {
         if ($getColor != "") {
-            echo "<button class='btnBuy' style='background-color:$getColor'><a href='#buy'>ซื้อบัตร</a></button>";
+            echo "<button class='btnBuy' id='buttonToBuy' style='background-color:$getColor'>ซื้อบัตร</button>";
         } else {
-            echo "<button class='btnBuy'><a href='#buy'>ซื้อบัตร</a></button>";
+            echo "<button class='btnBuy' id='buttonToBuy' >ซื้อบัตร</button>";
         }
     } else {
         echo "<button class='btnBuy' style='font-size:1.5vw; padding:10px 50px;'><a href='form_login.php?go=$eventid'>เข้าสู่ระบบก่อนซื้อบัตร</a></button>";
@@ -82,15 +85,29 @@ if ($getEventName == "") {
             <b>รายละเอียด <?echo $getEventName ?></b>
             <p><?echo $getDetail; ?></p>
         </div>
-        <div class="contain noBorder eventDesc">
+        <div class="contain noBorder eventDesc" id="eventBuyTicket">
             <h3>ซื้อบัตร <?echo $getEventName ?></h3>
             <p>ยังไม่เสร็จ</p>
         </div>
-        <div class="contain noBorder eventDesc">
-            <h3>ช่วยเหลือ</h3>
-            <ul>
-                <li><a href="webboard/<?echo $eventid;?>">กระดานสนทนา</a></li>
-            </ul>
+        <div class="contain noBorder eventDesc eventLast">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>ช่วยเหลือ</h3>
+                    <ul>
+                        <li><a href="webboard/<?echo $eventid;?>">กระดานสนทนา</a></li>
+                        <li><a href="webboard/<?echo $eventid;?>">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <img src="img/user/logo_infoth_new_banner-02.jpg">
+                </div>
+                <div class="col-lg-4">
+                    <b><p><?echo $getEventOrName ?></p></b>
+                    <p><span class='glyphicon glyphicon-earphone'></span> <?echo $getEventOrTel ?></p>
+                    <p><span class='glyphicon glyphicon-inbox'></span> <?echo $getEventOrEmail ?></p>
+                    <a href="<?echo $getEventOrFB ?>" id="eventFBbtn">Facebook</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
@@ -108,6 +125,7 @@ if ($getEventName == "") {
     <title><?echo $getEventName ?> บน Eventhubs</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
     <style>
       #map {
@@ -129,6 +147,11 @@ if ($getEventName == "") {
         map: map
       });
     }
+    $("#buttonToBuy").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#eventBuyTicket").offset().top
+        }, 500);
+    });
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaUHstzyhRrOeBISEQfYLrwJHNakmT3DM&callback=initMap">

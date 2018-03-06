@@ -101,6 +101,22 @@ if ($type == "NotLogin") {
         <label>สถานที่จัดงาน ลองติจูด (Lng)</label>
         <input type="text" class="form-control" name="eventMapLng">
     </div>
+    <div class="form-group">
+        <label>ชื่อผู้จัดงาน</label>
+        <input type="text" class="form-control" name="eventOrgName">
+    </div>
+    <div class="form-group">
+        <label>เบอร์ติดต่อผู้จัด</label>
+        <input type="text" class="form-control" name="eventCtTell">
+    </div>
+    <div class="form-group">
+        <label>E-mail ติดต่อผู้จัด</label>
+        <input type="email" class="form-control" name="eventCtEmail">
+    </div>
+    <div class="form-group">
+        <label>Facebook กิจกรรม</label>
+        <input type="text" class="form-control" name="eventFacebook">
+    </div>
     <p>
     <button type="submit" class="btnlogin">สร้าง</button>
     <br>

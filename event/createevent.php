@@ -2,8 +2,8 @@
 session_start();
 include '../connection.php';
 $eventName     = $_POST["eventName"];
-$eventDesc     = $_POST["eventDesc"];
-$eventDesc     = str_replace("\n", "<br>", $eventDesc);
+$eventDesc     = trim($_POST["eventDesc"]);
+$eventDesc     = preg_replace("/\r\n|\r/", "<br />", $eventDesc);
 $eventDesc     = nl2br($eventDesc);
 $eventType     = $_POST["eventType"];
 $eventLocation = $_POST["eventLocation"];
@@ -15,13 +15,17 @@ $eventURL      = $_POST["eventURL"];
 $eventColor    = $_POST["eventColor"];
 $eventMapLat   = $_POST["eventMapLat"];
 $eventMapLng   = $_POST["eventMapLng"];
+$eventOrgName  = $_POST["eventOrgName"];
+$eventCtTell   = $_POST["eventCtTell"];
+$eventCtEmail  = $_POST["eventCtEmail"];
+$eventFacebook = $_POST["eventFacebook"];
 $dateCreate    = date("Y-m-d H:i:s");
 $username      = $_SESSION["Username"];
 $type          = checkType($username);
 $file_name     = $_FILES['eventPic']['name'];
 $getOwnerID    = getOneValue("SELECT `ID` AS 'get' FROM `user` WHERE `Username` = '$username'");
 //เพิ่มเข้าไปในฐานข้อมูล
-$sql = "INSERT INTO `EventOrganizers` VALUES ('','$eventRole','','$eventName','$eventType','$eventDesc','$file_name','','$eventDate','','$eventLocation','$eventCapi','0','','','','$getOwnerID','$eventURL','0','$eventColor','$eventMapLat','$eventMapLng')";
+$sql = "INSERT INTO `EventOrganizers` VALUES ('','$eventRole','','$eventName','$eventType','$eventDesc','$file_name','','$eventDate','','$eventLocation','$eventCapi','0','','','','$getOwnerID','$eventURL','0','$eventColor','$eventMapLat','$eventMapLng','$eventOrgName','$eventCtTell','$eventCtEmail','$eventFacebook')";
 
 echo $sql;
 if (isset($_FILES['eventPic'])) {
@@ -59,7 +63,7 @@ if ($result) {
     echo "</script>";
 } else {
     echo "<script type='text/javascript'>";
-    echo "window.location = 'event/create.php?st=1'; ";
+    echo "window.location = 'create.php?st=1'; ";
     echo "</script>";
 }
 
