@@ -14,7 +14,9 @@ if (empty($_SESSION["Username"])) {
 	if ($type == "Organizer"){
 		$header_menu .= "
 		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
-		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>";
+		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>
+		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 	}
 
 	else if ($type == "Admin"){
