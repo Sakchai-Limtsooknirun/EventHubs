@@ -5,11 +5,9 @@ $username = null ;
 $type = checkType($username);
 $header_menu = "";
 if (empty($_SESSION["Username"])) {
-
     $header_menu .= "
 	  	<li><a href='form_login.php'>เข้าสู่ระบบ</a></li>
 		<li><a href='signup.php'>ลงทะเบียนฟรี</a></li>";
-
 } else {
 	$username    = $_SESSION["Username"];
 	$type     = checkType($username);
@@ -20,15 +18,19 @@ if (empty($_SESSION["Username"])) {
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 	}
-	else if ($type=="Admin"){
+
+	else if ($type == "Admin"){
 		$header_menu .= "
+		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
 		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>
-		<li><a href='userManage.php'><span class='glyphicon glyphicon-list'></span> การจัดการสมาชิก</a></li>
+		<li><a href='userManage.php'>การจัดการสมาชิก</a></li>
+		";
+	}
+    $header_menu .= "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
-	}
-}
 
+}
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
@@ -59,9 +61,7 @@ body{
     top:0;
     left:0;
     right:0;
-
 }
-
 .header_logo{
 	font-size: 2.3em;
 	display: inline;
@@ -99,13 +99,11 @@ body{
 .header_menu li{
     display:inline-block;
 }
-
 .show-menu {
     text-decoration: none;
     color:var(--main-color-dark);
     text-align: center;
     display: none;
-
 }
 @media screen and (max-width : 760px){
     .header_menu ul {
@@ -122,7 +120,6 @@ body{
         display:block;
     }
 }
-
 input[type=checkbox]{
     display: none;
 }
