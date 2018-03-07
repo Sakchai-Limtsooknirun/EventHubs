@@ -27,7 +27,7 @@ if ($_SESSION["Username"] == $username){
     <form name="adminEditForm" action="adminEditUpdate.php" method="POST" enctype="multipart/form-data">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
-<img  src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%'>
+<img  class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%' required >
 <br>
 <br>
 <div class="form-group">

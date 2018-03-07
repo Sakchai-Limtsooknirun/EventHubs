@@ -26,13 +26,13 @@ if ($_SESSION["Username"] == $username){
     <form name="EditForm" action="EditUpdate.php" method="POST" enctype="multipart/form-data">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
-<img  src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%'>
+<img  class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='50%' height='50%'>
 <div class="form-group">
     <tr>
     <br>
     <div class="form-group">
         <label>แก้ไขรูปโปรไฟล์</label>
-        <input type="file" name="editPic" accept="image/*">
+        <input type="file" name="editPic" accept="image/*" required>
     </div>
         <td class="form-control"><label>ID</label></td>
         <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
