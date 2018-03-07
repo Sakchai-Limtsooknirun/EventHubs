@@ -37,10 +37,16 @@ if(isset($_GET['error'])){
     <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
     </div>
     <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 loginbg">
-      <form name="frmlogin"  method="post" action="registersave.php">
+      <form name="frmsignup"  method="POST" action="registersave.php" enctype="multipart/form-data">
         <p> </p>
         <h2>สมัครสมาชิก</h2>
         <?echo $error; ?>
+        
+</script>
+    <div class="form-group">
+        <abbr style="color:red;">* </abbr><label>รูปโปรไฟล์</label>
+        <input type="file" name="userPic" accept="image/*" required>
+    </div>
         <div class="form-group">
             <abbr style="color:red;">* </abbr><label>อีเมล์</label>
             <input type="email" class="form-control" name="email" required style="color:#260d31;">

@@ -39,7 +39,9 @@ if (empty($_SESSION["Username"])) {
 <link href="css/bootstrap-form-helpers.min.css" rel="stylesheet">
 <script src="js/bootstrap-formhelpers.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
 <style type="text/css">
+
 
 
 :root {

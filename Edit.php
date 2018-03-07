@@ -23,11 +23,17 @@ if ($_SESSION["Username"] == $username){
     <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
     </div>
     <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 loginbg">
-    <form name="EditForm" action="EditUpdate.php" method="POST">
+    <form name="EditForm" action="EditUpdate.php" method="POST" enctype="multipart/form-data">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
+<img  src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%'>
 <div class="form-group">
     <tr>
+    <br>
+    <div class="form-group">
+        <label>แก้ไขรูปโปรไฟล์</label>
+        <input type="file" name="editPic" accept="image/*">
+    </div>
         <td class="form-control"><label>ID</label></td>
         <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
     </tr>
