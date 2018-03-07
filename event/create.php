@@ -90,6 +90,11 @@ if ($type == "NotLogin") {
     </div>
     <hr>
     <div class="form-group">
+        <label>Youtube VDO Teaser</label>
+        <input type="text" class="form-control" name="eventVDO">
+        <small>ex. https://www.youtube.com/watch?v=HR5AJ7VBZts ใส่เฉพาะ ID เท่านั้น เช่น HR5AJ7VBZts</small>
+    </div>
+    <div class="form-group">
         <label>โทนสีเว็บ</label>
         <input type="text" class="form-control" name="eventColor">
     </div>

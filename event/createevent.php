@@ -11,6 +11,7 @@ $eventPic      = $_POST["eventPic"];
 $eventDate     = $_POST["eventDate"];
 $eventRole     = $_POST["eventRole"];
 $eventCapi     = $_POST["eventCapi"];
+$eventVDO      = $_POST["eventVDO"];
 $eventURL      = $_POST["eventURL"];
 $eventColor    = $_POST["eventColor"];
 $eventMapLat   = $_POST["eventMapLat"];
@@ -25,7 +26,7 @@ $type          = checkType($username);
 $file_name     = $_FILES['eventPic']['name'];
 $getOwnerID    = getOneValue("SELECT `ID` AS 'get' FROM `user` WHERE `Username` = '$username'");
 //เพิ่มเข้าไปในฐานข้อมูล
-$sql = "INSERT INTO `EventOrganizers` VALUES ('','$eventRole','','$eventName','$eventType','$eventDesc','$file_name','','$eventDate','','$eventLocation','$eventCapi','0','','','','$getOwnerID','$eventURL','0','$eventColor','$eventMapLat','$eventMapLng','$eventOrgName','$eventCtTell','$eventCtEmail','$eventFacebook')";
+$sql = "INSERT INTO `EventOrganizers` VALUES ('','$eventRole','','$eventName','$eventType','$eventDesc','$file_name','$eventVDO','$eventDate','','$eventLocation','$eventCapi','0','','','','$getOwnerID','$eventURL','0','$eventColor','$eventMapLat','$eventMapLng','$eventOrgName','$eventCtTell','$eventCtEmail','$eventFacebook')";
 
 echo $sql;
 if (isset($_FILES['eventPic'])) {
@@ -59,7 +60,7 @@ if (isset($_FILES['eventPic'])) {
 $result = mysqli_query($con, $sql);
 if ($result) {
     echo "<script type='text/javascript'>";
-    echo "window.location = '/'; ";
+    echo "window.location = 'index.php'; ";
     echo "</script>";
 } else {
     echo "<script type='text/javascript'>";

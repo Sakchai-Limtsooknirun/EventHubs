@@ -31,6 +31,7 @@ if ($getEventName == "") {
 } else {
     $getEventPic = getOneValue("SELECT `Picture` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getOwner    = getOneValue("SELECT `Username` AS 'get' FROM `user` WHERE `ID` = (SELECT `EventOwnerID` FROM `EventOrganizers` WHERE `ShortURL` = '$eventid')");
+    $getOwnerPic = getOneValue("SELECT `Picture` AS 'get' FROM `user` WHERE `Username` = '$getOwner'");
     $getLocation = getOneValue("SELECT `Location` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getDate     = DateThai(getOneValue("SELECT `DateStart` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'"));
     $getColor    = getOneValue("SELECT `ColorTone` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
@@ -47,10 +48,30 @@ if ($getEventName == "") {
     ?>
 
 <body>
-    <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
+    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2">
     </div>
-    <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
-        <div class="contain noBorder">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <?
+
+    $getVDO = getOneValue("SELECT `TeaserVDO` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    if ($getVDO != ""){
+        $classVDOShow = "containVDO";
+        $vdoURL = "https://www.youtube.com/embed/$getVDO?controls=0&showinfo=0&rel=0&autoplay=1&loop=1";
+        echo "
+<div class='video-background'>
+    <div class='video-foreground'>
+      <iframe src='$vdoURL' frameborder='0' allowfullscreen></iframe>
+    </div>
+</div>
+<div class='detailArrowShow' id='buttonToDetail'>รายละเอียด<br><p class='fas fa-angle-double-down'></p></div>
+        ";
+    }else{
+        $classVDOShow = "";
+    }
+
+    ?>
+
+        <div class="contain noBorder <? echo$classVDOShow;?>" id="eventDetail">
             <img src="img/event/<?echo $getEventPic; ?>" alt="" width='100%'>
             <center>
                 <h2><?echo $getEventName ?></h2>
@@ -59,8 +80,8 @@ if ($getEventName == "") {
             <hr>
             <div class="row">
                 <div class="col-lg-8">
-                   <p id='eventInfo'><span class='glyphicon glyphicon-pushpin'></span> <?echo $getLocation ?></p>
-                   <p id='eventInfo'><span class='glyphicon glyphicon-calendar'></span> <?echo $getDate ?></p>
+                   <p id='eventInfo'><p style='font-size:15px' class='fas fa-location-arrow'></p> <?echo $getLocation ?></p>
+                   <p id='eventInfo'><p style='font-size:12px' class='fas fa-calendar-alt'></p> <?echo $getDate ?></p>
                 </div>
                 <div class="col-lg-4">
                     <?
@@ -71,7 +92,7 @@ if ($getEventName == "") {
             echo "<button class='btnBuy' id='buttonToBuy' >ซื้อบัตร</button>";
         }
     } else {
-        echo "<button class='btnBuy' style='font-size:1.5vw; padding:10px 50px;'><a href='form_login.php?go=$eventid'>เข้าสู่ระบบก่อนซื้อบัตร</a></button>";
+        echo "<button class='btnBuy' style='font-size:1.5em; padding:10px 50px;'><a href='form_login.php?go=$eventid'>เข้าสู่ระบบก่อนซื้อบัตร</a></button>";
     }
     ?>
                 </div>
@@ -99,7 +120,7 @@ if ($getEventName == "") {
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <img src="img/user/logo_infoth_new_banner-02.jpg">
+                    <img src="img/user/<?echo $getOwnerPic;?>" style="height: 140px;width:140px;object-fit: cover;">
                 </div>
                 <div class="col-lg-4">
                     <b><p><?echo $getEventOrName ?></p></b>
@@ -110,7 +131,8 @@ if ($getEventName == "") {
             </div>
         </div>
     </div>
-    <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
+    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2">
+
     </div>
 </body>
 
@@ -151,6 +173,11 @@ if ($getEventName == "") {
         $('html, body').animate({
             scrollTop: $("#eventBuyTicket").offset().top
         }, 500);
+    });
+    $("#buttonToDetail").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#eventDetail").offset().top
+        }, 800);
     });
     </script>
     <script async defer
