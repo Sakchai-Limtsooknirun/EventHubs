@@ -52,7 +52,7 @@ if(isset($_GET['go'])){
           <input type="password"   id="Password"required name="Password" placeholder="รหัสผ่าน">
         </p>
         <p>
-          <a href="#" id="resetpassword">ลืมรหัสผ่าน</a>
+          <a href="lostPW.php" id="resetpassword">ลืมรหัสผ่าน</a>
           <p>
           <button type="submit" class="btnlogin">เข้าสู่ระบบ</button>
           <hr>

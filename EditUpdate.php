@@ -10,7 +10,7 @@ include 'connection.php';
         $phone = mysql_real_escape_string(trim($_POST['Editphone']));
         //$email = mysql_real_escape_string(trim($_POST['Editemail']));
         $modified_date = $_POST['Editdob'];
-        $date = date("Y-m-d");
+        $date = date("Y-m-d H:i:s");
         unset($_SESSION['frmAction']);
         $meSQL = "UPDATE user ";
         $meSQL .= "SET Firstname='{$firstname}', ";

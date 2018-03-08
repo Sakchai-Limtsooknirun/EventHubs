@@ -2,46 +2,6 @@
 include 'header.php';
 $query = "select * from user";
 
-
-if(empty($_GET['sort'])){
-  $query = "select * from user";
-}else{
-if ($_GET['sort'] == 'ids')
-{
-    $query .= " ORDER BY ID";
-}
-elseif ($_GET['sort'] == 'lvs')
-{
-    $query .= " ORDER BY role";
-}
-elseif ($_GET['sort'] == 'users')
-{
-    $query .= " ORDER BY Username";
-}
-elseif($_GET['sort'] == 'names')
-{
-    $query .= " ORDER BY Firstname";
-}
-elseif($_GET['sort'] == 'lastnames')
-{
-    $query .= " ORDER BY Lastname";
-}
-elseif($_GET['sort'] == 'sexs')
-{
-    $query .= " ORDER BY sex";
-}
-elseif($_GET['sort'] == 'mails')
-{
-    $query .= " ORDER BY email";
-}
-elseif($_GET['sort'] == 'days')
-{
-    $query .= " ORDER BY ts";
-}
-else{
-}
-}
-
 if(isset($_POST['txtKeyword']) && (isset($_POST['sorttype'])) && ($_POST['sorttype']!="null")){
    if(($_POST['txtKeyword']=='male')||($_POST['txtKeyword']=='Male')||($_POST['txtKeyword']=='MALE')||($_POST['txtKeyword']=='ชาย')){
       $_POST['txtKeyword']='m';
@@ -50,25 +10,16 @@ if(isset($_POST['txtKeyword']) && (isset($_POST['sorttype'])) && ($_POST['sortty
    }
   echo $query .= " where {$_POST['sorttype']} = '{$_POST['txtKeyword']}'";
 }
-// else{
-//   $query = "select * from user";
-//}
+
 $data = mysqli_query($con,$query);
-if($data==true){
-  echo "OK";
-}
-
-?>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
 
 
-<?php
+
 
 echo "<form align = 'center' name='frmSearch' method='post' action = 'userManage.php'>
 <table align = 'center' width='340' border='1'>
 ค้นหาด้วย:
-<select style = 'height:40'; align = 'center' name='sorttype'>
+<select style='color:#260d31' style = 'height:40'; align = 'center' name='sorttype'>
 <option value=null >-------</option>
 <option value='ID' >รหัส</option>
 <option value='Username'>USERNAME</option>
@@ -81,34 +32,36 @@ echo "<form align = 'center' name='frmSearch' method='post' action = 'userManage
   <tr>
   <br>
     <th>ค้นหา
-    <input name='txtKeyword' type='text'>
-    <input type='submit' value='Search'></th>
+    <input style='color:#260d31' name='txtKeyword' type='text'>
+    <input style='color:#260d31'  type='submit' value='Search'></th>
   </tr>
 </table>
 </form>";
 if($data->num_rows==0){
   echo "<h1 align = 'center' style=color:red; >DATA NOT FOUND<h1>";
 }
-echo "<table  class='table table-hover table-striped table-bordered' cellspacing='0' width='100%'>";
+echo "<div id='sun'>";
+echo "<table  class='table table-hover table-bordered' cellspacing='0' width='100%'>";
 
 echo "<thead>
       <tr align='center' bgcolor='#CCCCCC'>
 
       <th>Profile</th>
-      <th><a href=userManage.php?sort=ids>รหัส</th>
-      <th><a href=userManage.php?sort=lvs>ระดับสมาชิก</th>
-      <th><a href=userManage.php?sort=users>Uername</th>
-      <th><a href=userManage.php?sort=names>ชื่อ</th>
-      <th><a href=userManage.php?sort=lastnames>นามสกุล</th>
-      <th><a href=userManage.php?sort=sexs>เพศ</th>
-      <th><a href=userManage.php?sort=mails>อีเมล์</th>
-      <th><a href=userManage.php?sort=days>วันที่สมัคร</th>
+      <th><a href='#' onclick='jay(\"ids\")'>รหัส</th>
+      <th><a href='#' onclick='jay(\"lvs\")'>ระดับสมาชิก</th>
+      <th><a href='#' onclick='jay(\"users\")'>Uername</th>
+      <th><a href='#' onclick='jay(\"names\")'>ชื่อ</th>
+      <th><a href='#' onclick='jay(\"lastnames\")'>นามสกุล</th>
+      <th><a href='#' onclick='jay(\"sexs\")'>เพศ</th>
+      <th><a href='#' onclick='jay(\"mails\")'>อีเมล์</th>
+      <th><a href='#' onclick='jay(\"days\")'>วันที่สมัคร</th>
       <th>แก้ไข/ลบ</th>
       </tr>
       </thead>
       <tbody>";
+
 while($row = $data->fetch_array()) { 
-  echo "<tr align='center' style = height:50%;>";
+  echo "<tr style='color:#260d31' align='center' style = height:50%;>";
 
   echo "<td width='auto'>" ."<img class='img-thumbnail' width=50% height=50% src='img/user/".$row['Picture']."' alt='' width='100%'>" .  "</td> "; 
   echo "<td width='auto'>" .$row["ID"] .  "</td> "; 
@@ -132,5 +85,38 @@ while($row = $data->fetch_array()) {
 
 }
 echo "</table>";
+echo "</div>";
 mysqli_close($con);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var s = 0;
+
+    function jay(sort){
+        console.log(sort);
+        if(s == 0){
+        $.get('sortdata.php',{sort:sort,sun:''},function(data){
+            console.log(data);
+            $('#sun').html(data);
+        });
+        s = 1;
+        }
+        else{
+            $.get('sortdata.php',{sort:sort,sun:'DESC'},function(data){
+            console.log(data);
+            $('#sun').html(data);
+        });
+        s = 0;
+        }
+    }
+    </script>
+</body>
+</html>
