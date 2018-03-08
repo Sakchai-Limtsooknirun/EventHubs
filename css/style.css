@@ -19,6 +19,10 @@
     background-color: var(--main-color-dark);
     color: white;
     transition: 0.5s;
+    text-decoration:none;
+}
+.btnlogin a{
+    color: white;
 }
 .btnlogin:hover {
     background-color: var(--main-color-light);
@@ -369,4 +373,32 @@ input.transparent-input {
 .detailArrowShow:hover{
     margin-top: 50px;
 
+}
+.keepRight{
+    text-align:right;
+}
+.ticketRowShow{
+    font-size: 1.3em;
+    padding:20px 0px;
+    border-bottom: 2px solid #f2f2f2;
+}
+.btnBuyTicket{
+    font-size: 1.1em;
+    text-align:center;
+    color: white;
+    background-color: var(--main-color-dark);
+    padding:1px 10px;
+    transition: 0.5s
+}
+.btnBuyTicket:hover{
+    padding:1px 20px;
+}
+.btnBuyTicket a{
+    color: white;
+    text-decoration:none;
+}
+.keepTop{
+    display: inline-block;
+    vertical-align: top;
+    top:0px;
 }

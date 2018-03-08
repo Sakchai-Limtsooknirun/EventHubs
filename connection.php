@@ -10,6 +10,7 @@ if ($con->connect_errno) {
 	exit();
 }
 $con->set_charset("utf8");
+date_default_timezone_set("Asia/Bangkok");
 
 function t()
 {

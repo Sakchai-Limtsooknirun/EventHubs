@@ -25,6 +25,11 @@ if (empty($_SESSION["Username"])) {
 		<li><a href='userManage.php'>การจัดการสมาชิก</a></li>
 		";
 	}
+	else if ($type == "User"){
+		$header_menu .= "
+		<li><a href='ticket.php'><span class='glyphicon glyphicon-list'></span> กิจกรรมที่เข้าร่วม</a></li>
+		";
+	}
     $header_menu .= "
 		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";

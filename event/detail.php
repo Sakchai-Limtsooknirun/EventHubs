@@ -30,6 +30,7 @@ if ($getEventName == "") {
         <?
 } else {
     $getEventPic = getOneValue("SELECT `Picture` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    $EVENTID = getOneValue("SELECT `ID` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getOwner    = getOneValue("SELECT `Username` AS 'get' FROM `user` WHERE `ID` = (SELECT `EventOwnerID` FROM `EventOrganizers` WHERE `ShortURL` = '$eventid')");
     $getOwnerPic = getOneValue("SELECT `Picture` AS 'get' FROM `user` WHERE `Username` = '$getOwner'");
     $getLocation = getOneValue("SELECT `Location` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
@@ -108,9 +109,65 @@ if ($getEventName == "") {
         </div>
         <div class="contain noBorder eventDesc" id="eventBuyTicket">
             <h3>ซื้อบัตร <?echo $getEventName ?></h3>
-            <p>ยังไม่เสร็จ</p>
+            <?
+            $getRowTicket = getOneValue("SELECT COUNT(*) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EVENTID'");
+            if ($getRowTicket > 0 ){
+                $result = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$EVENTID' AND `TicketStatus` = '0' AND `TicketNow` < `TicketCapi`");
+                $token = bin2hex(openssl_random_pseudo_bytes(16));
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $ticketID = $row['TicketID'];
+                    $ticketName = $row['TicketName'];
+                    $ticketPrice = $row['TicketPrice'];
+
+                    if ($type != "NotLogin") {
+                        if ($getColor != "") {
+                            $showbtnbuyticket = "<a href='buyticket.php?ticketid=$ticketID&token=$token'><button class='btnBuyTicket' style='background-color:$getColor'>ซื้อบัตร</button></a>";
+                        } else {
+                            $showbtnbuyticket = "<a href='buyticket.php?id=$ticketID'><div class='btnBuyTicket'>ซื้อบัตร</div></a>";
+                        }
+                    } else {
+                        $showbtnbuyticket = "<button class='btnBuyTicket'><a href='form_login.php?go=$eventid'>ซื้อบัตร</a></button>";
+                    }
+                    echo "
+            <div class='row ticketRowShow'>
+                <div class='col-lg-6'>
+                    <p class='fas fa-chevron-right' style='font-size:15px;'></p> $ticketName
+                </div>
+                <div class='col-lg-4 keepRight'>
+                    ฿$ticketPrice
+                </div>
+                <div class='col-lg-2'>
+                    $showbtnbuyticket
+                </div>
+            </div>
+                    ";
+
+                }
+                echo "<br>* อาจมีค่าธรรมเนียมจากการชำระผ่านบัตรเครดิต<p>";
+                echo "
+                <div class='row'>
+<div class='col-lg-6 keepTop'>
+    <div class='row'>
+        <div class='col-lg-2'><p class='fab fa-cc-visa' style='font-size:2em;'><p> รองรับ</div>
+        <div class='col-lg-2'><p class='fab fa-cc-mastercard' style='font-size:2em;'><p> รองรับ</div>
+        <div class='col-lg-2'><p class='fas fa-money-bill-alt' style='font-size:2em;'><p> รองรับ</div>
+    </div>
+</div>
+<div class='col-lg-6 keepTop keepRight'>
+    <p>ต้องการความช่วยเหลือ?</p>
+    <h6>โทร : 062-593-2224</h6>
+    <h6>อีเมล์ : payment@eventhubs.com</h6>
+</div>
+                </div>
+                ";
+            }else{
+                echo "<center>
+                <br><p>บัตรหมดหรือไม่พบบัตร กรุณาติดต่อ Admin</p></center>";
+            }
+            ?>
+
         </div>
-        <div class="contain noBorder eventDesc eventLast">
+            <div class="contain noBorder eventDesc eventLast">
             <div class="row">
                 <div class="col-lg-4">
                     <h3>ช่วยเหลือ</h3>
