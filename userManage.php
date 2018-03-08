@@ -43,7 +43,12 @@ else{
 }
 
 if(isset($_POST['txtKeyword']) && (isset($_POST['sorttype'])) && ($_POST['sorttype']!="null")){
-echo $query .= " where {$_POST['sorttype']} = '{$_POST['txtKeyword']}'";
+   if(($_POST['txtKeyword']=='male')||($_POST['txtKeyword']=='Male')||($_POST['txtKeyword']=='MALE')||($_POST['txtKeyword']=='ชาย')){
+      $_POST['txtKeyword']='m';
+   }elseif(($_POST['txtKeyword']=='female')||($_POST['txtKeyword']=='FeMale')||($_POST['txtKeyword']=='FEMALE')||($_POST['txtKeyword']=='หญิง')){
+      $_POST['txtKeyword']='f';
+   }
+  echo $query .= " where {$_POST['sorttype']} = '{$_POST['txtKeyword']}'";
 }
 // else{
 //   $query = "select * from user";
