@@ -62,7 +62,7 @@ if($data==true){
 
 echo "<form align = 'center' name='frmSearch' method='post' action = 'userManage.php'>
 <table align = 'center' width='340' border='1'>
-เรียงโดย:
+ค้นหาด้วย:
 <select style = 'height:40'; align = 'center' name='sorttype'>
 <option value=null >-------</option>
 <option value='ID' >รหัส</option>
@@ -75,7 +75,7 @@ echo "<form align = 'center' name='frmSearch' method='post' action = 'userManage
 
   <tr>
   <br>
-    <th>Keyword
+    <th>ค้นหา
     <input name='txtKeyword' type='text'>
     <input type='submit' value='Search'></th>
   </tr>
