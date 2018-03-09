@@ -52,16 +52,43 @@ if ($type == "NotLogin"){
                 <h6>ค้นหากิจกรรมทางกีฬา งานแข่ง</h6>
             </div>
         </figure>
-
+        <figure>
+            <img src="https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=49ee68b793d9c0f1f0bc123ffad345e6&auto=format&fit=crop&w=2250&q=80" style="object-fit: cover;filter: brightness(40%);">
+            <div class="textHome">
+                <h1>ค้นหางานกิจกรรมในเรื่องที่คุณชอบ</h1>
+                <?echo $btnHome; ?>
+            </div>
+        </figure>
     </figure>
 </div>
 <div class="col-xs-0 col-sm-0 col-md-1 col-lg-1">
 </div>
    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
     <div class="row searchBar">
-        <div class="md-form">
-            <input class="form-control transparent-input" type="text" placeholder="ค้นหากิจกรรม" aria-label="ค้นหากิจกรรม">
-        </div>
+    	<form action="search.php" method="get">
+        	<div class="row">
+        		<div class="col-lg-8">
+        			<input class="form-control transparent-input" type="text" placeholder="ค้นหากิจกรรม" aria-label="ค้นหากิจกรรม" name="keyword" required>
+        		</div>
+        		<div class="col-lg-3">
+					<div class="form-group">
+					  	<select class="form-control transparent-input" id="type" name="type">
+					    	<option value="all">ค้นหาจากทุกหมวดหมู่</option>
+					   <?
+						    $result_search = mysqli_query($con, "SELECT * FROM `EventType`");
+						    while ($row = mysqli_fetch_assoc($result_search)) {
+						        $TypeID = $row['TypeID'];
+						        $TypeName = $row['TypeName'];
+						        echo "<option value='$TypeID'>$TypeName</option>";
+						    }
+
+					   ?>
+					  	</select>
+					</div>
+        		</div>
+        		<div class="col-lg-1"><input type="submit" class="btn btn-info" value="ค้นหา"></div>
+        	</div>
+        </form>
     </div>
     <div class="row eventIndex">
 <?
