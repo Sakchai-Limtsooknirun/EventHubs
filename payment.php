@@ -22,7 +22,7 @@ if ($type == "NotLogin") {
         $ticketID    = getOneValue("SELECT `TicketID` AS 'get' FROM `EventHandler` WHERE `CardToken` = '$token'");
         $ticketName  = getOneValue("SELECT `TicketName` AS 'get' FROM `EventTicket` WHERE `TicketID` = '$ticketID'");
         $ticketPrice = getOneValue("SELECT `TicketPrice` AS 'get' FROM `EventTicket` WHERE `TicketID` = '$ticketID'");
-        $eventName   = getOneValue("SELECT `EventName` AS 'get' FROM `EventOrganizers` INNER JOIN EventTicket ON EventOrganizers.ID = EventTicket.EventID WHERE `ID` = '18'");
+        $eventName   = getOneValue("SELECT `EventName` AS 'get' FROM `EventOrganizers` INNER JOIN EventTicket ON EventOrganizers.ID = EventTicket.EventID WHERE `TicketID` = '$ticketID'");
 
         ?>
 
