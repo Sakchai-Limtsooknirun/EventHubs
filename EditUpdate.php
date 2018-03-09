@@ -1,9 +1,21 @@
+<script src="jquery-3.3.1.min.js" charset="utf-8"></script>
 <?php
 session_start();
 include 'connection.php';
+
  if (isset($_SESSION["Username"])){
     if (isset($_SESSION['frmAction']) == isset($_POST['frmAction'])) {
-        $file_name     = $_FILES['editPic']['name'];
+        $statusPic = getOneValue("SELECT `Picture` AS 'get' FROM `user` WHERE `Username` = '{$_SESSION['Username']}'");
+        if ($_FILES['editPic']['error'] == "0") {
+             $file_name     = $_FILES['editPic']['name'];
+        }else{
+            if($statusPic == ""){
+            $file_name     = "Default.png";
+            }else {
+                $file_name =  $statusPic; 
+            }
+         }
+
         $firstname = mysql_real_escape_string(trim($_POST['Editfirstname']));
         $lastname = mysql_real_escape_string(trim($_POST['Editlastname']));
         $sex = mysql_real_escape_string(trim($_POST['Editsex']));
@@ -19,7 +31,13 @@ include 'connection.php';
         $meSQL .= "telephone='{$phone}', ";
         //$meSQL .= "email='{$email}', ";
         $meSQL .= "dob='{$modified_date}',";
-        $meSQL .= "Picture='{$file_name}' ";
+
+        // if((!is_uploaded_file(['editPic']['name']))) {
+        //     $meSQL .= "Picture='{$statusPic}' ";
+        // }else{
+            $meSQL .= "Picture='{$file_name}' ";
+        //}
+        
         $meSQL .= "WHERE Username ='{$_SESSION['Username']}' ";
         
        
@@ -54,7 +72,7 @@ include 'connection.php';
         $userData = mysqli_query($con,$meSQL);
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'Edit.php'; ";
+               echo "window.location = 'Edit.php'; ";
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";

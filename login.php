@@ -8,7 +8,6 @@ if (isset($_REQUEST['Username'])) {
     //query
 
     $sql = "SELECT * FROM user Where Username='" . $Username . "'";
-    //น่าจะ error password เพราะเปนค่า hash อยู่ = หาค่าไม่เจอ ลบ and Password='".$Password."' ----หาวิธีแก้ก่อน
     $sqlVerify = mysqli_query($con, "SELECT Password FROM user Where Username='" . $Username . "'");
     if ($sqlVerify->num_rows == 1) {
         // output data of each row

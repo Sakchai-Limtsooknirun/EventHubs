@@ -76,8 +76,8 @@ while($row = $data->fetch_array()) {
   }
   echo "<td width='auto'>" .$row["email"] .  "</td> ";
   echo "<td width='auto'>" .$row["ts"] .  "</td> ";
-  echo "<td width='auto'class='btn btn-default' style = margin-top:10px; ><a href='adminEdit.php?IDedit=$row[0]'>Edit</a></td> ";
   if($row["Username"]!= $_SESSION["Username"]){
+  echo "<td width='auto'class='btn btn-default' style = margin-top:10px; ><a href='adminEdit.php?IDedit=$row[0]'>Edit</a></td> ";
   echo "<td width='auto' class='btn btn-danger' style = margin-top:10px;><a  href='UserDelete.php?IDedit=$row[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">Del</a></td> ";
   echo "</tr>";
   }

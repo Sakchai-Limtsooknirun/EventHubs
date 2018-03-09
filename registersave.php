@@ -11,8 +11,11 @@ $dob     = $_POST["dob"];
 $tel     = $_POST["tel"];
 $sex     = $_POST["sex"];
 // $userPic      = $_POST['userPic'];
-
-$file_name     = $_FILES['userPic']['name'];
+if ($_FILES['userPic']['error'] == "0") {
+    $file_name     = $_FILES['userPic']['name'];
+}else{
+    $file_name     = "Default.png";
+}
 
 
 print_r($_POST);
@@ -20,9 +23,13 @@ print_r($_FILES);
 echo $file_name ;
 $password_ec = password_hash($_POST["password"], PASSWORD_BCRYPT);
 $date = date("Y-m-d H:i:s");
+// if(!file_exists($_FILES['userPic']['name']) || !is_uploaded_file(['userPic']['name'])) {
+//     $sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','Default.png')";
+// }else{
+    $sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name')";
+//}
 
-//เพิ่มเข้าไปในฐานข้อมูล
-$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name')";
+
 echo $sql;
 
 $mysql_get_users = mysqli_query($con, "select* from user where Username = '$username'");

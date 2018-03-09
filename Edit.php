@@ -9,7 +9,7 @@ if ($_SESSION["Username"] == $username){
     if ($userData == TRUE) {
         $meResult = $userData->fetch_assoc();
         print_r($meResult);
-
+        
 ?>
 <html>
 <head>
@@ -32,7 +32,7 @@ if ($_SESSION["Username"] == $username){
     <br>
     <div class="form-group">
         <label>แก้ไขรูปโปรไฟล์</label>
-        <input type="file" name="editPic" accept="image/*" required>
+        <input type="file" name="editPic" id = "uploadPic" accept="image/*" >
     </div>
         <td class="form-control"><label>ID</label></td>
         <td><input style="color:#260d31" type="text" name="EditID" value="<?php echo $meResult['ID']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
@@ -129,11 +129,17 @@ if ($_SESSION["Username"] == $username){
 
 <tr>
     <td>&nbsp;</td>
-    <td><input class="btnlogin" type="submit" name="submit" value="บันทึกข้อมูล" /></td>
+    <td><input style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
+    
 </tr>
 
 <input type="hidden" name="frmAction" value="<?php echo $_SESSION['frmAction']; ?>" />
 </form>
+<form>
+<input type="button" style="color:#260d31" value="Reset Password" onclick="window.location.href='resetPW.php'" />
+</form>
+<a align = "center">----------------------------------------------------------------------------------------------------------------------------------------------</a>
+
 <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>          
   </div>
     </body>

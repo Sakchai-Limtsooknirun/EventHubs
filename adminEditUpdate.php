@@ -3,11 +3,22 @@ session_start();
 include 'connection.php';
  if (isset($_SESSION["Username"])){
     if (isset($_SESSION['adminEdit']) == isset($_POST['adminEdit'])) {
-        $file_name     = $_FILES['AeditPic']['name'];
+        $statusPic = getOneValue("SELECT `Picture` AS 'get' FROM `user` WHERE ID ='{$_POST['adminEdit']}' ");
+        if ($_FILES['AeditPic']['error'] == "0") {
+             $file_name     = $_FILES['AeditPic']['name'];
+        }else{
+            if($statusPic == ""){
+            $file_name     = "Default.png";
+            }else {
+                $file_name =  $statusPic; 
+            }
+         }
+        
         $firstname = mysql_real_escape_string(trim($_POST['adminEditfirstname']));
         $lastname = mysql_real_escape_string(trim($_POST['adminEditlastname']));
         $sex = mysql_real_escape_string(trim($_POST['adminEditsex']));
         $phone = mysql_real_escape_string(trim($_POST['adminEditphone']));
+        $lvuser=mysql_real_escape_string(trim($_POST['adminEdittype']));
         //$email = mysql_real_escape_string(trim($_POST['Editemail']));
         $modified_date = $_POST['adminEditdob'];
         $date = date("Y-m-d H:i:s");
@@ -15,6 +26,7 @@ include 'connection.php';
         $meSQL = "UPDATE user ";
         $meSQL .= "SET Firstname='{$firstname}', ";
         $meSQL .= "Lastname='{$lastname}', ";
+        $meSQL .= "role='{$lvuser}', ";
         $meSQL .= "sex='{$sex}', ";
         $meSQL .= "telephone='{$phone}', ";
         //$meSQL .= "email='{$email}', ";

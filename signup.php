@@ -45,7 +45,7 @@ if(isset($_GET['error'])){
 </script>
     <div class="form-group">
         <abbr style="color:red;">* </abbr><label>รูปโปรไฟล์</label>
-        <input type="file" name="userPic" accept="image/*" required>
+        <input type="file" name="userPic" accept="image/*" >
     </div>
         <div class="form-group">
             <abbr style="color:red;">* </abbr><label>อีเมล์</label>

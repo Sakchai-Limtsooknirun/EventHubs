@@ -42,18 +42,22 @@ if ($_SESSION["Username"] == $username){
 </div>
 
 <div class="form-group">
-    <tr>
+<tr>
         <td class="form-control"><label>ระดับสมาชิก</label></td>
-        <td><input style="color:#260d31" type="text" name="adminEditusername" value="<?php 
-        if($meResult['role']=='A'){
-            echo 'Admin' ;
-        }
-        elseif($meResult['role']=='M'){
-            echo 'Member';
-        }else{
-            echo $meResult['role'];
-        }
-        ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+    <td>
+        <input style="color:#260d31" type="radio" name="adminEdittype" value="A" required
+        <?php
+        if ($meResult['role'] == 'A') {
+        echo 'checked';}?>
+        /> Admin  | 
+        <input style="color:#260d31" type="radio" name="adminEdittype" value="M" required
+        <?php
+        if ($meResult['role'] == 'M') {
+             echo 'checked';}?>/> Member |
+        <input style="color:#260d31" type="radio" name="adminEdittype" value="O" required
+        <?php
+        if ($meResult['role'] == 'O') {
+             echo 'checked';}?>/> Organizer
     </tr>
 </div> 
 
