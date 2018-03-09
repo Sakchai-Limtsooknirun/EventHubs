@@ -23,11 +23,9 @@ print_r($_FILES);
 echo $file_name ;
 $password_ec = password_hash($_POST["password"], PASSWORD_BCRYPT);
 $date = date("Y-m-d H:i:s");
-// if(!file_exists($_FILES['userPic']['name']) || !is_uploaded_file(['userPic']['name'])) {
-//     $sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','Default.png')";
-// }else{
-    $sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name')";
-//}
+
+$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name','')";
+
 
 
 echo $sql;

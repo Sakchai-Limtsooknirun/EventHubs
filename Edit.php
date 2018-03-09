@@ -129,16 +129,20 @@ if ($_SESSION["Username"] == $username){
 
 <tr>
     <td>&nbsp;</td>
+    <center>
     <td><input style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
-    
+    <center<
 </tr>
 
-<input type="hidden" name="frmAction" value="<?php echo $_SESSION['frmAction']; ?>" />
+<input type="hidden" name="frmAction" value="<?php echo $_SESSION['frmAction']; ?>" /><br>
 </form>
+<br>
 <form>
-<input type="button" style="color:#260d31" value="Reset Password" onclick="window.location.href='resetPW.php'" />
+<center>
+
+<input type="button" style="color:#260d31" value="Change Password" onclick="window.location.href='changePW.php'" />
+<center>
 </form>
-<a align = "center">----------------------------------------------------------------------------------------------------------------------------------------------</a>
 
 <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>          
   </div>
