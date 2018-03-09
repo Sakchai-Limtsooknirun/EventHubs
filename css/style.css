@@ -289,6 +289,8 @@ figure.slider figure figcaption {
 .eventIndexShow h4 {
     color: black;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .box {
     border: 5px solid transparent;
@@ -315,6 +317,10 @@ figure.slider figure figcaption {
     color: black;
 }
 input.transparent-input {
+    background-color: transparent !important;
+    border: none;
+}
+select.transparent-input {
     background-color: transparent !important;
     border: none;
 }
