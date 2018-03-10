@@ -1,9 +1,7 @@
-
 <?
 $path    = basename(realpath(__DIR__ . '/..'));
 echo "<base href='/$path/'>";
 include '../header.php';
-
 $usernameID = ownerID($username);
 if ($type == "NotLogin") {
     echo "<script type='text/javascript'>";
@@ -20,10 +18,7 @@ if ($type == "NotLogin") {
     </div>
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
-
-
   $phpArray = array();
-
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
@@ -39,14 +34,9 @@ if ($type == "NotLogin") {
             $Picture = $row['Picture'];
             $ShortURL = $row['ShortURL'];
             // $ShortURL = $actual_link = "http://$_SERVER[HTTP_HOST]/".$path."/eventview/".$ShortURL;
-
-
-
             $Detail     = trim($row['Detail']);
             $Detail     = preg_replace("/\r\n|\r/", "<br />", $Detail);
             $Detail     = nl2br($Detail);
-
-
             $Precondition = $row['PreCondition'];
             $Price = $row['Price'];
             $Color = $row['ColorTone'];
@@ -55,34 +45,13 @@ if ($type == "NotLogin") {
             $EventContactEmail = $row['EventContactEmail'];
             $EventFacebook = $row['EventFacebook'];
             $Type= $row['Type'];
-
-
             $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
             $i=0;
             while ($row2 = mysqli_fetch_assoc($resultTicket)) {
-
-
                 $phpArray[$EventName.$i]=$row2['TicketName'];
                 $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
-
-
                 $i+=1;
-
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
-
             $SetModals = sprintf('onclick="SetModal(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%.187s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')"',$type,$EventName,$EventStatus,$ID,$Location,$DateB,$DateEnd,$CapacityNow,$MaximumCapacity,$Picture,$ShortURL,$Detail,$Precondition,$Price,$Color,$EventOrgName,$EventContactTell,$EventContactEmail,$EventFacebook,$phpArray);
             $checkcap = sprintf('onclick="CheckCap()"');
             echo "
@@ -100,18 +69,11 @@ if ($type == "NotLogin") {
         <p id='eventInfo'><span class='glyphicon glyphicon-link'></span> <a href='$ShortURL' target='_blank'>$ShortURL</a></p>
         <p id='eventInfo'><span class='glyphicon glyphicon-user'></span> $CapacityNow / $MaximumCapacity คน</p>
         <br>";
-
         echo "
-
-
-
       <span>  <a  type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
         <a  class='btnlogin'  href='event/memberediter.php?eid= $ID '>ดูแลสมาชิก</a></span>
-
     </div>
 </div>
-
-
             ";
         }
         if ($status != 1) {
@@ -130,8 +92,6 @@ if ($type == "NotLogin") {
 
     <script>
     var index = 0 ;
-
-
     function CheckType(Type){
       if(Type==1){
         type="งานปาร์ตี้คอนเสิร์ตและเทศกาล";
@@ -146,42 +106,22 @@ if ($type == "NotLogin") {
         type="ชั้นเรียนและงานฝีมือ";
       }
       return type;
-
-
-
     }
-
       function SetModal(Type,EventName,EventStatus,ID,location,DateStart,DateEnd,CapacityNow,MaximumCapacity,Picture,ShortURL,Detail,Precondition,Price,Color,EventOrgName,EventContactTell,EventContactEmail,EventFacebook,phpArray){
-
         var jArray= <?php echo json_encode($phpArray ); ?>;
-
-
           i=0
           while(!isEmpty(jArray[EventName+i])){
             // alert(jArray[EventName+i]+"    :     "+jArray[EventName+"P"+i]);
-
             add_fields(jArray[EventName+i],jArray[EventName+"P"+i],EventName,i);
             index = i;
             i+=1;
           }
-
-
-
-
-
         console.log(Picture+"      IMG");
         console.log(DateStart+" DATE BEFORE ");
-
-
         EventStatus=CheckStatus(EventStatus);
         console.log(EventStatus + "       THIS IS  STASUS");
         Type = CheckType(Type);
         console.log(Type+"  THIS IS TYPE");
-
-
-
-
-
          document.getElementById("eventname").setAttribute('value',EventName);
          document.getElementById("status").setAttribute('value',EventStatus);
          document.getElementById("type").setAttribute('value',Type);
@@ -191,11 +131,6 @@ if ($type == "NotLogin") {
          document.getElementById("date").value = DateStart;
          setDate(DateStart,'date','time');
         setDate(DateEnd,'dateEnd','timeEnd');
-
-
-
-
-
          document.getElementById("capacity").setAttribute('value',MaximumCapacity);
          document.getElementById("capacitynow").setAttribute('value',CapacityNow);
          document.getElementById("picture").setAttribute('value',Picture);
@@ -206,39 +141,22 @@ if ($type == "NotLogin") {
             document.getElementById("tell").setAttribute('value',EventContactTell);
              document.getElementById("email").setAttribute('value',EventContactEmail);
               document.getElementById("facebook").setAttribute('value',EventFacebook);
-
-
          // console.log(DateStart + "  asdasdasdasd");
          // console.log(DateStart + "  asdasdasdasd");
-
-
-
-
-
-
-
       }
-
       function CheckCap(){
         console.log(" < < < < < < < < < < < < << < < < <  < < <YEE PAP ");
         alert("aslhljashdjhasd");
       }
-
       function CheckStatus(Status){
         if(Status==0){
           Status="อนุมัติ";
-
         }
         else{
           Status="รอการอนุมัติ";
         }
         return Status;
-
       }
-
-
-
-
       function setDate(oldDate,date1,time1){
         console.log(oldDate + "    DATE FUNC" );
         console.log(date1+"      DATE ! B");
@@ -251,54 +169,23 @@ if ($type == "NotLogin") {
         var month = date[1];
         var day = date[2].split(" ")[0];
         da = year+"-"+month+"-"+day;
-
-
-
-
-
-
         document.getElementById(date1).value = da;
         console.log(da+ ":DATEEEE");
         document.getElementById(time1).value = time;
       }
-
-
-
-
-
-
-
-
-
-
         // document.getElementById("dateEnd").value = da;
         // document.getElementById("timeEnd").value = "18:00:00";
-
-
-
-
       }
-
-
       function isEmpty(str) {
         console.log(!str || 0 === str.length);
     return (!str || 0 === str.length);
-
 }
-
-
-
 function add_fields(Type,Price,EventName,i) {
-
     var objTo = document.getElementById('Tickets')
     var divtest = document.createElement("div");
     console.log(Type+"   TTTTT");
     console.log(Price+"       PPPPPP");
     divtest.innerHTML = '<div  >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="TT[]" value="'+Type+'"'+' /> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" namae="TT[]" value="'+Price+'"'+' /></div><hr>';
-
-
-
-
     objTo.appendChild(divtest)
 }
 </script>
@@ -353,13 +240,8 @@ function add_fields(Type,Price,EventName,i) {
             <br>  คุณสมบัติที่ต้องมีก่อนเข้าร่วมกิจกรรม(มีหรือไม่มีก็ได้) <input id="precondition" type="text" class="form-control" name="precondition" >
             <br>  จำนวนผู้เข้าร่วมสูงสุด<input id="capacity" style="color:#260d31" type="number" size="40" class="form-control" min="0" name="capmax"  required>
             <br>  จำนวนผู้เข้าร่วม ณ เวลานั้น<input id="capacitynow" style="color:#260d31" type="number" size="40" class="form-control"  readonly="readonly" name="capnow" required>
-<<<<<<< HEAD
             <br>  รูปภาพ<input id="picture" type="file" name="picture1" accept="image/*">
             <br>  วีดีโอ <input id="video" style="color:#260d31" type="file" name="video" accept="image/*"  size="40" >
-=======
-            <br>  รูปภาพ<input id="picture" type="file" name="picture" accept="image/*">
-            <br>  วีดีโอ<input id="video" style="color:#260d31" type="file" name="video" accept="image/*" size="40" >
->>>>>>> 80b02ac4fbd20c885f8b2fc601c8d7ebf7560faa
             <br>  ShoerURL :<input id="url" style="color:#260d31" type="text" size="40"  class="form-control" name="url" readonly="readonly" required >
             <br><label>โทนสีเว็บ</label>
             <br>  <input type="text" id="color" class="form-control"  name="color">
@@ -396,7 +278,6 @@ function add_fields(Type,Price,EventName,i) {
 <? //------------------------------------------
 }
 else {
-
 ?>
 <body>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -411,7 +292,6 @@ else {
 </body>
 		<?
 }
-
 ?>
 
 <head>
