@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-$query = "select * from Log";
+$query = "select * from user";
 $data = mysqli_query($con,$query);
 
 //echo store_log($username,'test สำเร็จ');
@@ -25,27 +25,43 @@ $(document).ready(function() {
 <div class="row">
 <div class="container"> 
   
-  <h1>Log view</h1> 
+  <h1>User Manager</h1> 
   <table class="table responsive" id="sort">
 	<thead>
 		<tr>
-			<th scope="col">ID</th>
+            <th scope="col">Picture</th>
+            <th scope="col">ID</th>
+            <th scope="col">ระดับสมาชิก</th>
 			<th scope="col">Username</th>
-			<th scope="col">IP Adress</th>
-			<th scope="col">Date</th>
-			<th scope="col">Activity</th>
+			<th scope="col">Firstname</th>
+			<th scope="col">Lastname</th>
+            <th scope="col">Gender</th>
+            <th scope="col">แก้ไข</th>
+            <th scope="col">ลบ</th>
 		</tr>
 	</thead>
 	<tbody>
     <?php 
-             while($row = $data->fetch_array()) { ?>
+             while($row = $data->fetch_array()) { $sid = $row[0] ?>
 		<tr>
             
-			<td data-table-header="ID"><?php echo $row['log_id'] ?></td>
-			<td data-table-header="Username"><?php echo $row['log_username'] ?></td>
-			<td data-table-header="IP Adress"><?php echo $row['log_ip']?></td>
-			<td data-table-header="E-MAIL"><?php echo $row['log_date']?> </td>
-            <td data-table-header="วันที่สมัครสมาชิก"><?php echo $row['log_act']?></td>
+			<td data-table-header="Picture"><img class='img-thumbnail' width=50% height=50% src='img/user/<?php echo $row['Picture']?>' alt='' width='100%'></td>
+			<td data-table-header="ID"><?php echo $row['ID'] ?></td>
+			<td data-table-header="ระดับสมาชิก"><?php echo checkType($row['Username'])?></td>
+			<td data-table-header="Username"><?php echo $row['Username']?> </td>
+            <td data-table-header="Firstname"><?php echo $row['Firstname']?></td>
+            <td data-table-header="Lastname"><?php echo $row['Lastname']?></td>
+            <td data-table-header="Gender"><?php if($row["sex"]=="m"){
+                                    echo "Male" ;
+                                            }else{
+                                            echo "Female";
+  } ?></td>
+            <?php if($row["Username"] == $_SESSION["Username"]){ ?>
+                <td data-table-header="แก้ไข">--</td>
+                <td data-table-header="ลบ">--</td>
+            <?php } else{ ?> <td data-table-header="แก้ไข"><a  href='adminEdit.php?IDedit=<?php echo $sid ?>'>Edit</a></td>
+            <td data-table-header="ลบ"><a  href="UserDelete.php?IDedit=<?php echo $sid ?>" onclick='return confirm("Do you want to delete this record? !!!")'>Del</a></td>  <?php } ?>
+            
             
 		</tr>
 		<?php 
@@ -65,7 +81,8 @@ $(document).ready(function() {
 table {
   width: 100%;
   border-collapse: collapse;
-  color: black ;
+  color : black;
+  
 }
 
 
@@ -76,12 +93,12 @@ tr:nth-of-type(odd) {
 }
 
 tr:nth-of-type(even) {
-  background: #F0546A;
+  background:#F6E9E0;
 }
 
 th {
-  background: #A9EBF7;
-  color: #DD6262;
+  background: #F0546A;
+  color: #ffffff;
   font-weight: 300;
 }
 
