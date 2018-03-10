@@ -139,7 +139,7 @@ echo "<br>$DateEnd";
 
 $sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook', MaximumCapacity=$MaximumCapacity,Price=$Price WHERE ID=$ID";
 mysqli_query($con, $sql);
-// header("Location: index.php?yy=$zz");
+header("Location: index.php?yy=$zz");
 
 
 
