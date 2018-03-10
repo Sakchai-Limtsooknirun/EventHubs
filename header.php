@@ -23,6 +23,7 @@ if (empty($_SESSION["Username"])) {
 		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
 		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>
 		<li><a href='userManage.php'>การจัดการสมาชิก</a></li>
+		<li><a href='showLog.php'>จัดการlog</a></li>
 		";
 	}
 	else if ($type == "User"){

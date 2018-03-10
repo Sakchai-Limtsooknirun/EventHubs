@@ -18,6 +18,7 @@ if(isset($_GET['userid'])&&isset($_GET['token'])){
                     $meSQL .= "WHERE ID ='{$_GET['userid']}' ";
                     $userData = mysqli_query($con,$meSQL);
                     if ($userData==true){
+                        store_log($row['Username'],'resetpassword');     //log
                         echo "<h4 align = 'center' >Change Password success<h4>";
                      }   
                 }else{
@@ -27,6 +28,7 @@ if(isset($_GET['userid'])&&isset($_GET['token'])){
     }else{echo "<h4 align = 'center' >ID NOT FOUND<h4>";}
 }
 }
+
 ?>
 <!DOCTYPE html>
 <html>

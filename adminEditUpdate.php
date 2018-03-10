@@ -69,7 +69,7 @@ include 'connection.php';
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'userManage.php'; ";
+                echo "window.location = 'adminEdit.php'; ";
                 echo "</script>";
             }
             mysql_close();

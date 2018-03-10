@@ -18,7 +18,7 @@ if ($_SESSION["Username"] == $username){
 <center>
     <div style="width:80%; background-color:#000000;">
 <div class="panel panel-default">
-  <div class="panel-heading">  <h4 >User Profile</h4></div>
+  <div class="panel-heading">  <h4 >Username : <?php echo $meResult['Username']; ?></h4></div>
    <div class="panel-body">
        
     <div class="box box-info">
@@ -72,6 +72,7 @@ if ($_SESSION["Username"] == $username){
     echo "window.location = 'signup.php'; ";
     echo "</script>";
 }
+mysql_close();
 ?>
 
 

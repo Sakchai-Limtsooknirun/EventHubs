@@ -74,6 +74,7 @@ if ($get_rows >= 1) {
         echo "</script>";
     } else {
         $result = mysqli_query($con, $sql);
+        store_log($username,'สมัครสมาชิกสำเร็จ');
         if ($result) {
             echo "<script type='text/javascript'>";
             echo "window.location = 'form_login.php?st=2'; ";

@@ -8,7 +8,7 @@ if ($type == "NotLogin") {
     echo "window.location = 'form_login.php?st=3'; ";
     echo "</script>";
     exit;
-}else if ($type == "Organizer"){ //--------------------- Organizer ------------------------
+}else if ($type == "Organizer" || $type == "Admin"){ //--------------------- Organizer ------------------------
 ?>
 
 
@@ -79,7 +79,7 @@ if ($type == "NotLogin") {
         if ($status != 1) {
             echo "
             <p id='notfound'>ไม่มีกิจกรรม</p>
-            <p id='notfound'><a href='#'>สร้างกิจกรรมใหม่</a></p>";
+            <p id='notfound'><a href='event/create.php'>สร้างกิจกรรมใหม่</a></p>";
         } else {
         }
         ?>
