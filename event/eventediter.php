@@ -12,6 +12,24 @@ $result;
 $row;
 
 
+<<<<<<< HEAD
+=======
+if ($_FILES['picture']['error'] == "0") {
+ $file_name     = $_FILES['picture']['name'];
+ echo $file_name."   FILE NAME";
+
+}
+
+if (isset($_POST['id'])) {
+    $ID = $_POST['id'];
+    $result = mysqli_query($con, "SELECT * FROM EventOrganizers WHERE ID = $ID");
+    $row = mysqli_fetch_assoc($result);
+
+    echo $row['EventName'];
+}else{
+  $ID = 0;
+}
+>>>>>>> 80b02ac4fbd20c885f8b2fc601c8d7ebf7560faa
 
  $file_name     = $_FILES['picture1']['name'];
  
@@ -37,6 +55,11 @@ if (isset($_FILES['picture1'])) {
 
             if (empty($errors) == true) {
                 move_uploaded_file($file_tmp, "../img/event/" . $file_name);
+<<<<<<< HEAD
+=======
+                  $sql = "UPDATE EventOrganizers SET Picture='$file_name' WHERE ID=$ID";
+                  mysqli_query($con, $sql);
+>>>>>>> 80b02ac4fbd20c885f8b2fc601c8d7ebf7560faa
                 echo "Success";
             } else {
                 print_r($errors);
@@ -55,15 +78,7 @@ if (isset($_POST['name'])) {
 if (isset($_POST['status'])) {
     $EventStatus = $_POST['status'];
 }
-if (isset($_POST['id'])) {
-    $ID = $_POST['id'];
-    $result = mysqli_query($con, "SELECT * FROM EventOrganizers WHERE ID = $ID");
-    $row = mysqli_fetch_assoc($result);
 
-    echo $row['EventName'];
-}else{
-  $ID = 0;
-}
 $Location = $_POST['location'];
 $DateStart = $_POST['dates'];
 $TimeStart = $_POST['times'];
