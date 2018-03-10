@@ -12,8 +12,8 @@ $result;
 $row;
 
 
-if ($_FILES['picture']['error'] == "0") {
- $file_name     = $_FILES['picture']['name'];
+if ($_FILES['picture1']['error'] == "0") {
+ $file_name     = $_FILES['picture1']['name'];
  echo $file_name."   FILE NAME";
 
 }
@@ -28,14 +28,17 @@ if (isset($_POST['id'])) {
   $ID = 0;
 }
 
-if (isset($_FILES['picture'])) {
+ $file_name     = $_FILES['picture1']['name'];
+ 
+
+if (isset($_FILES['picture1'])) {
             echo "have image";
             $errors    = array();
-            $file_name = $_FILES['picture']['name'];
-            $file_size = $_FILES['picture']['size'];
-            $file_tmp  = $_FILES['picture']['tmp_name'];
-            $file_type = $_FILES['picture']['type'];
-            $file_ext  = strtolower(end(explode('.', $_FILES['picture']['name'])));
+            $file_name = $_FILES['picture1']['name'];
+            $file_size = $_FILES['picture1']['size'];
+            $file_tmp  = $_FILES['picture1']['tmp_name'];
+            $file_type = $_FILES['picture1']['type'];
+            $file_ext  = strtolower(end(explode('.', $_FILES['picture1']['name'])));
 
             $expensions = array("jpeg", "jpg", "png");
 

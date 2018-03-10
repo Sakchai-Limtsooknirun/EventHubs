@@ -43,7 +43,7 @@ if ($type == "NotLogin") {
             <h1><?echo $getwbTitle;?></h1>
             <h3><?echo $getwbDesc;?></h3>
             <br>
-            <h6> โดย <a href='ProfileWebboard.php?user=<?echo $owner;?>'> <?echo $owner;?></a> เมื่อ <?echo$date; ?></h6>
+            <h6> โดย <a href='ProfileWebboard.php?user=<?echo $owner;?>'>   <?echo $owner;?></a> เมื่อ <?echo$date; ?></h6>
         </div>
 		<div class="wb">
 		<?
