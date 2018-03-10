@@ -1,5 +1,5 @@
 <?php
-//require_once('class/class.upload.php') ;
+
 include 'connection.php';
 $username   = $_POST["username"];
 $password   = $_POST["password"];
@@ -22,13 +22,11 @@ if ($_FILES['userPic']['error'] == "0") {
 $password_ec = password_hash($_POST["password"], PASSWORD_BCRYPT);
 $date        = date("Y-m-d H:i:s");
 $token       = bin2hex(openssl_random_pseudo_bytes(16));
-// if(!file_exists($_FILES['userPic']['name']) || !is_uploaded_file(['userPic']['name'])) {
-//     $sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','Default.png')";
-// }else{
-$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name','$token')";
-//}
 
-// echo $sql;
+$sql = "INSERT INTO `user` VALUES ('','$username','$password_ec','$name','$lastname','M','$date','$email','$dob','$tel','$sex','$file_name','$token')";
+
+
+
 
 $mysql_get_users = mysqli_query($con, "select* from user where Username = '$username'");
 $get_rows        = mysqli_affected_rows($con);

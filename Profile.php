@@ -45,7 +45,7 @@ if ($_SESSION["Username"] == $username){
                                                                         echo $meResult['sex'];} ?></h4></span>
             
             <h4 align = "left"  style="color:#00b1b1;">เบอร์โทรศัพท์ : <?php echo $meResult['telephone']; ?></h4></span>
-            <h4 align = "left"  style="color:#00b1b1;">วันที่/เวลา ที่สมัคสมาชิก : <?php echo DateThai($meResult['ts']); ?></h4></span>
+            <h4 align = "left"  style="color:#00b1b1;">วันที่/เวลา ที่สมัครสมาชิก : <?php echo DateThai($meResult['ts']); ?></h4></span>
             <div class="clearfix"></div>
             <hr style="margin:5px 0 5px 0;">
             </div>                                                                      

@@ -8,7 +8,11 @@ if(isset($_POST['txtKeyword']) && (isset($_POST['sorttype'])) && ($_POST['sortty
    }elseif(($_POST['txtKeyword']=='female')||($_POST['txtKeyword']=='FeMale')||($_POST['txtKeyword']=='FEMALE')||($_POST['txtKeyword']=='หญิง')){
       $_POST['txtKeyword']='f';
    }
-  echo $query .= " where {$_POST['sorttype']} = '{$_POST['txtKeyword']}'";
+    if($_POST['sorttype']=='ID'){
+      $query .= " where {$_POST['sorttype']} = '{$_POST['txtKeyword']}'"; 
+    }else{
+      $query .= " where {$_POST['sorttype']} LIKE '%{$_POST['txtKeyword']}%'";  //LIKE '%$keyword%'
+    }
 }
 
 $data = mysqli_query($con,$query);
