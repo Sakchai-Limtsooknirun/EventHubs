@@ -39,7 +39,7 @@ if ($ck_email->num_rows == 1) {
   $mail->Port = 465; // set the SMTP port for the GMAIL server
   $mail->Username = "jaytaku23513@gmail.com"; // GMAIL username
   $mail->Password = "jay0860789213"; // GMAIL password
-  $mail->From = "admin@sattagarden.com"; // "name@yourdomain.com";
+  $mail->From = "admin@EventHubs.com"; // "name@yourdomain.com";
   //$mail->AddReplyTo = "support@thaicreate.com"; // Reply
   $mail->FromName = "WebMaster";  // set from Name
   $mail->Subject = "EventHubs - reset you Password";
@@ -81,3 +81,4 @@ if ($ck_email->num_rows == 1) {
 <center>
 </body>
 </html>
+  

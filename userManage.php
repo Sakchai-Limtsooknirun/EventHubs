@@ -31,10 +31,16 @@ echo "<form align = 'center' name='frmSearch' method='post' action = 'userManage
 
   <tr>
   <br>
+  <center>
     <th>ค้นหา
-    <input style='color:#260d31' name='txtKeyword' type='text'>
-    <input style='color:#260d31'  type='submit' value='Search'></th>
+    <input class=navbar-form navbar-left role='search' style='color:#260d31' name='txtKeyword' type='text'>
+    <center>
+    <div class='form-group'>
+    <input style='color:#260d31' class='btn btn-default'  type='submit' value='Search'></th>
+    </div>
+    <center>
   </tr>
+  
 </table>
 </form>";
 if($data->num_rows==0){
@@ -47,6 +53,7 @@ echo "<thead>
       <tr align='center' bgcolor='#CCCCCC'>
 
       <th>Profile</th>
+
       <th><a href='#' onclick='jay(\"ids\")'>รหัส</th>
       <th><a href='#' onclick='jay(\"lvs\")'>ระดับสมาชิก</th>
       <th><a href='#' onclick='jay(\"users\")'>Uername</th>

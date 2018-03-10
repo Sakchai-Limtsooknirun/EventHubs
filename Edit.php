@@ -112,6 +112,7 @@ if ($_SESSION["Username"] == $username){
     <tr>
         <td class="form-control"><label>E-mail</label></td>
         <td><input style="color:#260d31" type="text" name="Editemail" value="<?php echo $meResult['email']; ?>" size="40" readonly="readonly" disabled="disabled" required/></td>
+        
     </tr>
 </div>
 
@@ -130,7 +131,7 @@ if ($_SESSION["Username"] == $username){
 <tr>
     <td>&nbsp;</td>
     <center>
-    <td><input style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
+    <td><input class="btn btn-primary" style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
     <center<
 </tr>
 
@@ -140,7 +141,7 @@ if ($_SESSION["Username"] == $username){
 <form>
 <center>
 
-<input type="button" style="color:#260d31" value="Change Password" onclick="window.location.href='changePW.php'" />
+<input class="btn btn-primary" type="button" style="color:#260d31" value="Change Password" onclick="window.location.href='changePW.php'" />
 <center>
 </form>
 
