@@ -128,7 +128,7 @@ if ($_SESSION["Username"] == $username){
 
 <div class="form-group">
     <tr>
-        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง </td><td><?php echo $meResult['ts']; ?></td>
+        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง </td><td><?php echo DateThai($meResult['ts']); ?></td>
     </tr>
 </div>
 

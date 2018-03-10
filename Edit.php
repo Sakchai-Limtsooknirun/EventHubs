@@ -9,7 +9,7 @@ if ($_SESSION["Username"] == $username){
     if ($userData == TRUE) {
         $meResult = $userData->fetch_assoc();
         print_r($meResult);
-        
+    
 ?>
 <html>
 <head>
@@ -32,6 +32,7 @@ if ($_SESSION["Username"] == $username){
     <br>
     <div class="form-group">
         <label>แก้ไขรูปโปรไฟล์</label>
+        
         <input type="file" name="editPic" id = "uploadPic" accept="image/*" >
     </div>
         <td class="form-control"><label>ID</label></td>
@@ -123,7 +124,7 @@ if ($_SESSION["Username"] == $username){
 
 <div class="form-group">
     <tr>
-        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง </td><td><?php echo $meResult['ts']; ?></td>
+        <td style="text-align: right;width: 200px; font-weight: bold">วันที่สร้าง </td><td><?php echo DateThai($meResult['ts']); ?></td>
     </tr>
 </div>
 
@@ -150,7 +151,7 @@ if ($_SESSION["Username"] == $username){
     </body>
     </html>
     
-    <?php
+<?php
     }
     
 }else{
@@ -158,4 +159,4 @@ if ($_SESSION["Username"] == $username){
     echo "window.location = 'signup.php'; ";
     echo "</script>";
 }
-
+?>

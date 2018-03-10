@@ -11,7 +11,7 @@ if(isset($_GET['userid'])&&isset($_GET['token'])){
             $row = mysqli_fetch_array($ck);
             if($row['token']==$_GET['token']){
                 if($_POST['newPW']==$_POST['tryPW']){
-                    echo "=แล้วพร้อมเข้ารหัส";
+                    
                     $password_ec = password_hash($_POST['newPW'], PASSWORD_BCRYPT);
                     $meSQL = "UPDATE user ";
                     $meSQL .= "SET Password='{$password_ec}' ";

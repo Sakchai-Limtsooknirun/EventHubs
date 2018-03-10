@@ -50,7 +50,7 @@ if ($type == "NotLogin") {
             echo "
             <div class='wbTopic'>
 				<a href='webboard/$getEventShort/$wbID'><h4>$title</h4></a>
-				<h6>หมวดหมู่ : $cat โดย $owner เมื่อ $date</h6></div>
+				<h6>หมวดหมู่ : $cat โดย <a href='ProfileWebboard.php?user=$owner'>$owner</a> เมื่อ $date</h6></div>
 			";
         }
         if ($status != 1) {

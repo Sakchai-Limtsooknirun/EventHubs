@@ -31,7 +31,7 @@ if (empty($_SESSION["Username"])) {
 		";
 	}
     $header_menu .= "
-		<li><a href='Edit.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li><a href='Profile.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 
 }

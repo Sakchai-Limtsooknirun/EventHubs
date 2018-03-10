@@ -177,7 +177,7 @@ if ($getEventName == "") {
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <img src="img/user/<?echo $getOwnerPic;?>" style="height: 140px;width:140px;object-fit: cover;">
+                    <a href='Profile.php'><img href='../Profile.php' src="img/user/<?echo $getOwnerPic;?>"  style="height: 140px;width:140px;object-fit: cover;"></a>
                 </div>
                 <div class="col-lg-4">
                     <b><p><?echo $getEventOrName ?></p></b>
