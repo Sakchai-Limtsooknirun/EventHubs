@@ -6,6 +6,7 @@ include 'connection.php';
  if (isset($_SESSION["Username"])){
     if (isset($_SESSION['frmAction']) == isset($_POST['frmAction'])) {
         $statusPic = getOneValue("SELECT `Picture` AS 'get' FROM `user` WHERE `Username` = '{$_SESSION['Username']}'");
+        
         if ($_FILES['editPic']['error'] == "0") {
              $file_name     = $_FILES['editPic']['name'];
         }else{

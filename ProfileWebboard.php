@@ -49,11 +49,6 @@ if(isset($_GET['user'])){
                 <div class="clearfix"></div>
                 <hr style="margin:5px 0 5px 0;">
                 </div>                                                                      
-                
-                <input align = "center" class="btn btn-primary" type="button" style="color:#260d31" value="Edit Profile" onclick="window.location.href='Edit.php'" />
-                
-                              
-                
                 <div class="clearfix"></div>
                 <hr style="margin:5px 0 5px 0;">   
        </div>

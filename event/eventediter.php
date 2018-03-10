@@ -12,19 +12,18 @@ $result;
 $row;
 
 
-if ($_FILES['picture']['error'] == "0") {
- $file_name     = $_FILES['picture']['error'];
- echo $file_name."   FILE NAME";
-}
 
-if (isset($_FILES['picture'])) {
+ $file_name     = $_FILES['picture1']['name'];
+ 
+
+if (isset($_FILES['picture1'])) {
             echo "have image";
             $errors    = array();
-            $file_name = $_FILES['picture']['name'];
-            $file_size = $_FILES['picture']['size'];
-            $file_tmp  = $_FILES['picture']['tmp_name'];
-            $file_type = $_FILES['picture']['type'];
-            $file_ext  = strtolower(end(explode('.', $_FILES['picture']['name'])));
+            $file_name = $_FILES['picture1']['name'];
+            $file_size = $_FILES['picture1']['size'];
+            $file_tmp  = $_FILES['picture1']['tmp_name'];
+            $file_type = $_FILES['picture1']['type'];
+            $file_ext  = strtolower(end(explode('.', $_FILES['picture1']['name'])));
 
             $expensions = array("jpeg", "jpg", "png");
 
@@ -37,7 +36,7 @@ if (isset($_FILES['picture'])) {
             }
 
             if (empty($errors) == true) {
-                move_uploaded_file($file_tmp, "img/event/" . $file_name);
+                move_uploaded_file($file_tmp, "../img/event/" . $file_name);
                 echo "Success";
             } else {
                 print_r($errors);
