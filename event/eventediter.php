@@ -6,10 +6,48 @@ var_dump($_POST['TT']);
 
 
 
+
 include '../connection.php';
 $result;
 $row;
 
+
+if ($_FILES['picture']['error'] == "0") {
+ $file_name     = $_FILES['picture']['error'];
+ echo $file_name."   FILE NAME";
+}
+
+if (isset($_FILES['picture'])) {
+            echo "have image";
+            $errors    = array();
+            $file_name = $_FILES['picture']['name'];
+            $file_size = $_FILES['picture']['size'];
+            $file_tmp  = $_FILES['picture']['tmp_name'];
+            $file_type = $_FILES['picture']['type'];
+            $file_ext  = strtolower(end(explode('.', $_FILES['picture']['name'])));
+
+            $expensions = array("jpeg", "jpg", "png");
+
+            if (in_array($file_ext, $expensions) === false) {
+                $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+            }
+
+            if ($file_size > 2097152) {
+                $errors[] = 'File size must be excately 2 MB';
+            }
+
+            if (empty($errors) == true) {
+                move_uploaded_file($file_tmp, "img/event/" . $file_name);
+                echo "Success";
+            } else {
+                print_r($errors);
+            }
+        } else {
+            echo "dfdf";
+        }
+
+
+////////////////////////////////
 
 if (isset($_POST['name'])) {
     $EventName = $_POST['name'];
@@ -45,17 +83,17 @@ if (($MaximumCapacity+0) < ($CapacityNow+0)) {
 else{
     $MaximumCapacity = $_POST['capmax'];
 }
-if (isset($_FILES['image']['name'])) {
-  $Picture = $_FILES['image']['name'];
-  if($Picture != ''){
-  $sql = "UPDATE EventOrganizers SET Picture='$Picture' WHERE ID=$ID";
-  mysqli_query($con, $sql);
-}
+// if (isset($_FILES['image']['name'])) {
+//   $Picture = $_FILES['image']['name'];
+//   if($Picture != ''){
+//   $sql = "UPDATE EventOrganizers SET Picture='$Picture' WHERE ID=$ID";
+//   mysqli_query($con, $sql);
+// }
 
 
 
 
-}
+
 
 
 
@@ -96,7 +134,7 @@ echo "<br>$DateEnd";
 
 $sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook', MaximumCapacity=$MaximumCapacity,Price=$Price WHERE ID=$ID";
 mysqli_query($con, $sql);
-header("Location: index.php?yy=$zz");
+// header("Location: index.php?yy=$zz");
 
 
 
