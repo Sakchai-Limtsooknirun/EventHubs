@@ -77,6 +77,25 @@ function get_client_ip() {
     return $ipaddress;
 }
 
+
+function CheckStatus($Status){
+  if($Status == 0){
+    return "รอการชำระเงิน";
+  }
+  else if($Status == 1){
+    return "ชำระเงินเรียบร้อย";
+  }
+  else if($Status == 2){
+    return "ยืนยันเรียบร้อย";
+  }
+  else if($Status == 3){
+    return "ยกเลิก";
+  }
+else{
+    return "เข้าร่วมงานเรียบร้อย";
+  }
+}
+
 function store_log($userN,$acti){
     global $con ;
     $ip = get_client_ip();
@@ -85,10 +104,10 @@ function store_log($userN,$acti){
     $date   = date("Y-m-d H:i:s");
     $s = "INSERT INTO Log VALUES ('','$date','$ip','$user','$act')";
     $resultx = mysqli_query($con, $s);
-    
+
     if($resultx==true){
         return true ;
-       
+
     }else{
         return false;
     }

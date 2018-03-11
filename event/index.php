@@ -19,7 +19,12 @@ if ($type == "NotLogin") {
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
   $phpArray = array();
+        if ($type == "Admin"){
+          $result = mysqli_query($con, "SELECT * FROM `EventOrganizers`");
+        }
+        else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
+        }
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];

@@ -77,23 +77,6 @@ if ($type == "NotLogin") {
 
                 ";
 
-                function CheckStatus($Status){
-                  if($Status == 0){
-                    return "รอการชำระเงิน";
-                  }
-                  else if($Status == 1){
-                    return "ชำระเงินเรียบร้อย";
-                  }
-                  else if($Status == 2){
-                    return "ยืนยันเรียบร้อย";
-                  }
-                  else if($Status == 3){
-                    return "ยกเลิก";
-                  }
-                else{
-                    return "เข้าร่วมงานเรียบร้อย";
-                  }
-                }
 
 
                $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $EventID ");

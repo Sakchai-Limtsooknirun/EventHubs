@@ -4,15 +4,32 @@
 include '../connection.php';
 
 ?>
-
-
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="tableExport.js"></script>
 <script type="text/javascript" src="jquery.base64.js"></script>
 
 
 
-<script type="text/javascript" src="html2canvas.js"></script>
+
+<script type="text/javascript" src="html2canvas.js">
+
+
+{type:'json',escape:'false'}
+{type:'json',escape:'false',ignoreColumn:'[2,3]'}
+{type:'json',escape:'true'}
+
+{type:'xml',escape:'false'}
+{type:'sql'}
+
+{type:'csv',escape:'false'}
+{type:'txt',escape:'false'}
+
+{type:'excel',escape:'false'}
+{type:'doc',escape:'false'}
+{type:'powerpoint',escape:'false'}
+
+{type:'png',escape:'false'}
+{type:'pdf',pdfFontSize:'7',escape:'false'}
 
 </script>
 
@@ -57,7 +74,7 @@ $EventID = 2;
   <div class='col-sm-1'>
   </div>
   <div class='col-sm-10'>
-                <table id="employees" class="table table-striped">
+                        <table id="employees" class="table table-striped">
                 <thead>
                     <tr class="warning">
                         <th>ลำดับ</th>
@@ -76,7 +93,6 @@ $EventID = 2;
                 </thead>
                 <tbody>
                   <h2>รายชื่อผู้สมัคร<h2>
-
                 <?php foreach($records as $rec):?>
                     <tr>
 
@@ -147,5 +163,5 @@ $EventID = 2;
 </div>
 
 
-<li><a href="#" onclick="$('#employees').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> <img src="images/json.jpg" width="24px"> JSON</a></li>
-<li><a href="#" onclick="$('#employees').tableExport({type:'json',escape:'false'});"><img src="images/json.jpg" width="24px">JSON (ignoreColumn)</a></li>
+<li><a href="#" onclick="$('#employees').tableExport({type:'json',escape:'false'});"> <img src="images/json.jpg" width="24px"> JSON</a></li>
+                                <li><a href="#" onclick="$('#employees').tableExport({type:'json',escape:'false'});"><img src="images/json.jpg" width="24px">JSON (ignoreColumn)</a></li>
