@@ -1,49 +1,61 @@
+
+
 <?php
+function sendEmail($email,$message,$header,$name,$eventName,$type){
 
-// multiple recipients
-$to  = 'anaphat.i@ku.th' . ', '; // note the comma
-$to .= 'wez@example.com';
 
-// subject
-$subject = 'Birthday Reminders for August';
 
-// message
-$message = '
-<html>
-<head>
-  <title>Birthday Reminders for August</title>
-</head>
-<body>
-  <p>Here are the birthdays upcoming in August!</p>
-  <table>
-    <tr>
-      <th>Person</th><th>Day</th><th>Month</th><th>Year</th>
-    </tr>
-    <tr>
-      <td>Joe</td><td>3rd</td><td>August</td><td>1970</td>
-    </tr>
-    <tr>
-      <td>Sally</td><td>17th</td><td>August</td><td>1973</td>
-    </tr>
-  </table>
-</body>
-</html>
-';
 
-// To send HTML mail, the Content-type header must be set
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-// Additional headers
-$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-$headers .= 'From: Birthday Reminder <birthday@example.com>' . "\r\n";
-$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
-$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+  $strMessage = "";
+ 
 
-// Mail it
-mail($to, $subject, $message, $headers);
 
-echo "BOOM DEMAIL";
+  
+require_once('../PHPMailer_v5.0.2/class.phpmailer.php');
+
+$mail = new PHPMailer();
+$mail-> CharSet = 'UTF-8';
+$mail->IsHTML(true);
+$mail->IsSMTP();
+$mail->SMTPAuth = true; // enable SMTP authentication
+$mail->SMTPSecure = "ssl"; // sets the prefix to the servier
+$mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+$mail->Port = 465; // set the SMTP port for the GMAIL server
+$mail->Username = "jaytaku23513@gmail.com"; // GMAIL username
+$mail->Password = "jay0860789213"; // GMAIL password
+$mail->From = "admin@EventHubs.com"; // "name@yourdomain.com";
+//$mail->AddReplyTo = "support@thaicreate.com"; // Reply
+$mail->FromName = "EventHub";  
+if($type == 'c'){
+$mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
+$strMessage .= "ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
+}
+else{
+  $mail->Subject = "EventHubs - กิจกรรม".$eventName."มีการแก้ไข";
+  $strMessage .= $message."กิจกรรม".$eventName." มีการแก้ไขรายละเอียดภายในงาน กรุณาตรวจสอบกิจกรรมอีกครั้ง";
+  
+
+}
+echo $strMessage;
+$mail->Body = $strMessage;
+$mail->AddAddress($email, $name); // to Address
+// $mail->AddAttachment("thaicreate/myfile.zip");
+// $mail->AddAttachment("thaicreate/myfile2.zip");
+//$mail->AddCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
+//$mail->AddBCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
+$mail->set('X-Priority', '1'); //Priority 1 = High, 3 = Normal, 5 = low
+$mail->Send();
+}
+
+sendEmail('anaphat.i@ku.th','','Header','NAME','eventname','c');
+sendEmail('anaphat.i@ku.th','','Header','name','eventname','e');
+
+
+
+
+
+
 
 
 ?>
