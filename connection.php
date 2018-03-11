@@ -1,4 +1,5 @@
 <?php
+include('phpqrcode/qrlib.php');
 //$con= mysqli_connect("localhost","admin","jay23513","mydatabase") or die("Error: " . mysqli_error($con));
 $mysql_server = "csku.science";
 $mysql_user = "spppaper_pjmt";
@@ -57,3 +58,119 @@ function DateThai($strDate)
     $strMonthThai=$strMonthCut[$strMonth];
     return "$strDay $strMonthThai $strYear เวลา $strHour:$strMinute";
 }
+
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+       $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
+
+
+function CheckStatus($Status){
+  if($Status == 0){
+    return "รอการชำระเงิน";
+  }
+  else if($Status == 1){
+    return "ชำระเงินเรียบร้อย";
+  }
+  else if($Status == 2){
+    return "ยืนยันเรียบร้อย";
+  }
+  else if($Status == 3){
+    return "ยกเลิก";
+  }
+else{
+    return "เข้าร่วมงานเรียบร้อย";
+  }
+}
+
+
+function sendEmail($email,$name,$eventName,$type){
+
+    $strMessage = "";
+    
+  require_once('../PHPMailer_v5.0.2/class.phpmailer.php');
+  
+  $mail = new PHPMailer();
+  $mail-> CharSet = 'UTF-8';
+  $mail->IsHTML(true);
+  $mail->IsSMTP();
+  $mail->SMTPAuth = true;
+  $mail->SMTPSecure = "ssl"; 
+  $mail->Host = "smtp.gmail.com"; 
+  $mail->Port = 465;
+  $mail->Username = "jaytaku23513@gmail.com";
+  $mail->Password = "jay0860789213"; 
+  $mail->From = "admin@EventHubs.com"; 
+
+  $mail->FromName = "EventHub";  
+  if($type == 'c'){
+  $mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
+  $strMessage .= " ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
+  }else if($type == 'ca'){
+    $mail->Subject = "EventHubs - ขออภัยในความไม่สดวก คุณ:".$name;
+    $strMessage .= " ได้มีการขอเข้าร่วมกิจกรรม ".$eventName." แต่ทางเจ้าของกิจกรรม เกิดเหุตบกพร่องบางประการ จึงสามารถไห้บริการคุณได้ <br>ขออภัยมา ณ ที่นี้<br>";
+    }
+      
+  else{
+    $mail->Subject = "EventHubs - กิจกรรม".$eventName."มีการแก้ไข";
+    $strMessage .= "กิจกรรม".$eventName." มีการแก้ไขรายละเอียดภายในงาน กรุณาตรวจสอบกิจกรรมอีกครั้ง";
+
+  
+  }
+  $mail->Body = $strMessage;
+  $mail->AddAddress($email, $name); // to Address
+  // $mail->AddAttachment("thaicreate/myfile.zip");
+  // $mail->AddAttachment("thaicreate/myfile2.zip");
+  //$mail->AddCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
+  //$mail->AddBCC("member@thaicreate.com", "Mr.Member ShotDev"); //CC
+  $mail->set('X-Priority', '1'); //Priority 1 = High, 3 = Normal, 5 = low
+  $mail->Send();
+}
+
+function store_log($userN,$acti){
+    global $con ;
+    $ip = get_client_ip();
+    $act    = "username : ".$userN." $acti";
+    $user   = $userN;
+    $date   = date("Y-m-d H:i:s");
+    $s = "INSERT INTO Log VALUES ('','$date','$ip','$user','$act')";
+    $resultx = mysqli_query($con, $s);
+
+    if($resultx==true){
+        return true ;
+
+    }else{
+        return false;
+    }
+  }
+
+	function gen_QRpic($strmasg,$strFNAME){
+	 $tempDir = "img/qrcode/";
+	 $codeContents = $strmasg;   //inputtext
+	 //$fileName = uniqid('QR', true) . '.png';  //filenameUniqid
+	 $fileName = $strFNAME.'.png' ;  //filename
+	 $pngAbsoluteFilePath = $tempDir.$fileName;
+	 //$urlRelativeFilePath = EXAMPLE_TMP_URLRELPATH.$fileName;
+	 if (!file_exists($pngAbsoluteFilePath)) {
+	        QRcode::png($codeContents, $pngAbsoluteFilePath);
+	        //echo '<img src="'.$tempDir.$fileName.'" />';
+	        return 'File generated!';
+
+	    } else {
+	        return 'File already generated! We can use this cached file to speed up site on common codes!';
+	    }
+	  }

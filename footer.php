@@ -11,7 +11,7 @@
 		<div class="col-lg-4 footerShow">
 			<h3 style="color:var(--main-color-dark);">สมัครเป็นผู้จัด</h3>
 			<p>สมัครเป็นผู้จัดออนไลน์<a href="organizer.php">คลิกที่นี่</a></p>
-			<p>หรือติกดต่อฝ่ายจัดกิจกรรม</p>
+			<p>หรือติดต่อฝ่ายจัดกิจกรรม</p>
 			<small>Tel : 0804548452</small><br>
 			<small>Email : ae@eventhubs.com</small>
 		</div>

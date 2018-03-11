@@ -18,7 +18,7 @@ if(isset($_GET['user'])){
     <center>
         <div style="width:80%; background-color:#000000;">
     <div class="panel panel-default">
-      <div class="panel-heading">  <h4 >User Profile</h4></div>
+      <div class="panel-heading">  <h4 >Username : <?php echo $meResultWeb['Username']; ?></h4></div>
        <div class="panel-body">
            
         <div class="box box-info">
@@ -36,7 +36,7 @@ if(isset($_GET['user'])){
                 <h3 align = "left"  style="color:#00b1b1;">Profile</h4></span>
                 <h4 align = "left"  style="color:#00b1b1;">Firstname : <?php echo $meResultWeb['Firstname']; ?></h4></span>
                 <h4 align = "left"  style="color:#00b1b1;">Lastname : <?php echo $meResultWeb['Lastname']; ?></h4></span>
-                <h4 align = "left"  style="color:#00b1b1;">ระดับสมาชิก : <?php echo $type; ?></h4></span>
+                <h4 align = "left"  style="color:#00b1b1;">ระดับสมาชิก : <?php echo checkType($userN); ?></h4></span>
                 <h4 align = "left"  style="color:#00b1b1;">E-mail : <?php echo $meResultWeb['email']; ?></h4></span>
                 <h4 align = "left"  style="color:#00b1b1;">เพศ : <?php 
                                                                             if($meResultWeb['sex']){
@@ -67,4 +67,5 @@ if(isset($_GET['user'])){
         echo "window.location = 'signup.php'; ";
         echo "</script>";
     }
+    
     ?>

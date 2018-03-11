@@ -64,7 +64,7 @@ if ($_SESSION["Username"] == $username){
 <div class="form-group">
     <tr>
         <td class="form-control"><label>Username</label></td>
-        <td><input style="color:#260d31" type="text" name="adminEditusername" value="<?php echo $meResult['Username']; ?>" size="40" required/></td>
+        <td><input style="color:#260d31" type="text" name="adminEditusername" value="<?php echo $meResult['Username']; ?>" readonly="readonly" disabled="disabled" size="40" required/></td>
     </tr>
 </div>
 

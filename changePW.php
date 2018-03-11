@@ -17,6 +17,7 @@ if((isset($_POST['oPW']) && isset($_POST['newPW']) && isset($_POST['tryPW'])&& i
                     $meSQL .= "WHERE Username ='{$_SESSION['Username']}' ";
                     $userData = mysqli_query($con,$meSQL);
                     if ($userData==true){
+                        store_log($_SESSION['Username'],'เปลี่ยนPassword');
                         echo "<h4 align = 'center' >Change Password success<h4>";
                      }   
                  }else{

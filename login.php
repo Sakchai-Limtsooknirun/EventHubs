@@ -18,22 +18,25 @@ if (isset($_REQUEST['Username'])) {
 
         if ($verify == 1) {
             $row = mysqli_fetch_array($result);
-
+            
             $_SESSION['UserID'] = $row['ID'];
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['user']   = $row['Firstname'] . " " . $row['Lastname'];
             $_SESSION['role']   = $row['role'];
+            
             if ($_POST['go'] != ""){
                 $url = "eventview/".$_POST['go'];
             }else{
                 $url = "index.php";
             }
+            store_log($_SESSION['Username'],'ล็อคอินสำเร็จ');     //log
             echo "<script type='text/javascript'>";
             echo "window.location = '$url'; ";
             echo "</script>";
             exit;
 
         } else {
+            store_log($_SESSION['Username'],'ล็อคอินล้มเหลว');     //log
             echo "<script type='text/javascript'>";
             echo "window.location = 'form_login.php?st=1'; ";
             echo "</script>";

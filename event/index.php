@@ -8,7 +8,7 @@ if ($type == "NotLogin") {
     echo "window.location = 'form_login.php?st=3'; ";
     echo "</script>";
     exit;
-}else if ($type == "Organizer"){ //--------------------- Organizer ------------------------
+}else if ($type == "Organizer" || $type == "Admin"){ //--------------------- Organizer ------------------------
 ?>
 
 
@@ -19,7 +19,12 @@ if ($type == "NotLogin") {
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
   $phpArray = array();
+        if ($type == "Admin"){
+          $result = mysqli_query($con, "SELECT * FROM `EventOrganizers`");
+        }
+        else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
+        }
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
@@ -78,7 +83,7 @@ if ($type == "NotLogin") {
         if ($status != 1) {
             echo "
             <p id='notfound'>ไม่มีกิจกรรม</p>
-            <p id='notfound'><a href='#'>สร้างกิจกรรมใหม่</a></p>";
+            <p id='notfound'><a href='event/create.php'>สร้างกิจกรรมใหม่</a></p>";
         } else {
         }
         ?>
@@ -240,7 +245,7 @@ function add_fields(Type,Price,EventName,i) {
             <br>  จำนวนผู้เข้าร่วมสูงสุด<input id="capacity" style="color:#260d31" type="number" size="40" class="form-control" min="0" name="capmax"  required>
             <br>  จำนวนผู้เข้าร่วม ณ เวลานั้น<input id="capacitynow" style="color:#260d31" type="number" size="40" class="form-control"  readonly="readonly" name="capnow" required>
             <br>  รูปภาพ<input id="picture" type="file" name="picture1" accept="image/*">
-            <br>  วีดีโอ <input id="video" style="color:#260d31" type="file" name="video" accept="image/*"  size="40" >
+            <br>  วีดีโอ <input id="video" style="color:#260d31" type="text" name="video" accept="image/*"  size="40" >
             <br>  ShoerURL :<input id="url" style="color:#260d31" type="text" size="40"  class="form-control" name="url" readonly="readonly" required >
             <br><label>โทนสีเว็บ</label>
             <br>  <input type="text" id="color" class="form-control"  name="color">
