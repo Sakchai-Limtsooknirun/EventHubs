@@ -9,8 +9,7 @@ if ($_SESSION["Username"] == $username){
     $userData = mysqli_query($con,$meSQL);
     if ($userData == TRUE) {
         $meResult = $userData->fetch_assoc();
-        print_r($meResult);
-
+        
 ?>
 <html>
 <head>
@@ -27,7 +26,7 @@ if ($_SESSION["Username"] == $username){
     <form name="adminEditForm" action="adminEditUpdate.php" method="POST" enctype="multipart/form-data">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
-<img  class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%' required >
+<img  style="width : 50%; height: 50% ;" class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='100%' required >
 <br>
 <br>
 <div class="form-group">
@@ -135,7 +134,7 @@ if ($_SESSION["Username"] == $username){
 
 <tr>
     <td>&nbsp;</td>
-    <td><input class="btnlogin" type="submit" name="submit" value="บันทึกข้อมูล" /></td>
+    <td><input class="btn btn-primary"  type="submit" name="submit" value="บันทึกข้อมูล" /></td>
 </tr>
 
 <input type="hidden" name="adminEdit" value="<?php echo $_GET["IDedit"] ;  ?>" />

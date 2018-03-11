@@ -13,7 +13,7 @@ if ($_SESSION["Username"] == $username){
     $userData = mysqli_query($con,$meSQL);
     if ($userData == TRUE) {
         $meResult = $userData->fetch_assoc();
-        print_r($meResult);
+       
     
 ?>
 <html>
@@ -31,7 +31,7 @@ if ($_SESSION["Username"] == $username){
     <form name="EditForm" action="EditUpdate.php" method="POST" enctype="multipart/form-data">
 <h4>จัดการข้อมูลส่วนตัว</h4>
 
-<img  class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='50%' height='50%'>
+<img  style="width : 50%; height: 50% ;" class="img-thumbnail" src="img/user/<?echo $meResult['Picture']; ?>" alt="" width='50%' height='50%'>
 <div class="form-group">
     <tr>
     <br>
@@ -137,7 +137,7 @@ if ($_SESSION["Username"] == $username){
 <tr>
     <td>&nbsp;</td>
     <center>
-    <td><input class="btn btn-primary" style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
+    <td><input class="btn btn-primary"  style="color:#260d31" type="submit" name="submit" value="บันทึกข้อมูล" /></td> 
     <center<
 </tr>
 

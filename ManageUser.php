@@ -32,7 +32,7 @@ $(document).ready(function() {
   <table class="table responsive" id="sort">
 	<thead>
 		<tr>
-            <th scope="col">Picture</th>
+            <th style="width : 20%; height: 10% ;" scope="col">Picture</th>
             <th scope="col">ID</th>
             <th scope="col">ระดับสมาชิก</th>
 			      <th scope="col">Username</th>
