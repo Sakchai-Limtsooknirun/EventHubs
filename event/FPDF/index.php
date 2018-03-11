@@ -263,10 +263,10 @@ function add_fields(Type,Price,EventName,i) {
 
             </div>
             <br>  คุณสมบัติที่ต้องมีก่อนเข้าร่วมกิจกรรม(มีหรือไม่มีก็ได้) <input id="precondition" type="text" class="form-control" name="precondition" >
-            <br>  จำนวนผู้เข้าร่วมสูงสุด<input id="capacity" style="color:#260d31" type="number" size="40" class="form-control" min="0" name="capmax" readonly="readonly"  required>
+            <br>  จำนวนผู้เข้าร่วมสูงสุดดดดด<input id="capacity" style="color:#260d31" type="number" size="40" class="form-control" min="0" name="capmax" required>
             <br>  จำนวนผู้เข้าร่วม ณ เวลานั้น<input id="capacitynow" style="color:#260d31" type="number" size="40" class="form-control"  readonly="readonly" name="capnow" required>
             <br>  รูปภาพ<input id="picture" type="file" name="picture1" accept="image/*">
-            <br>  วีดีโอ <input id="video" style="color:#260d31" type="text" name="video" accept="image/*"  class="form-control"  size="40" >
+            <br>  วีดีโอ <input id="video" style="color:#260d31" type="text" name="video" class="form-control" accept="image/*"  size="40" >
             <br>  ShoerURL :<input id="url" style="color:#260d31" type="text" size="40"  class="form-control" name="url" readonly="readonly" required >
             <br><label>โทนสีเว็บ</label>
             <br>  <input type="text" id="color" class="form-control"  name="color">
