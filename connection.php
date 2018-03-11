@@ -1,4 +1,5 @@
 <?php
+include('phpqrcode/qrlib.php');
 //$con= mysqli_connect("localhost","admin","jay23513","mydatabase") or die("Error: " . mysqli_error($con));
 $mysql_server = "csku.science";
 $mysql_user = "spppaper_pjmt";
@@ -155,4 +156,21 @@ function store_log($userN,$acti){
     }else{
         return false;
     }
-    }
+  }
+
+	function gen_QRpic($strmasg,$strFNAME){
+	 $tempDir = "img/qrcode/";
+	 $codeContents = $strmasg;   //inputtext
+	 //$fileName = uniqid('QR', true) . '.png';  //filenameUniqid
+	 $fileName = $strFNAME.'.png' ;  //filename
+	 $pngAbsoluteFilePath = $tempDir.$fileName;
+	 //$urlRelativeFilePath = EXAMPLE_TMP_URLRELPATH.$fileName;
+	 if (!file_exists($pngAbsoluteFilePath)) {
+	        QRcode::png($codeContents, $pngAbsoluteFilePath);
+	        //echo '<img src="'.$tempDir.$fileName.'" />';
+	        return 'File generated!';
+
+	    } else {
+	        return 'File already generated! We can use this cached file to speed up site on common codes!';
+	    }
+	  }
