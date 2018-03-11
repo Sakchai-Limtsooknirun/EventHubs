@@ -144,6 +144,7 @@ if ($type == "NotLogin") {
                     $no += 1;
 
 
+
                     }
 
 
@@ -160,6 +161,7 @@ if ($type == "NotLogin") {
 
 
 
+
           ?>
 
 
@@ -170,11 +172,13 @@ if ($type == "NotLogin") {
             <?
         }
         ?>
+          <a href="event/toPDF.php?EventID=<?php echo $EventID; ?>"><button style="float:right ; width:150px;"class='btn btn-default'>ออกใบรายชื่อ</button><>
 
         </div>
         <hr>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
     </div>
 </body>
 

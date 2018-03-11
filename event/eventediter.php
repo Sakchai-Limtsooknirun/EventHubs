@@ -29,7 +29,7 @@ if (isset($_POST['id'])) {
 }
 
  $file_name     = $_FILES['picture1']['name'];
- 
+
 
 if (isset($_FILES['picture1'])) {
             echo "have image";
