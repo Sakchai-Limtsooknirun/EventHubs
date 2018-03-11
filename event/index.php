@@ -29,13 +29,24 @@ if ($type == "NotLogin") {
             $status = 1;
             $EventName = $row['EventName'];
             $EventStatus = $row['EventStatus'];
+            if ($EventStatus == "0"){
+              $EventStatusText = "แสดงในหน้าแรก";
+            }else{
+              $EventStatusText = "ไม่แสดงในหน้าแรก";
+            }
             $ID = $row['ID'];
             $Location = $row['Location'];
             $DateB = $row['DateStart'];
             $DateEnd = $row['DateEnd'];
             $DateStart = DateThai($row['DateStart']);
-            $CapacityNow = $row['CapacityNow'];
-            $MaximumCapacity = $row['MaximumCapacity'];
+            $CapacityNow = getOneValue("SELECT sum(`TicketNow`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$ID'");
+            if ($CapacityNow == ""){
+              $CapacityNow = "-";
+            }
+            $MaximumCapacity = getOneValue("SELECT sum(`TicketCapi`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$ID'");
+            if ($MaximumCapacity == ""){
+              $MaximumCapacity = "-";
+            }
             $Picture = $row['Picture'];
             $ShortURL = $row['ShortURL'];
             // $ShortURL = $actual_link = "http://$_SERVER[HTTP_HOST]/".$path."/eventview/".$ShortURL;
@@ -63,7 +74,7 @@ if ($type == "NotLogin") {
 <div class='eventCard'>
     <div class='eventTopic'>
         <p>$EventName</p>
-        <p id='eventStatus'>สถาณะ : $EventStatus</p>
+        <p id='eventStatus'>สถาณะ : $EventStatusText</p>
     </div>
     <div class='col-lg-4'>
         <img src='img/event/$Picture' alt='' width='100%'>
@@ -73,11 +84,20 @@ if ($type == "NotLogin") {
         <p id='eventInfo'><span class='glyphicon glyphicon-calendar'></span> $DateStart</p>
         <p id='eventInfo'><span class='glyphicon glyphicon-link'></span> <a href='eventview/$ShortURL' target='_blank'>$ShortURL</a></p>
         <p id='eventInfo'><span class='glyphicon glyphicon-user'></span> $CapacityNow / $MaximumCapacity คน</p>
-        <br>
+        <br>";
+        if ($type == "Organizer"){
+          echo "
         <a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
-        <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>ดูแลสมาชิก</a>
-    </div>
-</div>
+        <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>จัดการสมาชิก</a>
+        <a class='btnlogin'  href='event/survey.php?eid=$ID '>แบบสอบถาม</a>
+
+          ";
+        }elseif ($type == "Admin") {
+          echo "<a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>";
+        }
+        echo "
+            </div>
+        </div>
             ";
         }
         if ($status != 1) {

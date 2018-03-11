@@ -26,7 +26,7 @@ if ($type == "NotLogin") {
     $EventID = getOneValue("SELECT `EventID` AS 'get' FROM `EventTicket` WHERE `TicketID` = '$getTicketID'");
     $getEventPic = getOneValue("SELECT `Picture` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
     $getShortURL = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
-
+    store_log($username,"ยกเลิกบัตร ".$token);
     $sql_update    = "UPDATE `EventHandler` SET `CardStatus`='3',`CancelTime`='$date' WHERE `CardToken` = '$token'";
     $result_update = mysqli_query($con, $sql_update);
     if ($result) {

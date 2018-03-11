@@ -37,7 +37,7 @@ if ($type == "NotLogin") {
                 move_uploaded_file($file_tmp, "img/payment/" . $file_name);
                 echo "Success";
             } else {
-                print_r($errors);
+                // print_r($errors);
             }
             $evi = $file_name;
         } else {

@@ -9,9 +9,8 @@ if ($type == "NotLogin") {
     echo "window.location = 'form_login.php?st=3'; ";
     echo "</script>";
     exit;
-}else if ($type == "Organizer" || $type == "Admin" ){ //--------------------- Organizer ------------------------
+}else if ($type == "Organizer"){ //--------------------- Organizer ------------------------
 ?>
-
 
 <body>
 
@@ -139,10 +138,6 @@ if ($type == "NotLogin") {
 
 
             echo "<center><h1>คุณไม่มีสิทธิเข้าหน้านี้</h1></center>";
-
-
-
-
 
 
           ?>

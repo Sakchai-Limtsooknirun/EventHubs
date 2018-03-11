@@ -94,7 +94,7 @@ if ($type == "NotLogin"){
     <div class="row eventIndex">
 <?
 
-        $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` ORDER BY `DateStart` ASC");
+        $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventStatus` = '0' ORDER BY `DateStart` ASC");
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];

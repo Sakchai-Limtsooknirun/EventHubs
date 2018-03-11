@@ -20,10 +20,9 @@ if (empty($_SESSION["Username"])) {
 
 	else if ($type == "Admin"){
 		$header_menu .= "
-		<li class='btnFill'><a href='event/create.php'><span class='glyphicon glyphicon-plus'></span> สร้างกิจกรรมใหม่</a></li>
-		<li><a href='event'><span class='glyphicon glyphicon-list'></span> จัดการกิจกรรม</a></li>
+		<li><a href='event'>จัดการกิจกรรม</a></li>
 		<li><a href='ManageUser.php'>การจัดการสมาชิก</a></li>
-		<li><a href='showLog.php'>จัดการlog</a></li>
+		<li><a href='showLog.php'>บันทึกระบบ</a></li>
 		";
 	}
 	else if ($type == "User"){
@@ -32,7 +31,7 @@ if (empty($_SESSION["Username"])) {
 		";
 	}
     $header_menu .= "
-		<li><a href='Profile.php'><span class='glyphicon glyphicon-user'></span> $username ($type)</a></li>
+		<li><a href='Profile.php'><span class='glyphicon glyphicon-user'></span> $username</a></li>
 		<li><a href='logout.php'>ออกจากระบบ</a></li>";
 
 }
