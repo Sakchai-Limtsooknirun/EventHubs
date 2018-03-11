@@ -98,25 +98,27 @@ else{
 }
 
 
-function sendEmail($email,$name,$eventName,$type){
+
+function sendEmail($email,$name,$eventName,$type,$url){
 
     $strMessage = "";
-    
+		$strMessage .= "สวัสดีครับ คุณ ".$name."<br>";
+
   require_once('../PHPMailer_v5.0.2/class.phpmailer.php');
-  
+
   $mail = new PHPMailer();
   $mail-> CharSet = 'UTF-8';
   $mail->IsHTML(true);
   $mail->IsSMTP();
   $mail->SMTPAuth = true;
-  $mail->SMTPSecure = "ssl"; 
-  $mail->Host = "smtp.gmail.com"; 
+  $mail->SMTPSecure = "ssl";
+  $mail->Host = "smtp.gmail.com";
   $mail->Port = 465;
   $mail->Username = "jaytaku23513@gmail.com";
-  $mail->Password = "jay0860789213"; 
-  $mail->From = "admin@EventHubs.com"; 
+  $mail->Password = "jay0860789213";
+  $mail->From = "admin@EventHubs.com";
 
-  $mail->FromName = "EventHub";  
+  $mail->FromName = "EventHub";
   if($type == 'c'){
   $mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
   $strMessage .= " ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
@@ -124,13 +126,20 @@ function sendEmail($email,$name,$eventName,$type){
     $mail->Subject = "EventHubs - ขออภัยในความไม่สดวก คุณ:".$name;
     $strMessage .= " ได้มีการขอเข้าร่วมกิจกรรม ".$eventName." แต่ทางเจ้าของกิจกรรม เกิดเหุตบกพร่องบางประการ จึงสามารถไห้บริการคุณได้ <br>ขออภัยมา ณ ที่นี้<br>";
     }
-      
+
+
+
   else{
     $mail->Subject = "EventHubs - กิจกรรม".$eventName."มีการแก้ไข";
     $strMessage .= "กิจกรรม".$eventName." มีการแก้ไขรายละเอียดภายในงาน กรุณาตรวจสอบกิจกรรมอีกครั้ง";
 
-  
+
+
   }
+	$strMessage .= "<a href='http://localhost/projectMidterm/eventview/".$url."'>Click here</a>'";
+	$strMessage .= "<br>=================================<br>";
+	$strMessage .= "EventHubs.com<br><br>";
+	$strMessage .= 'Admin Anaphat';
   $mail->Body = $strMessage;
   $mail->AddAddress($email, $name); // to Address
   // $mail->AddAttachment("thaicreate/myfile.zip");
@@ -140,6 +149,7 @@ function sendEmail($email,$name,$eventName,$type){
   $mail->set('X-Priority', '1'); //Priority 1 = High, 3 = Normal, 5 = low
   $mail->Send();
 }
+
 
 function store_log($userN,$acti){
     global $con ;
