@@ -130,4 +130,3 @@ function store_log($userN,$acti){
 	        return 'File already generated! We can use this cached file to speed up site on common codes!';
 	    }
 	  }
-	 }
