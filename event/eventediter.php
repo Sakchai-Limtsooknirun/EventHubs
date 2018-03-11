@@ -7,6 +7,17 @@ var_dump($_POST['TT']);
 
 
 
+
+$url="";
+
+
+
+
+
+
+
+
+
 include '../connection.php';
 $result;
 $row;
@@ -21,7 +32,9 @@ if ($_FILES['picture1']['error'] == "0") {
 if (isset($_POST['id'])) {
     $ID = $_POST['id'];
     $result = mysqli_query($con, "SELECT * FROM EventOrganizers WHERE ID = $ID");
+
     $row = mysqli_fetch_assoc($result);
+    $url = $row['ShortURL'];
 
     echo $row['EventName'];
 }else{
@@ -139,6 +152,70 @@ echo "<br>$DateEnd";
 // echo "<br>$EventContactEmail";
 // echo "<br>$EventFacebook ";
 // echo "<br>$Picture"."  IMAGEEEE";
+
+
+
+
+
+
+
+
+$result0 = mysqli_query($con, "SELECT * FROM `EventOrganizers`  WHERE ID = $ID ");
+$row0 = mysqli_fetch_assoc($result0);
+$EName  = $row0['EventName'];
+
+
+
+$result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID ");
+
+ while ($row = mysqli_fetch_assoc($result)) {
+   $disabled;
+   $TicketID=$row['TicketID'];
+   $TicketName=$row['TicketName'];
+   $TicketPrice=$row['TicketPrice'];
+
+
+
+
+   $result2 = mysqli_query($con, "SELECT * FROM `EventHandler`  WHERE TicketID = $TicketID ");
+   while ($row2 = mysqli_fetch_assoc($result2)) {
+
+     $OwnerID = $row2['OwnerID'];
+     $BuyTime = $row2['CardSBuyTime'];
+     $Status = CheckStatus($row2['CardStatus']);
+     $Token = $row2['CardToken'];
+
+     if($row2['CardStatus']!=1){
+       $disabled = "disabled";
+     }
+
+
+
+     $result3 = mysqli_query($con, "SELECT * FROM `user`  WHERE ID = $OwnerID ");
+
+     while ($row3 = mysqli_fetch_assoc($result3)) {
+
+       $Firstname = $row3['Firstname'];
+       $LastName = $row3['Lastname'];
+       $Email = $row3['email'];
+
+       echo $url;
+       echo "<br>        http://localhost/projectMidterm/eventview/".$url."         Url";
+
+       sendEmail($Email,$Firstname,$EName,'e',$url);
+
+
+
+     }
+
+
+   }
+ }
+
+
+
+
+
 
 $sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook', MaximumCapacity=$MaximumCapacity,Price=$Price WHERE ID=$ID";
 mysqli_query($con, $sql);
