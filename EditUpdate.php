@@ -71,9 +71,10 @@ include 'connection.php';
             echo "dfdf";
         }
         $userData = mysqli_query($con,$meSQL);
+        store_log($_SESSION['Username'],'แก้ไขข้อมูลส่วนตัว');
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
-               echo "window.location = 'Edit.php'; ";
+               echo "window.location = 'Profile.php'; ";
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";

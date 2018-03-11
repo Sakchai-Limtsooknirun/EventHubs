@@ -18,7 +18,7 @@ if ($_SESSION["Username"] == $username){
 <center>
     <div style="width:80%; background-color:#000000;">
 <div class="panel panel-default">
-  <div class="panel-heading">  <h4 >User Profile</h4></div>
+  <div class="panel-heading">  <h4 >Username : <?php echo $meResult['Username']; ?></h4></div>
    <div class="panel-body">
        
     <div class="box box-info">
@@ -45,7 +45,7 @@ if ($_SESSION["Username"] == $username){
                                                                         echo $meResult['sex'];} ?></h4></span>
             
             <h4 align = "left"  style="color:#00b1b1;">เบอร์โทรศัพท์ : <?php echo $meResult['telephone']; ?></h4></span>
-            <h4 align = "left"  style="color:#00b1b1;">วันที่/เวลา ที่สมัคสมาชิก : <?php echo DateThai($meResult['ts']); ?></h4></span>
+            <h4 align = "left"  style="color:#00b1b1;">วันที่/เวลา ที่สมัครสมาชิก : <?php echo DateThai($meResult['ts']); ?></h4></span>
             <div class="clearfix"></div>
             <hr style="margin:5px 0 5px 0;">
             </div>                                                                      
@@ -72,6 +72,7 @@ if ($_SESSION["Username"] == $username){
     echo "window.location = 'signup.php'; ";
     echo "</script>";
 }
+mysql_close();
 ?>
 
 

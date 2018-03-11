@@ -65,11 +65,11 @@ include 'connection.php';
         $userData = mysqli_query($con,$meSQL);
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'userManage.php'; ";
+                echo "window.location = 'ManageUser.php'; ";
                 echo "</script>";
             } else {
                 echo "<script type='text/javascript'>";
-                echo "window.location = 'userManage.php'; ";
+                echo "window.location = 'adminEdit.php'; ";
                 echo "</script>";
             }
             mysql_close();

@@ -8,7 +8,7 @@ if ($type == "NotLogin") {
     echo "window.location = 'form_login.php?st=3'; ";
     echo "</script>";
     exit;
-}else if ($type == "Organizer"){ //--------------------- Organizer ------------------------
+}else if ($type == "Organizer" || $type == "Admin"){ //--------------------- Organizer ------------------------
 ?>
 
 
@@ -66,12 +66,11 @@ if ($type == "NotLogin") {
     <div class='col-lg-8'>
         <p id='eventInfo'><span class='glyphicon glyphicon-pushpin'></span> $Location</p>
         <p id='eventInfo'><span class='glyphicon glyphicon-calendar'></span> $DateStart</p>
-        <p id='eventInfo'><span class='glyphicon glyphicon-link'></span> <a href='$ShortURL' target='_blank'>$ShortURL</a></p>
+        <p id='eventInfo'><span class='glyphicon glyphicon-link'></span> <a href='eventview/$ShortURL' target='_blank'>$ShortURL</a></p>
         <p id='eventInfo'><span class='glyphicon glyphicon-user'></span> $CapacityNow / $MaximumCapacity คน</p>
-        <br>";
-        echo "
-      <span>  <a  type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
-        <a  class='btnlogin'  href='event/memberediter.php?eid= $ID '>ดูแลสมาชิก</a></span>
+        <br>
+        <a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
+        <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>ดูแลสมาชิก</a>
     </div>
 </div>
             ";
@@ -79,7 +78,7 @@ if ($type == "NotLogin") {
         if ($status != 1) {
             echo "
             <p id='notfound'>ไม่มีกิจกรรม</p>
-            <p id='notfound'><a href='#'>สร้างกิจกรรมใหม่</a></p>";
+            <p id='notfound'><a href='event/create.php'>สร้างกิจกรรมใหม่</a></p>";
         } else {
         }
         ?>
@@ -298,7 +297,7 @@ else {
     <meta charset="UTF-8">
     <title>Eventhubs | จัดการกิจกรรม</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=5g5faf78gvk6yfq9bd3bbfjo858kjx1q8o0nbiwtygo2e4er"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
 
 </head>
