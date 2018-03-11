@@ -1,5 +1,8 @@
 <?php
 include 'header.php';
+if($type!='Admin'){
+  echo "Need Permission to access ";
+}elseif(isset($_SESSION['Username'])){
 $query = "select * from user";
 $data = mysqli_query($con,$query);
 
@@ -32,10 +35,11 @@ $(document).ready(function() {
             <th scope="col">Picture</th>
             <th scope="col">ID</th>
             <th scope="col">ระดับสมาชิก</th>
-			<th scope="col">Username</th>
-			<th scope="col">Firstname</th>
-			<th scope="col">Lastname</th>
+			      <th scope="col">Username</th>
+			      <th scope="col">Firstname</th>
+			      <th scope="col">Lastname</th>
             <th scope="col">Gender</th>
+            <th scope="col">วันที่สมัครสมาชิก</th>
             <th scope="col">แก้ไข</th>
             <th scope="col">ลบ</th>
 		</tr>
@@ -45,8 +49,8 @@ $(document).ready(function() {
              while($row = $data->fetch_array()) { $sid = $row[0] ?>
 		<tr>
             
-			<td data-table-header="Picture"><img class='img-thumbnail' width=50% height=50% src='img/user/<?php echo $row['Picture']?>' alt='' width='100%'></td>
-			<td data-table-header="ID"><?php echo $row['ID'] ?></td>
+			<td class = "Wpic" data-table-header="Picture"><img class='img-thumbnail' width=50% height=50% src='img/user/<?php echo $row['Picture']?>' alt='' width='100%'></td>
+			<td  data-table-header="ID"><?php echo $row['ID'] ?></td>
 			<td data-table-header="ระดับสมาชิก"><?php echo checkType($row['Username'])?></td>
 			<td data-table-header="Username"><?php echo $row['Username']?> </td>
             <td data-table-header="Firstname"><?php echo $row['Firstname']?></td>
@@ -56,6 +60,7 @@ $(document).ready(function() {
                                             }else{
                                             echo "Female";
   } ?></td>
+        <td data-table-header="วันที่สมัครสมาชิก"><?php echo DateThai($row['ts']) ?></td>
             <?php if($row["Username"] == $_SESSION["Username"]){ ?>
                 <td data-table-header="แก้ไข">--</td>
                 <td data-table-header="ลบ">--</td>
@@ -66,11 +71,14 @@ $(document).ready(function() {
 		</tr>
 		<?php 
             }
+            
             ?>
 	</tbody>
 </table>
 </div>
 </div>
+          <?php }
+          ?>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -107,6 +115,10 @@ th {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: left;
+   
+}
+.Wpic{
+    align = "center";
 }
 
 td:nth-of-type(1) {
