@@ -1,7 +1,6 @@
 <?php
 include 'header.php';
 if(isset($_POST['txtEmail'])){
-  
 $token = bin2hex(openssl_random_pseudo_bytes(16));
 $sql = "SELECT * from user where email = '{$_POST['txtEmail']}'";
 $ck_email = mysqli_query($con,$sql);

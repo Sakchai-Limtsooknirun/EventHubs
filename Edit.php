@@ -1,6 +1,11 @@
 <?php
 include 'header.php';
-
+if(empty($_SESSION['Username'])){
+    echo "<script type='text/javascript'>";
+      echo "window.location = 'form_login.php?st=3'; ";
+      echo "</script>";
+      exit;
+}else{
 if ($_SESSION["Username"] == $username){
     $_SESSION['frmAction'] = md5('brabra' . rand(1, 9999));
     //echo "OK";
@@ -158,5 +163,6 @@ if ($_SESSION["Username"] == $username){
     echo "<script type='text/javascript'>";
     echo "window.location = 'signup.php'; ";
     echo "</script>";
+}
 }
 ?>

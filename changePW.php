@@ -1,6 +1,11 @@
 <?php
 include 'header.php';
-
+if(empty($_SESSION['Username'])){
+    echo "<script type='text/javascript'>";
+      echo "window.location = 'form_login.php?st=3'; ";
+      echo "</script>";
+      exit;
+  }elseif(isset($_SESSION['Username'])){
 if((isset($_POST['oPW']) && isset($_POST['newPW']) && isset($_POST['tryPW'])&& isset($_SESSION['Username']))){
     if(isset($_SESSION['Username'])){
         $sql = "SELECT * FROM user Where Username='" . $_SESSION['Username'] . "'";
@@ -34,6 +39,7 @@ if((isset($_POST['oPW']) && isset($_POST['newPW']) && isset($_POST['tryPW'])&& i
     }
 
 }
+  }
 
 
 ?>

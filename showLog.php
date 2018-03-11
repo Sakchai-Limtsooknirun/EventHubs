@@ -1,5 +1,11 @@
 <?php
 include 'header.php';
+if($type!='Admin'){
+  echo "<script type='text/javascript'>";
+    echo "window.location = 'form_login.php?st=3'; ";
+    echo "</script>";
+    exit;
+}elseif(isset($_SESSION['Username'])){
 $query = "select * from Log";
 $data = mysqli_query($con,$query);
 
@@ -61,6 +67,9 @@ $(document).ready(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <script src "https://cdn.datatables.net/plug-ins/1.10.15/sorting/stringMonthYear.js"></script>
 </html>
+<?php
+}
+?>
 <style>
 table {
   width: 100%;

@@ -6,7 +6,6 @@ if (isset($_REQUEST['Username'])) {
     $Username = $_REQUEST['Username'];
     $Password = $_REQUEST['Password'];
     //query
-
     $sql = "SELECT * FROM user Where Username='" . $Username . "'";
     $sqlVerify = mysqli_query($con, "SELECT Password FROM user Where Username='" . $Username . "'");
     if ($sqlVerify->num_rows == 1) {
