@@ -150,7 +150,7 @@ if ($type == "NotLogin") {
             <?
         }
         ?>
-          <a href="event/toPDF.php?EventID=<?php echo $EventID; ?>"><button style="float:right ; width:150px;"class='btn btn-default'>ออกใบรายชื่อ</button>
+          <a href="event/PDF.php?EventID=<?php echo $EventID; ?>"><button style="float:right ; width:150px;"class='btn btn-default'>ออกใบรายชื่อ</button>
 
         </div>
         <hr>
