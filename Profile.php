@@ -7,6 +7,7 @@ if(empty($_SESSION['Username'])){
       echo "</script>";
       exit;
   }elseif(isset($_SESSION['Username'])){
+
 if ($_SESSION["Username"] == $username){
     $meSQL = "SELECT * FROM user WHERE Username='{$_SESSION["Username"]}' ";
     $userData = mysqli_query($con,$meSQL);
@@ -76,6 +77,7 @@ if ($_SESSION["Username"] == $username){
     }
 
 }else{
+    systemLog("$username หยายามเข้าหน้าแก้ไขโปรไฟล์ของผู้อื่น");
     echo "<script type='text/javascript'>";
     echo "window.location = 'signup.php'; ";
     echo "</script>";
