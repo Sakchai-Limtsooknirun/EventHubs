@@ -6,7 +6,7 @@ if($type!='Admin'){
       echo "</script>";
       exit;
   }elseif(isset($_SESSION['Username'])){
-   echo  "<h1 align = 'center'>Log view</h1>";
+   echo  "<h1 align = 'center'>Event List</h1>";
   $query = "SELECT `ID`,`EventName`,`Type`,`DateStart`,`DateEnd`,`Location`,`MaximumCapacity`,`EventOwnerID` FROM EventOrganizers";
   
 
@@ -96,7 +96,7 @@ if($type!='Admin'){
   }
   
   tr:nth-of-type(even) {
-    background: #F0546A;
+    background: #66FF66;
   }
   
   th {

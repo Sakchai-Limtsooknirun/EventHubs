@@ -6,7 +6,7 @@ if($type!='Admin'){
 }elseif(isset($_SESSION['Username'])){
 $query = "select * from user";
 $data = mysqli_query($con,$query);
-echo store_log($username,' เข้าใช้ส่วนจัดการผู้ใช้');
+store_log($username,' เข้าใช้ส่วนจัดการผู้ใช้');
 
 ?>
 <script>
@@ -105,7 +105,7 @@ tr:nth-of-type(even) {
 }
 
 th {
-  background: #F0546A;
+  background: #66FF66;
   color: #ffffff;
   font-weight: 300;
 }

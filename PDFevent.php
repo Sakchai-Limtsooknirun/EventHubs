@@ -56,8 +56,8 @@ class myPDF extends FPDF{
         // var_dump($row0);
         // echo "<br>";
       $ID  = $row0['ID'];
-      $EventNameSun = $row0['EventName'];
-    //   echo "$EventNameSun";
+      $EventName = $row0['EventName'];
+    //   echo "$EventName";
     //   echo "<br>";
       
       $typeE = $row0['Type'];
@@ -66,16 +66,14 @@ class myPDF extends FPDF{
       $OwnerID  =$row0['EventOwnerID'];
       $DateStart = DateThai($row0['DateStart']);
       $DateEnd = DateThai($row0['DateEnd']);
-        if($EventNameSun == ""){
-            $EventNameSun == "Hello";
-        }
+        
       $result1 = mysqli_query($con, "SELECT * FROM user WHERE ID = $OwnerID");
       while($row1 = mysqli_fetch_assoc($result1)){
     $OwnnerName = $row1['Firstname']." ".$row1['Lastname'];
 
                        
       $this->Cell(12,10,iconv( 'UTF-8','TIS-620',$ID),1,0,'c');
-      $this->Cell(60,10,iconv( 'UTF-8//IGNORE','TIS-620',"$EventNameSun"),1,0,'c');
+      $this->Cell(60,10,iconv( 'UTF-8//IGNORE','TIS-620',$EventName),1,0,'c');
       $this->Cell(40,10,iconv( 'UTF-8','TIS-620',$typeE),1,0,'c');
       $this->Cell(30,10,iconv( 'UTF-8','TIS-620',$DateStart),1,0,'c');
       $this->Cell(30,10,iconv( 'UTF-8','TIS-620',$DateEnd),1,0,'c');
@@ -94,8 +92,8 @@ $pdf = new  myPDF();
 
 $pdf->AliasNbPages();
 $pdf->AddPage('L','A4',0);
-ob_end_clean();
 $pdf->TableDetail();
+ob_end_clean();
 $pdf->Output();
 
 
