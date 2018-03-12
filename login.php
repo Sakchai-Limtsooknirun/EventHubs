@@ -36,6 +36,7 @@ if (isset($_REQUEST['Username'])) {
 
         } else {
             store_log($_SESSION['Username'],'ล็อคอินล้มเหลว');     //log
+            systemLog("พยายามเข้าสู่ระบบด้วยชื่อ $Username");
             echo "<script type='text/javascript'>";
             echo "window.location = 'form_login.php?st=1'; ";
             echo "</script>";
@@ -43,6 +44,7 @@ if (isset($_REQUEST['Username'])) {
 
         }
     } else {
+        systemLog("พยายามเข้าสู่ระบบด้วยชื่อ $Username");
         echo "<script type='text/javascript'>";
         echo "window.location = 'form_login.php?st=1'; ";
         echo "</script>";
