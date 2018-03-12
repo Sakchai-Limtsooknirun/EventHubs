@@ -8,15 +8,15 @@
 
 ## Directory
 
-    ├── PHPMailer_v5.0.2        # Library สำหรับส่ง E-mail
-    ├── css                    	# สำหรับเก็บไฟล์ css
-    ├── js                     	# สำหรับเก็บไฟล์ JavaScript
-    ├── event					# ระบบของ Event ทั้งหมด ไม่ว่าจะเป็นการ ดู แก้ ลบ สมัคร
-    ├── img                   	# เก็บไฟล์รูปทั้งหมดบนเว็บ แล้วเก็บ path ไว้ที่ Database แทน
-    ├── logs					# เก็บไฟล์ System logs ของระบบแยกตามวันเดือนปี (.txt)
-    ├── phpqrcode				# Library สำหรับใช้งาน QR Code
-    ├── survey					# ระบบของการทำแบบสำรวจความพึงพอใจทั้งหมด
-    ├── .htaccess				# นำมาใช้ในการ Rewrite URL เพื่อความปลอดภัย
+    ├── PHPMailer_v5.0.2        	# Library สำหรับส่ง E-mail
+    ├── css                    		# สำหรับเก็บไฟล์ css
+    ├── js                     		# สำหรับเก็บไฟล์ JavaScript
+    ├── event				# ระบบของ Event ทั้งหมด ไม่ว่าจะเป็นการ ดู แก้ ลบ สมัคร
+    ├── img                   		# เก็บไฟล์รูปทั้งหมดบนเว็บ แล้วเก็บ path ไว้ที่ Database แทน
+    ├── logs				# เก็บไฟล์ System logs ของระบบแยกตามวันเดือนปี (.txt)
+    ├── phpqrcode			# Library สำหรับใช้งาน QR Code
+    ├── survey				# ระบบของการทำแบบสำรวจความพึงพอใจทั้งหมด
+    ├── .htaccess			# นำมาใช้ในการ Rewrite URL เพื่อความปลอดภัย
 	└── ...
 		
 ## Installation
