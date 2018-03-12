@@ -58,7 +58,7 @@ class myPDF extends FPDF{
         $this->Cell(50,10,iconv( 'UTF-8','TIS-620','ชื่อ นามสกุล'),1,0,'c');
         $this->Cell(60,10,iconv( 'UTF-8','TIS-620','ประเภทบัตร'),1,0,'c');
         $this->Cell(20,10,iconv( 'UTF-8','TIS-620','ราคา'),1,0,'c');
-        $this->Cell(40,10,iconv( 'UTF-8','TIS-620','สถานะ'),1,0,'c');
+        $this->Cell(40,10,iconv( 'UTF-8','TIS-620','Token(7ตัวท้าย)'),1,0,'c');
         $this->Cell(50,10,iconv( 'UTF-8','TIS-620','email'),1,0,'c');
         $this->Cell(40,10,iconv( 'UTF-8','TIS-620','เบอร์โทรศัพท์'),1,0,'c');
 
@@ -98,6 +98,8 @@ class myPDF extends FPDF{
            $BuyTime = $row2['CardSBuyTime'];
            $Status = CheckStatus($row2['CardStatus']);
            $Token = $row2['CardToken'];
+           $Token=substr($Token ,25,34);
+
            if($row2['CardStatus']!=1){
              $disabled = "disabled";
            }
@@ -122,7 +124,7 @@ class myPDF extends FPDF{
              $this->Cell(50,10,iconv( 'UTF-8','TIS-620',$Firstname." ".$LastName),1,0,'c');
              $this->Cell(60,10,iconv( 'UTF-8','TIS-620', $TicketName),1,0,'c');
              $this->Cell(20,10,iconv( 'UTF-8','TIS-620',$TicketPrice),1,0,'c');
-             $this->Cell(40,10,iconv( 'UTF-8','TIS-620','ยืนยันเรียบร้อย'),1,0,'c');
+             $this->Cell(40,10,iconv( 'UTF-8','TIS-620',$Token),1,0,'c');
              $this->Cell(50,10,iconv( 'UTF-8','TIS-620',$Email),1,0,'c');
              $this->Cell(40,10,iconv( 'UTF-8','TIS-620',$Phone),1,0,'c');
              $this->Ln();

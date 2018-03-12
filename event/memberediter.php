@@ -33,8 +33,7 @@ if ($type == "NotLogin") {
           $row0 = mysqli_fetch_assoc($result0);
           $EventName  = $row0['EventName'];
           $Location = $row0['Location'];
-<<<<<<< HEAD
-          $CapNow = getOneValue("SELECT sum(`TicketNow`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EventID'");
+          $CapNow = getOneValue("SELECT sum(`TicketNow`) AS 'get' FROM `EventTicket` WHERE `EventID` = $EventID");
           if ($CapNow == ""){
             $CapNow = "-";
           }
@@ -42,8 +41,6 @@ if ($type == "NotLogin") {
           if ($CapMax == ""){
             $CapMax = "-";
           }
-=======
->>>>>>> b263b15b7f38b0a0a7bea571d200461f3b956394
 
           $DateStart = DateThai($row0['DateStart']);
           $DateEnd = DateThai($row0['DateEnd']);
@@ -56,6 +53,7 @@ if ($type == "NotLogin") {
                 <p>ชื่อกิจกรรม : $EventName</p>
                 <p>ระยะเวลากิจกรรม: $DateStart - $DateEnd </p>
                 <p>สถานที่ : $Location</p>
+                <p>สมาชิก: $CapNow / $CapMax</p>
                 <br>
                 </div>
             </div>
