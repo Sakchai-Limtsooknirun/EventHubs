@@ -61,14 +61,14 @@ if ($type == "NotLogin") {
             $EventContactEmail = $row['EventContactEmail'];
             $EventFacebook = $row['EventFacebook'];
             $Type= $row['Type'];
-            $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
-            $i=0;
-            while ($row2 = mysqli_fetch_assoc($resultTicket)) {
-                $phpArray[$EventName.$i]=$row2['TicketName'];
-                $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
-                $i+=1;
-            }
-            $SetModals = sprintf('onclick="SetModal(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%.187s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')"',$type,$EventName,$EventStatus,$ID,$Location,$DateB,$DateEnd,$CapacityNow,$MaximumCapacity,$Picture,$ShortURL,$Detail,$Precondition,$Price,$Color,$EventOrgName,$EventContactTell,$EventContactEmail,$EventFacebook,$phpArray);
+            // $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
+            // $i=0;
+            // while ($row2 = mysqli_fetch_assoc($resultTicket)) {
+            //     $phpArray[$EventName.$i]=$row2['TicketName'];
+            //     $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
+            //     $i+=1;
+            // }
+            $SetModals = sprintf('onclick="SetModal(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%.187s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')"',$type,$EventName,$EventStatus,$ID,$Location,$DateB,$DateEnd,$CapacityNow,$MaximumCapacity,$Picture,$ShortURL,$Detail,$Precondition,$Price,$Color,$EventOrgName,$EventContactTell,$EventContactEmail,$EventFacebook);
             $checkcap = sprintf('onclick="CheckCap()"');
             echo "
 <div class='eventCard'>
@@ -88,6 +88,7 @@ if ($type == "NotLogin") {
         if ($type == "Organizer"){
           echo "
         <a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
+          <a class='btnlogin'  href='event/ticketediter.php?eid=$ID '>บัตร</a>
         <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>จัดการสมาชิก</a>
 
         <a class='btnlogin'  href='event/survey.php?eid=$ID '>แบบสอบถาม</a>
@@ -115,6 +116,7 @@ if ($type == "NotLogin") {
 
 
 
+
     <script>
     var index = 0 ;
     function CheckType(Type){
@@ -132,7 +134,7 @@ if ($type == "NotLogin") {
       }
       return type;
     }
-      function SetModal(Type,EventName,EventStatus,ID,location,DateStart,DateEnd,CapacityNow,MaximumCapacity,Picture,ShortURL,Detail,Precondition,Price,Color,EventOrgName,EventContactTell,EventContactEmail,EventFacebook,phpArray){
+      function SetModal(Type,EventName,EventStatus,ID,location,DateStart,DateEnd,CapacityNow,MaximumCapacity,Picture,ShortURL,Detail,Precondition,Price,Color,EventOrgName,EventContactTell,EventContactEmail,EventFacebook){
         var jArray= <?php echo json_encode($phpArray ); ?>;
           i=0
           while(!isEmpty(jArray[EventName+i])){
@@ -166,8 +168,7 @@ if ($type == "NotLogin") {
             document.getElementById("tell").setAttribute('value',EventContactTell);
              document.getElementById("email").setAttribute('value',EventContactEmail);
               document.getElementById("facebook").setAttribute('value',EventFacebook);
-         // console.log(DateStart + "  asdasdasdasd");
-         // console.log(DateStart + "  asdasdasdasd");
+
       }
       function CheckCap(){
         console.log(" < < < < < < < < < < < < << < < < <  < < <YEE PAP ");
@@ -205,14 +206,14 @@ if ($type == "NotLogin") {
         console.log(!str || 0 === str.length);
     return (!str || 0 === str.length);
 }
-function add_fields(Type,Price,EventName,i) {
-    var objTo = document.getElementById('Tickets')
-    var divtest = document.createElement("div");
-    console.log(Type+"   TTTTT");
-    console.log(Price+"       PPPPPP");
-    divtest.innerHTML = '<div  >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="TT[]" value="'+Type+'"'+' /> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" namae="TT[]" value="'+Price+'"'+' /></div><hr>';
-    objTo.appendChild(divtest)
-}
+// function add_fields(Type,Price,EventName,i) {
+//     var objTo = document.getElementById('Tickets')
+//     var divtest = document.createElement("div");
+//     console.log(Type+"   TTTTT");
+//     console.log(Price+"       PPPPPP");
+//     divtest.innerHTML = '<div  >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="TT[]" value="'+Type+'"'+' /> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" namae="TT[]" value="'+Price+'"'+' /></div><hr>';
+//     objTo.appendChild(divtest)
+// }
 </script>
     </script>
 

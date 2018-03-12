@@ -96,14 +96,7 @@ $DateEnd = $_POST['datee'];
 $TimeEnd = $_POST['timee'];
 $Type = $row['Type'];
 $DateEnd = $DateEnd." ".$TimeEnd;
-$CapacityNow = $row['CapacityNow'];
-$MaximumCapacity = $_POST['capmax'];
-if (($MaximumCapacity+0) < ($CapacityNow+0)) {
-    $MaximumCapacity = $row['MaximumCapacity'];
-}
-else{
-    $MaximumCapacity = $_POST['capmax'];
-}
+
 // if (isset($_FILES['image']['name'])) {
 //   $Picture = $_FILES['image']['name'];
 //   if($Picture != ''){
@@ -217,7 +210,7 @@ $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID "
 
 
 
-$sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook', MaximumCapacity=$MaximumCapacity,Price=$Price WHERE ID=$ID";
+$sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook',Price=$Price WHERE ID=$ID";
 mysqli_query($con, $sql);
 header("Location: index.php?yy=$zz");
 

@@ -94,12 +94,20 @@ if ($type == "NotLogin"){
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
+						$ID = $row['ID'];
             $Eventpic = $row['Picture'];
             $EventStatus = $row['EventStatus'];
             $Location = $row['Location'];
             $DateStart = DateThai($row['DateStart']);
-            $CapacityNow = $row['CapacityNow'];
-            $MaximumCapacity = $row['MaximumCapacity'];
+						$CapacityNow = getOneValue("SELECT sum(`TicketNow`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$ID'");
+
+						if ($CapacityNow == ""){
+							$CapacityNow = "-";
+						}
+						$MaximumCapacity = getOneValue("SELECT sum(`TicketCapi`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$ID'");
+						if ($MaximumCapacity == ""){
+							$MaximumCapacity = "-";
+						}
             $ShortURL = $row['ShortURL'];
             $ShortURL = $actual_link = "eventview/".$ShortURL;
             echo "
@@ -123,4 +131,3 @@ if ($type == "NotLogin"){
 </div>
 </body>
 </html>
-
