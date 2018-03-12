@@ -9,6 +9,12 @@ if ($type == "NotLogin") {
     echo "</script>";
     exit;
 }else if ($type == "Organizer" || $type == "Admin"){ //--------------------- Organizer ------------------------
+
+
+
+store_log($username,"กดแก้ไขกิจกรรม");
+systemLog('กดแก้ไขกิจกรรม');
+
 ?>
 
 
@@ -92,7 +98,7 @@ if ($type == "NotLogin") {
         if ($type == "Organizer"){
           echo "
         <a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
-      
+
         <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>จัดการสมาชิก</a>
 
         <a class='btnlogin'  href='event/survey.php?eid=$ID '>แบบสอบถาม</a>
@@ -172,6 +178,8 @@ if ($type == "NotLogin") {
             document.getElementById("tell").setAttribute('value',EventContactTell);
              document.getElementById("email").setAttribute('value',EventContactEmail);
               document.getElementById("facebook").setAttribute('value',EventFacebook);
+
+
 
       }
       function CheckCap(){
