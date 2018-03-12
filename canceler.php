@@ -12,11 +12,13 @@ if ($type == "NotLogin") {
     echo "</script>";
     exit;
 }else if(empty($token)){
+    systemLog("$username พยายามยกเลิกกิจกรรมโดยไม่ใช้ Token");
     echo "<script type='text/javascript'>";
     echo "window.location = 'ticket.php?st=2'; ";
     echo "</script>";
     exit;
 }else if ($usernameID != $ownerID){
+    systemLog("$username พยายามยกเลิกกิจกรรมของผู้อื่น token : $token");
     echo "<script type='text/javascript'>";
     echo "window.location = 'ticket.php?st=3'; ";
     echo "</script>";

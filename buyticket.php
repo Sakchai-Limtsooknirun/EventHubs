@@ -7,6 +7,7 @@ $usernameID   = ownerID($username);
 
 store_log($username,"ซื้อบัตร token: ".$token);
 if (empty($_GET)) {
+    systemLog("$username พยายามจะซ์้อบัตรโดยไม่ใส่ URL ให้ถูกต้อง");
     echo "<script type='text/javascript'>";
     echo "window.location = 'index.php'; ";
     echo "</script>";
@@ -21,6 +22,7 @@ if (empty($_GET)) {
         echo "window.location = 'payment.php?token=$token'; ";
         echo "</script>";
     } else {
+        systemLog("$username ไม่สามารถซื้อบัตรเลขที่ $ticketid ได้");
         echo "<script type='text/javascript'>";
         echo "window.location = 'index.php'; ";
         echo "</script>";}

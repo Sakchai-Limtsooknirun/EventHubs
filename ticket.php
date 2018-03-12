@@ -38,6 +38,7 @@ if ($type == "NotLogin") {
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $btnPayment = "";
+            $btnTicket = "";
             $CardID = $row['CardID'];
             $CardStatus = $row['CardStatus'];
             $CardToken = $row['CardToken'];
@@ -63,6 +64,7 @@ if ($type == "NotLogin") {
             else if ($CardStatus == 2){
                 $colorBar = "#effeff";
                 $statusText = "คอนเฟริมแล้ว";
+                $btnTicket = "<a class='btnlogin'href='showmeyourticket/$CardToken' style='background-color:#67c100;'>ปริ้นบัตรเข้างาน</a>";
             }
             else if ($CardStatus == 3){
                 $colorBar = "#ffe2e2";
@@ -89,7 +91,7 @@ if ($type == "NotLogin") {
         <br>
         <h6 style='color:var(--font-gray);opacity:0.4;'>Token : $CardToken</h6>
         <br>
-        $btnPayment <a class='btnlogin'href='ticket_show.php?token=$CardToken'>ดูรายละเอียด</a>
+        $btnPayment <a class='btnlogin'href='ticket_show.php?token=$CardToken'>ดูรายละเอียด</a> $btnTicket 
     </div>
 </div>
 
