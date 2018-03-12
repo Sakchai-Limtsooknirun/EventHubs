@@ -40,6 +40,7 @@ if ($type == "NotLogin") {
 		<?
         $status = null;
         $result = mysqli_query($con, "SELECT * FROM `Webboard` WHERE `eventID` = '$getEventID' AND `wbType` = '0' ORDER BY wbID DESC");
+        $cat = null ;
         while ($row = mysqli_fetch_assoc($result)) {
      		$status = 1;
      		$wbID = $row['wbID'];

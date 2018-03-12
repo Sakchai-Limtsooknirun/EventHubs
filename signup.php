@@ -95,7 +95,7 @@ if(isset($_GET['error'])){
         <div align = "center"class="form-group">
             <abbr style="color:red;">* </abbr><label></label>
             <label class="checkbox-inline">
-                <input  type="checkbox"required >ยอมรับ <a href="Policyinfo.php">ข้อตกลงการใช้บริการ </a>
+                <input  type="checkbox" required >ยอมรับ <a href="Policyinfo.php">ข้อตกลงการใช้บริการ </a>
             </label>
 
         </div>

@@ -25,6 +25,7 @@ if ($type == "NotLogin") {
         else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
         }
+        $status = 0;
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
