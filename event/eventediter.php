@@ -161,5 +161,8 @@ $sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCo
 mysqli_query($con, $sql);
 
 
+header("Location: index.php?yy=$zz");
+
+
 mysqli_close($con);
  ?>
