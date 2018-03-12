@@ -8,8 +8,8 @@ if($type!='Admin'){
 }elseif(isset($_SESSION['Username'])){
 $query = "select * from Log";
 $data = mysqli_query($con,$query);
+store_log($_SESSION['Username'],"เข้าใช้ส่วนบันทึกระบบ");
 
-//echo store_log($username,'test สำเร็จ');
 
 ?>
 <script>

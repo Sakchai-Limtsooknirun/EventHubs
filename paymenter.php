@@ -47,6 +47,8 @@ if ($type == "NotLogin") {
     }
     $sql    = "UPDATE `EventHandler` SET `CardStatus`='1',`PaymentTime`='$date',`PaymentMethod`='$method',`PaymentEvidence`='$evi' WHERE `CardToken` = '$token'";
     $result = mysqli_query($con, $sql);
+    store_log($username,"ทำการ Payment token = .'$token'");
+    echo "OK";
     if ($result) {
         echo "<script type='text/javascript'>";
         echo "window.location = 'ticket.php'; ";

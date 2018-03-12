@@ -15,7 +15,7 @@ if ($ck_email->num_rows == 1) {
   $meSQL .= "SET token = '{$token}' ";
   $meSQL .= "WHERE email = '{$uEmail}' ";
   $setToken = mysqli_query($con,$meSQL);
-  
+  store_log("-","ร้องขอการ resetPassword");
 			// $strSubject = "Your Account information username and password.";
 			$strHeader = "Content-type: text/html; charset=windows-874\n"; 
 			$strHeader .= "From: webmaster@EventHub.com\nReply-To: webmaster@EventHub.com";

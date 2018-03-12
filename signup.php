@@ -90,10 +90,19 @@ if(isset($_GET['error'])){
             <label class="radio-inline">
                 <input type="radio" name="sex" value="f">หญิง</label>
         </div>
-
         <hr>
+        
+        <div align = "center"class="form-group">
+            <abbr style="color:red;">* </abbr><label></label>
+            <label class="checkbox-inline">
+                <input  type="checkbox"required >ยอมรับ <a href="Policyinfo.php">ข้อตกลงการใช้บริการ </a>
+            </label>
+
+        </div>
+        
         <p>
-        <button type="submit" class="btnlogin">สมัครสมาชิก</button>
+            
+        <button type="submit" class="btnlogin">สมัครสมาชิก</button><hr>
         <br>
         </p>
       </form>

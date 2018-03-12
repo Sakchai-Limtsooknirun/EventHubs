@@ -5,7 +5,7 @@ $token   = $_GET["token"];
 $date    = date("Y-m-d H:i:s");
 $usernameID   = ownerID($username);
 
-store_log($username,"ซื้อบัตร ".$token);
+store_log($username,"ซื้อบัตร token: ".$token);
 if (empty($_GET)) {
     echo "<script type='text/javascript'>";
     echo "window.location = 'index.php'; ";

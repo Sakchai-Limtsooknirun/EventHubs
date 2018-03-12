@@ -35,7 +35,7 @@ include 'connection.php';
         $meSQL .= "WHERE ID ='{$_POST['adminEdit']}' ";
         
         if (isset($_FILES['AeditPic'])) {
-            echo "have image";
+            
             $errors    = array();
             $file_name = $_FILES['AeditPic']['name'];
             $file_size = $_FILES['AeditPic']['size'];
@@ -55,7 +55,7 @@ include 'connection.php';
         
             if (empty($errors) == true) {
                 move_uploaded_file($file_tmp, "img/user/" . $file_name);
-                echo "Success";
+                
             } else {
                 print_r($errors);
             }
@@ -63,6 +63,7 @@ include 'connection.php';
             echo "dfdf";
         }
         $userData = mysqli_query($con,$meSQL);
+        store_log($_SESSION['Username'],"แก้ไขข้อมูลส่วนตัว ในส่วนAdmin");
             if ($userData == TRUE) {
                 echo "<script type='text/javascript'>";
                 echo "window.location = 'ManageUser.php'; ";

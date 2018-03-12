@@ -17,7 +17,8 @@ if (empty($_POST)) {
 		$cat = "-";
 	}
     $sql    = "INSERT INTO `Webboard` VALUES ('','$eventid','$owner','$date','$type','$title','$cat','$desc')";
-    $result = mysqli_query($con, $sql);
+    $result = mysqli_query($con, $sql);         
+    
     $getEventShort = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$eventid'");
     $url = "webboard/".$getEventShort;
     if ($result) {

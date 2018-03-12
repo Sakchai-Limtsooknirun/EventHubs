@@ -5,8 +5,7 @@ if($type!='Admin'){
 }elseif(isset($_SESSION['Username'])){
 $query = "select * from user";
 $data = mysqli_query($con,$query);
-
-//echo store_log($username,'test สำเร็จ');
+echo store_log($username,' เข้าใช้ส่วนจัดการผู้ใช้');
 
 ?>
 <script>
