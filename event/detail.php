@@ -41,7 +41,13 @@ if ($getEventName == "") {
         echo "<body style='background-color:$getColor'>";
     }
     $getMapLat = getOneValue("SELECT `MapLat` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    if ($getMapLat == ""){
+        $getMapLat = "13.729411";
+    }
     $getMapLng = getOneValue("SELECT `MapLng` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
+    if ($getMapLng == ""){
+        $getMapLng = "100.580508";
+    }
     $getDetail = getOneValue("SELECT `Detail` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getEventOrName = getOneValue("SELECT `EventOrganizersName` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
     $getEventOrTel = getOneValue("SELECT `EventContactTell` AS 'get' FROM `EventOrganizers` WHERE `ShortURL` = '$eventid'");
