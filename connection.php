@@ -23,7 +23,7 @@ function getOneValue($string)
     global $con;
     $data = $con->query($string)->fetch_assoc();
     $get  = $data['get'];
-    // mysql_close();
+   
     return $get;
 }
 
