@@ -26,7 +26,7 @@ echo $EventName ."  EVENT NAME<br>";
 echo $url."   URL<br>";
 echo "http://localhost/projectMidterm/eventview/".$url;
 
-sendEmail($email,$name,$EventName,'ca',$url);
+sendEmail($email,$name,$EventName,'ca',$url,$Token);
 
 
 $sql = "DELETE FROM EventHandler WHERE OwnerID=$UserID AND TicketID=$TicketID AND CardToken='$Token'  ";

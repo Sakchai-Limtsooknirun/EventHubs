@@ -50,7 +50,10 @@ if ($type == "NotLogin") {
             $getShortURL = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
             $TicketName = $row['TicketName'];
             $TicketPrice = $row['TicketPrice'];
-            $MaximumCapacity = $row['MaximumCapacity'];
+            $MaximumCapacity = getOneValue("SELECT sum(`TicketCapi`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EventID'");
+            if ($MaximumCapacity == ""){
+              $MaximumCapacity = "-";
+            }
             $ShortURL = $actual_link = "eventview/".$getShortURL;
             if ($CardStatus == 0){
                 $colorBar = "#fff6ea";
@@ -121,8 +124,3 @@ if ($type == "NotLogin") {
     <title>Eventhubs | จัดการกิจกรรม</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-
-
-
-

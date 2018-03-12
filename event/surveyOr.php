@@ -26,7 +26,7 @@ if ($type == "NotLogin") {
             $getName = getOneValue("SELECT `Firstname` AS 'get' FROM `user` WHERE `ID` = '$ownerID'");
             $actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/survey/".$getShortUrl."/";
 
-            sendEmail($getEmail,$getName,$getEventName,'surveyOn',$actual_link);
+            sendEmail($getEmail,$getName,$getEventName,'surveyOn',$actual_link,'');
 
           }
         }

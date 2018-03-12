@@ -23,7 +23,7 @@ function getOneValue($string)
     global $con;
     $data = $con->query($string)->fetch_assoc();
     $get  = $data['get'];
-   
+
     return $get;
 }
 
@@ -99,7 +99,9 @@ else{
 
 
 
-function sendEmail($email,$name,$eventName,$type,$url){
+function sendEmail($email,$name,$eventName,$type,$url,$token){
+
+
 
     $strMessage = "";
 		$strMessage .= "สวัสดีครับ คุณ ".$name."<br>";
@@ -122,6 +124,10 @@ function sendEmail($email,$name,$eventName,$type,$url){
   if($type == 'c'){
   $mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
   $strMessage .= " ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
+	$actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/showmeyourticket/".$token."/";
+	$strMessage .= "<a href='".$actual_link."'>ตั๋วเข้างาน</a><br>'";
+
+
   }else if($type == 'ca'){
     $mail->Subject = "EventHubs - ขออภัยในความไม่สดวก คุณ:".$name;
     $strMessage .= " ได้มีการขอเข้าร่วมกิจกรรม ".$eventName." แต่ทางเจ้าของกิจกรรม เกิดเหุตบกพร่องบางประการ จึงสามารถไห้บริการคุณได้ <br>ขออภัยมา ณ ที่นี้<br>";
@@ -138,12 +144,13 @@ function sendEmail($email,$name,$eventName,$type,$url){
 
 
 
+
   }
   if ($type == 'surveyOn'){
     $strMessage .= "<a href='".$url."'>คลิกที่นี่เพื่อเข้าร่วมทำแบบประเมิน</a><p>";
   }
   else{
-    $strMessage .= "<a href='http://localhost/projectMidterm/eventview/".$url."'>Click here</a>'";
+    $strMessage .= "<a href='http://localhost/projectMidterm/eventview/".$url."'>กิจกรรมที่คุณสมัคร</a>'";
   }
 
 	$strMessage .= "<br>=================================<br>";
@@ -229,6 +236,6 @@ function get_client_ip_server() {
         $ipaddress = $_SERVER['REMOTE_ADDR'];
     else
         $ipaddress = 'UNKNOWN';
- 
+
     return $ipaddress;
 }

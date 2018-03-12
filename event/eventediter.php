@@ -146,7 +146,7 @@ $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID "
        echo $url;
        echo "<br>        http://localhost/projectMidterm/eventview/".$url."         Url";
 
-       // sendEmail($Email,$Firstname,$EName,'e',$url);
+       // sendEmail($Email,$Firstname,$EName,'e',$url,'');
 
 
 
