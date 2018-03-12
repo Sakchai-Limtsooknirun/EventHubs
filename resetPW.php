@@ -2,8 +2,8 @@
 include 'header.php';
 
 if(isset($_GET['userid'])&&isset($_GET['token'])){
-    echo $idf=$_GET['userid'];
-    echo $token=$_GET['token'];
+        $idf=$_GET['userid'];
+        $token=$_GET['token'];
     if(isset($_POST['newPW']) && isset($_POST['tryPW'])){
         $sql = "SELECT * from user where ID = '{$_GET['userid']}'";
         $ck = mysqli_query($con,$sql);
