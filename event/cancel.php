@@ -42,5 +42,7 @@ if ($result) {
     echo "</script>";
 }
 
+header("Location: memberediter.php?yy=$zz&eid=$EventID");
+
 
  ?>

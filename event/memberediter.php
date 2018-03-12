@@ -33,8 +33,14 @@ if ($type == "NotLogin") {
           $row0 = mysqli_fetch_assoc($result0);
           $EventName  = $row0['EventName'];
           $Location = $row0['Location'];
-          $CapMax = $row0['MaximumCapacity'];
-          $CapNow = $row0['CapacityNow'];
+          $CapNow = getOneValue("SELECT sum(`TicketNow`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EventID'");
+          if ($CapNow == ""){
+            $CapNow = "-";
+          }
+          $CapMax = getOneValue("SELECT sum(`TicketCapi`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EventID'");
+          if ($CapMax == ""){
+            $CapMax = "-";
+          }
 
           $DateStart = DateThai($row0['DateStart']);
           $DateEnd = DateThai($row0['DateEnd']);

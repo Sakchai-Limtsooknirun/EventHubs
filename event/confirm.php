@@ -45,7 +45,7 @@ if ($result) {
     echo "window.location = 'index.php?st=1'; ";
     echo "</script>";
 }
-
+header("Location: memberediter.php?yy=$zz&eid=$EventID");
 
 
 
