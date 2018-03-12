@@ -2,6 +2,7 @@
 <?php
 include 'header.php';
 if ($type != 'Admin') {
+    systemLog("$username พยายามเข้าหน้าจัดการผู้จัดของ Admin");
     echo "<script type='text/javascript'>";
     echo "window.location = 'form_login.php?st=3'; ";
     echo "</script>";

@@ -145,7 +145,7 @@ if ($type == "NotLogin") {
 <? //------------------------------------------
 }
 else {
-
+    systemLog("$username พยายามเข้าสู่หน้าสร้างกิจกรรม โดยไม่ใช่ Organizer");
 ?>
 <body>
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -158,7 +158,6 @@ else {
 </body>
 		<?
 }
-
 ?>
 
 <head>

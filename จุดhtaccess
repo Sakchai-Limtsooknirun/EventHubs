@@ -4,3 +4,5 @@ RewriteRule ^webboard/(.*)/(.*) webboard_show.php?id=$2
 RewriteRule ^webboard/(.*) webboard.php?eventid=$1
 RewriteRule ^eventview/(.*) event/detail.php?id=$1
 RewriteRule ^survey/(.*)/(.*) survey/index.php?id=$1
+RewriteRule ^showmeyourticket/(.*) enter.php?id=$1
+RewriteRule ^s/(.*) enterOr.php?id=$1

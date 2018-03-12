@@ -13,6 +13,7 @@ if ($type == "NotLogin") {
     $receipt    = substr($token, 0, 8);
     $getOwner   = getOneValue("SELECT `OwnerID` AS 'get' FROM `EventHandler` WHERE `CardToken` = '$token'");
     if ($usernameID != $getOwner) {
+        systemLog("$username พยายามเข้าหน้าจ่ายเงินของผู้อื่น ($token)");
         echo "<script type='text/javascript'>";
         echo "window.location = 'ticket.php?st=1'; ";
         echo "</script>";

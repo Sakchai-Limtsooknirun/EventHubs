@@ -3,6 +3,7 @@
 $path    = basename(realpath(__DIR__ . '/..'));
 $eventid = $_GET["id"];
 if ($eventid == "") {
+    systemLog("มีคนพยายามเข้าสู่หน้ากิจกรรม โดยไม่ใส่ URL ที่ถูกต้อง");
     echo "<script type='text/javascript'>";
     echo "window.location = 'notfound'; ";
     echo "</script>";

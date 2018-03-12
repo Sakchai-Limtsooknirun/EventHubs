@@ -2,6 +2,7 @@
 include 'header.php';
 if($type!='Admin'){
   echo "Need Permission to access ";
+  systemLog("$username พยายามเข้าหน้าแก้ไขสมาชิกของ Admin");
 }elseif(isset($_SESSION['Username'])){
 $query = "select * from user";
 $data = mysqli_query($con,$query);

@@ -38,6 +38,7 @@ if ($type == "NotLogin") {
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $btnPayment = "";
+            $btnTicket = "";
             $CardID = $row['CardID'];
             $CardStatus = $row['CardStatus'];
             $CardToken = $row['CardToken'];
@@ -50,7 +51,10 @@ if ($type == "NotLogin") {
             $getShortURL = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
             $TicketName = $row['TicketName'];
             $TicketPrice = $row['TicketPrice'];
-            $MaximumCapacity = $row['MaximumCapacity'];
+            $MaximumCapacity = getOneValue("SELECT sum(`TicketCapi`) AS 'get' FROM `EventTicket` WHERE `EventID` = '$EventID'");
+            if ($MaximumCapacity == ""){
+              $MaximumCapacity = "-";
+            }
             $ShortURL = $actual_link = "eventview/".$getShortURL;
             if ($CardStatus == 0){
                 $colorBar = "#fff6ea";
@@ -63,6 +67,7 @@ if ($type == "NotLogin") {
             else if ($CardStatus == 2){
                 $colorBar = "#effeff";
                 $statusText = "คอนเฟริมแล้ว";
+                $btnTicket = "<a class='btnlogin'href='showmeyourticket/$CardToken' style='background-color:#67c100;'>ปริ้นบัตรเข้างาน</a>";
             }
             else if ($CardStatus == 3){
                 $colorBar = "#ffe2e2";
@@ -89,7 +94,7 @@ if ($type == "NotLogin") {
         <br>
         <h6 style='color:var(--font-gray);opacity:0.4;'>Token : $CardToken</h6>
         <br>
-        $btnPayment <a class='btnlogin'href='ticket_show.php?token=$CardToken'>ดูรายละเอียด</a>
+        $btnPayment <a class='btnlogin'href='ticket_show.php?token=$CardToken'>ดูรายละเอียด</a> $btnTicket 
     </div>
 </div>
 
@@ -121,8 +126,3 @@ if ($type == "NotLogin") {
     <title>Eventhubs | จัดการกิจกรรม</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-
-
-
-
