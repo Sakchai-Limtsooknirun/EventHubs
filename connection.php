@@ -118,14 +118,17 @@ function sendEmail($email,$name,$eventName,$type,$url){
   $mail->Password = "jay0860789213";
   $mail->From = "admin@EventHubs.com";
 
-  $mail->FromName = "EventHub";
+  $mail->FromName = "EventHubs";
   if($type == 'c'){
   $mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
   $strMessage .= " ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
   }else if($type == 'ca'){
     $mail->Subject = "EventHubs - ขออภัยในความไม่สดวก คุณ:".$name;
     $strMessage .= " ได้มีการขอเข้าร่วมกิจกรรม ".$eventName." แต่ทางเจ้าของกิจกรรม เกิดเหุตบกพร่องบางประการ จึงสามารถไห้บริการคุณได้ <br>ขออภัยมา ณ ที่นี้<br>";
-    }
+  }else if($type == 'surveyOn'){
+    $mail->Subject = "EventHubs - ขอบคุณที่เข้าร่วมกิจกรรม ".$eventName." รบกวนทำแบบสอบถาม";
+    $strMessage .= " ขอขอบคุณที่เข้าร่วมกิจกรรม ".$eventName." ทางเราขอรบกวนให้ทำแบบสอบถามเพื่อนำไปปรับปรุงในครั้งต่อไป <br>";
+  }
 
 
 
@@ -136,7 +139,13 @@ function sendEmail($email,$name,$eventName,$type,$url){
 
 
   }
-	$strMessage .= "<a href='http://localhost/projectMidterm/eventview/".$url."'>Click here</a>'";
+  if ($type == 'surveyOn'){
+    $strMessage .= "<a href='".$url."'>คลิกที่นี่เพื่อเข้าร่วมทำแบบประเมิน</a><p>";
+  }
+  else{
+    $strMessage .= "<a href='http://localhost/projectMidterm/eventview/".$url."'>Click here</a>'";
+  }
+
 	$strMessage .= "<br>=================================<br>";
 	$strMessage .= "EventHubs.com<br><br>";
 	$strMessage .= 'Admin Anaphat';

@@ -30,9 +30,17 @@ sendEmail($email,$name,$EventName,'ca',$url);
 
 
 $sql = "DELETE FROM EventHandler WHERE OwnerID=$UserID AND TicketID=$TicketID AND CardToken='$Token'  ";
-mysqli_query($con, $sql);
-header("Location: memberediter.php?yy=$zz&eid=$EventID");
 
+$result = mysqli_query($con, $sql);
+if ($result) {
+    echo "<script type='text/javascript'>";
+    echo "window.location = 'memberediter.php?yy=$zz&eid=$EventID'; ";
+    echo "</script>";
+} else {
+    echo "<script type='text/javascript'>";
+    echo "window.location = 'index.php?st=1'; ";
+    echo "</script>";
+}
 
 
  ?>

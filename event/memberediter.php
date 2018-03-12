@@ -78,7 +78,7 @@ if ($type == "NotLogin") {
 
 
 
-               $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $EventID ");
+               $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $EventID");
                $no = 1 ;
                 while ($row = mysqli_fetch_assoc($result)) {
                   $disabled;
@@ -89,7 +89,7 @@ if ($type == "NotLogin") {
 
 
 
-                  $result2 = mysqli_query($con, "SELECT * FROM `EventHandler`  WHERE TicketID = $TicketID ");
+                  $result2 = mysqli_query($con, "SELECT * FROM `EventHandler` WHERE TicketID = $TicketID" );
                   while ($row2 = mysqli_fetch_assoc($result2)) {
 
                     $OwnerID = $row2['OwnerID'];
