@@ -31,7 +31,7 @@ if ($type == "NotLogin") {
         else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
         }
-        $status = 0;
+        $status = null;
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
@@ -105,6 +105,14 @@ if ($type == "NotLogin") {
           ";
         }elseif ($type == "Admin") {
           echo "<a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>";
+          if($EventStatus==0){
+            echo "<a type='button' href='event/HSEvent.php?eid=$ID&estatus=$EventStatus' class='btnlogin'   >ปิดการแสดง</a>";
+          }elseif($EventStatus==1){
+            echo "<a type='button' href='event/HSEvent.php?eid=$ID&estatus=$EventStatus' class='btnlogin'   >เปิดการแสดง</a>";
+          }
+
+
+          
         }
         echo "
             </div>
