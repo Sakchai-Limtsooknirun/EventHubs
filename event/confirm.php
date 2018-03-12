@@ -28,7 +28,7 @@ echo $EventName ."  EVENT NAME<br>";
 echo $url."   URL<br>";
 echo "http://localhost/projectMidterm/eventview/".$url;
 echo "<br>";
-$actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/showmeyourticket/".$Token."/";
+$actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/showmeyourticket/".$Token."";
 echo $actual_link."<br><br>" ;
 
 sendEmail($email,$name,$EventName,'c',$url,$Token);

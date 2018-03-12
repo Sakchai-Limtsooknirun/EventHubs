@@ -116,9 +116,9 @@ function sendEmail($email,$name,$eventName,$type,$url,$token){
   $mail->SMTPSecure = "ssl";
   $mail->Host = "smtp.gmail.com";
   $mail->Port = 465;
-  $mail->Username = "jaytaku23513@gmail.com";
-  $mail->Password = "jay0860789213";
-  $mail->From = "admin@EventHubs.com";
+  $mail->Username = "eventhubth@gmail.com";
+  $mail->Password = "csku1234";
+  $mail->From = "eventhubth@gmail.com";
 
   $mail->FromName = "EventHubs";
   if($type == 'c'){
@@ -211,7 +211,7 @@ function systemLog($text){
   } else {
       $objFopen = fopen($filename, 'w');
   }
-  fwrite($objFopen, " > ".$date." | IP : ".get_client_ip_server()." | ".$text."\r\n");
+  fwrite($objFopen, " > ".$date." | IP : ".get_client_ip()." | ".$text."\r\n");
   if($objFopen){
     return 1;
   }
@@ -220,22 +220,4 @@ function systemLog($text){
   }
   fclose($objFopen);
 }
-function get_client_ip_server() {
-    $ipaddress = '';
-    if ($_SERVER['HTTP_CLIENT_IP'])
-        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_X_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if($_SERVER['HTTP_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if($_SERVER['REMOTE_ADDR'])
-        $ipaddress = $_SERVER['REMOTE_ADDR'];
-    else
-        $ipaddress = 'UNKNOWN';
 
-    return $ipaddress;
-}

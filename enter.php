@@ -11,7 +11,7 @@ $getEventPic = getOneValue("SELECT `Picture` AS 'get' FROM `EventOrganizers` WHE
 $getEventLocation = getOneValue("SELECT `Location` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$getEventID'");
 $getEventDate = DateThai(getOneValue("SELECT `DateStart` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$getEventID'"));
 $getTicketStatus = getOneValue("SELECT `CardStatus` AS 'get' FROM `EventHandler` WHERE `CardToken` = '$token'");
-$actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/s/".$token."/";
+$actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/s/".$token."";
 $showSccusee = "";
 
 if (empty($token)){

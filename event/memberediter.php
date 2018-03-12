@@ -33,8 +33,6 @@ if ($type == "NotLogin") {
           $row0 = mysqli_fetch_assoc($result0);
           $EventName  = $row0['EventName'];
           $Location = $row0['Location'];
-          $CapMax = $row0['MaximumCapacity'];
-          $CapNow = $row0['CapacityNow'];
 
           $DateStart = DateThai($row0['DateStart']);
           $DateEnd = DateThai($row0['DateEnd']);
@@ -47,7 +45,6 @@ if ($type == "NotLogin") {
                 <p>ชื่อกิจกรรม : $EventName</p>
                 <p>ระยะเวลากิจกรรม: $DateStart - $DateEnd </p>
                 <p>สถานที่ : $Location</p>
-                <p>สมาชิก: $CapNow / $CapMax</p>
                 <br>
                 </div>
             </div>
