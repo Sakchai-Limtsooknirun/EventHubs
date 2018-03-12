@@ -1,42 +1,62 @@
-<html>
-<head>
-<script language="javascript" type="text/javascript">
 
-function incrementCount() {
-	document.frm.count.value = parseInt(document.frm.count.value) + 1;
-	addTextBox();
-}
+/////////=======================================
+<?php
+include '../header.php';
 
-function decCount() {
-	document.frm.count.value = parseInt(document.frm.count.value) - 1;
-	removeTextBox();
-}
 
-function addTextBox() {
-	var form = document.frm;
-	form.appendChild(document.createElement('div')).innerHTML = "<table width=\\"40&#37;\\">"
-		+ "<tr><td>Name</td><td><input type=\\"text\\" name=\\"txt\\"></td></tr>"
-		+ "</table>";
-}
-
-function removeTextBox() {
-	var form = document.frm;
-	if (form.lastChild.nodeName.toLowerCase() == 'div')
-		form.removeChild(form.lastChild);
-}
-
-</script>
+?>
 
 <body>
-<table width="40%" border="1">
-<form name="frm">
-<tr>
-<td>Name: </td>
-<td><input type="text" name="count" value="0" readonly ></td>
-<td><INPUT type="button" value="ADD" name="add" onClick="incrementCount()"></td>
-<td><INPUT type="button" value="Remove" name="remove" onClick="decCount()"></td>
-</tr>
-</table>
+
+
+<script src="//code.jquery.com/jquery.js"></script>
+
+<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+</div>
+
+
+
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard " >
+  <div class='col-sm-3'></div>
+  <div class='col-sm-6'>
+<form action="test.php" method="post">
+<div id="item">
+  <input type="button" value="เพิ่มประเภทบัตร" id="add" class="btn btn-default" >
+
+  </div>
+  <input type="submit" value="ยืนยัน" class="btn btn-default">
+
+
+
 </form>
+</div>
+</div>
 </body>
-</html>
+
+
+<script>
+
+
+  $("#add").click(function(){
+    event.preventDefault()
+    console.log("asdlhasjdh");
+    // var boom = document.getElementById('iten')
+
+    
+    $('#item').append('<div>ประเภทบัตร<input class="form-control"  type="text" name="typecard[]" required>ราคาบัตร<input class="form-control" type="number" name="cardprice[]" required>ความจุ<input class="form-control" type="number" name="quan[]" required>'+'<br><input type="button" class="btn btn-default" value="ลบบัตรนี้" onclick="$(this).parent(\'div\').remove();" /></div><br>');
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

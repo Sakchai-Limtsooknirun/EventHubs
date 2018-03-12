@@ -147,12 +147,12 @@ class myPDF extends FPDF{
 
 
 }
-$pdf = new  myPDF();
 
+$pdf = new  myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('L','A4',0);
-
 $pdf->TableDetail($EventID);
+ob_end_clean();
 $pdf->Output();
 
 
