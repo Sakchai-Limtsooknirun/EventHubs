@@ -23,6 +23,7 @@ if (empty($_SESSION["Username"])) {
 		<li><a href='event'>จัดการกิจกรรม</a></li>
 		<li><a href='ManageUser.php'>การจัดการสมาชิก</a></li>
 		<li><a href='showEvent.php'>รายการกิจกรรม</a></li>
+		<li><a href='organizerAdmin.php'>จัดการรายชื่อผู้จัด</a></li>
 		<li><a href='showLog.php'>บันทึกระบบ</a></li>
 		";
 	}

@@ -193,3 +193,42 @@ function store_log($userN,$acti){
 	        return 'File already generated! We can use this cached file to speed up site on common codes!';
 	    }
 	  }
+
+function systemLog($text){
+  $ipaddress = $_SERVER['REMOTE_ADDR'];
+  $date = date("Y-m-d H:i:s");
+  $filename = date("Ymd");
+  $filename = "logs/".$filename."_logs.txt";
+  if (file_exists($filename)) {
+      $objFopen = fopen($filename, 'a');
+  } else {
+      $objFopen = fopen($filename, 'w');
+  }
+  fwrite($objFopen, " > ".$date." | IP : ".get_client_ip_server()." | ".$text."\r\n");
+  if($objFopen){
+    return 1;
+  }
+  else{
+    return 0;
+  }
+  fclose($objFopen);
+}
+function get_client_ip_server() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+ 
+    return $ipaddress;
+}

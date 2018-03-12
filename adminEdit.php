@@ -15,6 +15,8 @@ if ($_SESSION["Username"] == $username){
 <head>
 <meta charset="UTF-8">
 <title>แก้ไขข้อมูล <?php echo $meResult['Username']; ?></title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 
