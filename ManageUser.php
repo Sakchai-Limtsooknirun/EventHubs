@@ -49,22 +49,22 @@ $(document).ready(function() {
 		<tr>
             
 			<td class = "Wpic" data-table-header="Picture"><img class='img-thumbnail' width=50% height=50% src='img/user/<?php echo $row['Picture']?>' alt='' width='100%'></td>
-			<td  data-table-header="ID"><?php echo $row['ID'] ?></td>
+			<td data-table-header="ID"><?php echo $row['ID'] ?></td>
 			<td data-table-header="ระดับสมาชิก"><?php echo checkType($row['Username'])?></td>
 			<td data-table-header="Username"><?php echo $row['Username']?> </td>
-            <td data-table-header="Firstname"><?php echo $row['Firstname']?></td>
-            <td data-table-header="Lastname"><?php echo $row['Lastname']?></td>
-            <td data-table-header="Gender"><?php if($row["sex"]=="m"){
+      <td data-table-header="Firstname"><?php echo $row['Firstname']?></td>
+      <td data-table-header="Lastname"><?php echo $row['Lastname']?></td>
+      <td data-table-header="Gender"><?php if($row["sex"]=="m"){
                                     echo "Male" ;
                                             }else{
                                             echo "Female";
   } ?></td>
-        <td data-table-header="วันที่สมัครสมาชิก"><?php echo DateThai($row['ts']) ?></td>
-            <?php if($row["Username"] == $_SESSION["Username"]){ ?>
-                <td data-table-header="แก้ไข">--</td>
-                <td data-table-header="ลบ">--</td>
-            <?php } else{ ?> <td data-table-header="แก้ไข"><a  href='adminEdit.php?IDedit=<?php echo $sid ?>'>Edit</a></td>
-            <td data-table-header="ลบ"><a  href="UserDelete.php?IDedit=<?php echo $sid ?>" onclick='return confirm("Do you want to delete this record? !!!")'>Del</a></td>  <?php } ?>
+              <td data-table-header="วันที่สมัครสมาชิก"><?php echo DateThai($row['ts']) ?></td>
+                     <?php if($row["Username"] == $_SESSION["Username"]){ ?>
+              <td data-table-header="แก้ไข">--</td>
+              <td data-table-header="ลบ">--</td>
+                    <?php } else{ ?> <td data-table-header="แก้ไข"><a  href='adminEdit.php?IDedit=<?php echo $sid ?>'>Edit</a></td>
+              <td data-table-header="ลบ"><a  href="UserDelete.php?IDedit=<?php echo $sid ?>" onclick='return confirm("Do you want to delete this User? !!!")'>Del</a></td>  <?php } ?>
             
             
 		</tr>

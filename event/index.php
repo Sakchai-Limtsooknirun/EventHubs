@@ -12,8 +12,7 @@ if ($type == "NotLogin") {
 
 
 
-store_log($username,"กดแก้ไขกิจกรรม");
-systemLog('กดแก้ไขกิจกรรม');
+
 
 ?>
 
