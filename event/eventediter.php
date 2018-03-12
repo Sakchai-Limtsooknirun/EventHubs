@@ -1,23 +1,5 @@
 <?php
-
-var_dump($_POST['TT']);
-// var_dump ($_POST['PP']);
-
-
-
-
-
-
 $url="";
-
-
-
-
-
-
-
-
-
 include '../connection.php';
 $result;
 $row;
@@ -35,6 +17,23 @@ if (isset($_POST['id'])) {
 
     $row = mysqli_fetch_assoc($result);
     $url = $row['ShortURL'];
+
+    if (isset($_POST['ticketType']) ){
+      var_dump ($_POST['ticketType']);
+      echo "<br>TICKET<br>";
+
+      for($i= 0 ; $i < count($_POST['ticketType']);$i++){
+        $ticketName = $_POST['ticketType'][$i];
+        $ticketPrice = $_POST['ticketPrice'][$i];
+        $quanMax = $_POST['quanMax'][$i];
+        $sql2 = "INSERT INTO `EventTicket` VALUES ('','0','$ID','$ticketName','$ticketPrice','0','$quanMax')";
+        $result2 = mysqli_query($con, $sql2);
+            echo "UPDATE COMPLETE<br>";
+
+      }
+
+    }
+
 
     echo $row['EventName'];
 }else{
@@ -76,7 +75,6 @@ if (isset($_FILES['picture1'])) {
         }
 
 
-////////////////////////////////
 
 if (isset($_POST['name'])) {
     $EventName = $_POST['name'];
@@ -97,28 +95,12 @@ $TimeEnd = $_POST['timee'];
 $Type = $row['Type'];
 $DateEnd = $DateEnd." ".$TimeEnd;
 
-// if (isset($_FILES['image']['name'])) {
-//   $Picture = $_FILES['image']['name'];
-//   if($Picture != ''){
-//   $sql = "UPDATE EventOrganizers SET Picture='$Picture' WHERE ID=$ID";
-//   mysqli_query($con, $sql);
-// }
-
-
-
-
-
-
-
-
-
 $ShortURL = $_POST['url'];
 $Precondition = $_POST['precondition'];
 if (isset($_POST['price'])) {
     $Price = $_POST['price'];
 }
 else{
-
   $Price = 0;
 }
 $Color = $_POST['color'];
@@ -126,38 +108,9 @@ $EventOrgName = $_POST['ownname'];
 $EventContactTell = $_POST['tell'];
 $EventContactEmail = $_POST['email'];
 $EventFacebook = $_POST['facebook'];
-
-// echo "<br>$EventName";
-// echo "<br>$EventStatus";
-// echo "<br>$ID";
-// echo "<br>$Location";
-echo "<br>$DateStart";
-echo "<br>$DateEnd";
-// echo "<br>$CapacityNow"."    THIS IS CAP NOW";
-// echo "<br>$MaximumCapacity" . "THIS IS CAP MAX";
-// echo "<br>$Picture";
-// echo "<br>$ShortURL";
-// echo "<br>$Precondition";
-// echo "<br>$Price"." THIS PRICE";
-// echo "<br>$Color";
-// echo "<br>$EventOrgName";
-// echo "<br>$EventContactTell";
-// echo "<br>$EventContactEmail";
-// echo "<br>$EventFacebook ";
-// echo "<br>$Picture"."  IMAGEEEE";
-
-
-
-
-
-
-
-
 $result0 = mysqli_query($con, "SELECT * FROM `EventOrganizers`  WHERE ID = $ID ");
 $row0 = mysqli_fetch_assoc($result0);
 $EName  = $row0['EventName'];
-
-
 
 $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID ");
 
@@ -166,8 +119,6 @@ $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID "
    $TicketID=$row['TicketID'];
    $TicketName=$row['TicketName'];
    $TicketPrice=$row['TicketPrice'];
-
-
 
 
    $result2 = mysqli_query($con, "SELECT * FROM `EventHandler`  WHERE TicketID = $TicketID ");
@@ -195,7 +146,7 @@ $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID "
        echo $url;
        echo "<br>        http://localhost/projectMidterm/eventview/".$url."         Url";
 
-       sendEmail($Email,$Firstname,$EName,'e',$url);
+       // sendEmail($Email,$Firstname,$EName,'e',$url);
 
 
 
@@ -206,15 +157,8 @@ $result = mysqli_query($con, "SELECT * FROM `EventTicket`  WHERE EventID = $ID "
  }
 
 
-
-
-
-
 $sql = "UPDATE EventOrganizers SET EventName='$EventName',Detail='$Detail',PreCondition = '$Precondition',DateStart='$DateStart',DateEnd='$DateEnd',location='$Location',ColorTone='$Color',EventOrganizersName='$EventOrgName',EventContactTell='$EventContactTell',EventContactEmail='$EventContactEmail',EventFacebook='$EventFacebook',Price=$Price WHERE ID=$ID";
 mysqli_query($con, $sql);
-header("Location: index.php?yy=$zz");
-
-
 
 
 mysqli_close($con);

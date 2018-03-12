@@ -9,6 +9,11 @@ if ($type == "NotLogin") {
     echo "</script>";
     exit;
 }else if ($type == "Organizer" || $type == "Admin"){ //--------------------- Organizer ------------------------
+
+
+
+
+
 ?>
 
 
@@ -19,13 +24,14 @@ if ($type == "NotLogin") {
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
   $phpArray = array();
+
         if ($type == "Admin"){
           $result = mysqli_query($con, "SELECT * FROM `EventOrganizers`");
         }
         else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
         }
-        $status = 0;
+        $status = null;
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
@@ -62,13 +68,15 @@ if ($type == "NotLogin") {
             $EventContactEmail = $row['EventContactEmail'];
             $EventFacebook = $row['EventFacebook'];
             $Type= $row['Type'];
-            // $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
-            // $i=0;
-            // while ($row2 = mysqli_fetch_assoc($resultTicket)) {
-            //     $phpArray[$EventName.$i]=$row2['TicketName'];
-            //     $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
-            //     $i+=1;
-            // }
+            $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
+            $i=0;
+            while ($row2 = mysqli_fetch_assoc($resultTicket)) {
+                $phpArray[$EventName.$i]=$row2['TicketName'];
+                $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
+                $phpArray[$EventName."C".$i]=$row2['TicketCapi'];
+
+                $i+=1;
+            }
             $SetModals = sprintf('onclick="SetModal(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%.187s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')"',$type,$EventName,$EventStatus,$ID,$Location,$DateB,$DateEnd,$CapacityNow,$MaximumCapacity,$Picture,$ShortURL,$Detail,$Precondition,$Price,$Color,$EventOrgName,$EventContactTell,$EventContactEmail,$EventFacebook);
             $checkcap = sprintf('onclick="CheckCap()"');
             echo "
@@ -89,7 +97,7 @@ if ($type == "NotLogin") {
         if ($type == "Organizer"){
           echo "
         <a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>
-          <a class='btnlogin'  href='event/ticketediter.php?eid=$ID '>บัตร</a>
+
         <a class='btnlogin'  href='event/memberediter.php?eid=$ID '>จัดการสมาชิก</a>
 
         <a class='btnlogin'  href='event/survey.php?eid=$ID '>แบบสอบถาม</a>
@@ -97,6 +105,14 @@ if ($type == "NotLogin") {
           ";
         }elseif ($type == "Admin") {
           echo "<a type='button' class='btnlogin' data-toggle='modal' data-target='#myModal' ".$SetModals."   >จัดการ</a>";
+          if($EventStatus==0){
+            echo "<a type='button' href='event/HSEvent.php?eid=$ID&estatus=$EventStatus' class='btnlogin'   >ปิดการแสดง</a>";
+          }elseif($EventStatus==1){
+            echo "<a type='button' href='event/HSEvent.php?eid=$ID&estatus=$EventStatus' class='btnlogin'   >เปิดการแสดง</a>";
+          }
+
+
+          
         }
         echo "
             </div>
@@ -140,7 +156,7 @@ if ($type == "NotLogin") {
           i=0
           while(!isEmpty(jArray[EventName+i])){
             // alert(jArray[EventName+i]+"    :     "+jArray[EventName+"P"+i]);
-            add_fields(jArray[EventName+i],jArray[EventName+"P"+i],EventName,i);
+            add_fields(jArray[EventName+i],jArray[EventName+"P"+i],EventName,i,jArray[EventName+"C"+i]);
             index = i;
             i+=1;
           }
@@ -169,6 +185,8 @@ if ($type == "NotLogin") {
             document.getElementById("tell").setAttribute('value',EventContactTell);
              document.getElementById("email").setAttribute('value',EventContactEmail);
               document.getElementById("facebook").setAttribute('value',EventFacebook);
+
+
 
       }
       function CheckCap(){
@@ -207,14 +225,21 @@ if ($type == "NotLogin") {
         console.log(!str || 0 === str.length);
     return (!str || 0 === str.length);
 }
-// function add_fields(Type,Price,EventName,i) {
-//     var objTo = document.getElementById('Tickets')
-//     var divtest = document.createElement("div");
-//     console.log(Type+"   TTTTT");
-//     console.log(Price+"       PPPPPP");
-//     divtest.innerHTML = '<div  >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="TT[]" value="'+Type+'"'+' /> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" namae="TT[]" value="'+Price+'"'+' /></div><hr>';
-//     objTo.appendChild(divtest)
-// }
+function add_fields(Type,Price,EventName,i,Cap) {
+    var objTo = document.getElementById('Tickets')
+    var divtest = document.createElement("div");
+
+    if(Type == ""){
+
+
+    divtest.innerHTML = '<div >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="ticketType[]" value="'+Type+'" required/> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" name="ticketPrice[]" value="'+Price+'" required/>จำนวน<input  class="form-control" type="text" style="width:200px;" name="quanMax[]" value="'+Cap+'" required/></div><hr>';
+
+    }else{
+
+    divtest.innerHTML = '<div >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="ticketType[]" value="'+Type+'" disabled/> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" name="ticketPrice[]" value="'+Price+'" disabled/>จำนวน<input  class="form-control" type="text" style="width:200px;" name="quanMax[]" value="'+Cap+'" disabled/></div><hr>';
+    }
+    objTo.appendChild(divtest)
+}
 </script>
     </script>
 
@@ -256,7 +281,7 @@ if ($type == "NotLogin") {
 
 
             <div id="ticket">
-            <br><button type="button" class="btn btn-default" onclick="add_fields();" >Add Tickets</button><br>
+            <br><button type="button" class="btn btn-default" onclick="add_fields('','','','',0);" >Add Tickets</button><br>
             <div  id="Tickets">
 
 

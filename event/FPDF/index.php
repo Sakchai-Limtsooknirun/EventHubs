@@ -18,13 +18,15 @@ if ($type == "NotLogin") {
     </div>
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 contain webboard">
         <?
-  $phpArray = array();
+
         if ($type == "Admin"){
           $result = mysqli_query($con, "SELECT * FROM `EventOrganizers`");
         }
         else{
         $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
         }
+        $result = mysqli_query($con, "SELECT * FROM `EventOrganizers` WHERE `EventOwnerID` = '$usernameID'");
+        $phpArray = array();
         while ($row = mysqli_fetch_assoc($result)) {
             $status = 1;
             $EventName = $row['EventName'];
@@ -34,6 +36,7 @@ if ($type == "NotLogin") {
             }else{
               $EventStatusText = "ไม่แสดงในหน้าแรก";
             }
+
             $ID = $row['ID'];
             $Location = $row['Location'];
             $DateB = $row['DateStart'];
@@ -61,11 +64,18 @@ if ($type == "NotLogin") {
             $EventContactEmail = $row['EventContactEmail'];
             $EventFacebook = $row['EventFacebook'];
             $Type= $row['Type'];
+
             $resultTicket = mysqli_query($con, "SELECT * FROM `EventTicket` WHERE `EventID` = '$ID'");
             $i=0;
+            <script>
+
+            </script>
             while ($row2 = mysqli_fetch_assoc($resultTicket)) {
+
                 $phpArray[$EventName.$i]=$row2['TicketName'];
                 $phpArray[$EventName."P".$i]=$row2['TicketPrice'];
+
+
                 $i+=1;
             }
             $SetModals = sprintf('onclick="SetModal(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%.187s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')"',$type,$EventName,$EventStatus,$ID,$Location,$DateB,$DateEnd,$CapacityNow,$MaximumCapacity,$Picture,$ShortURL,$Detail,$Precondition,$Price,$Color,$EventOrgName,$EventContactTell,$EventContactEmail,$EventFacebook,$phpArray);
@@ -133,9 +143,11 @@ if ($type == "NotLogin") {
       return type;
     }
       function SetModal(Type,EventName,EventStatus,ID,location,DateStart,DateEnd,CapacityNow,MaximumCapacity,Picture,ShortURL,Detail,Precondition,Price,Color,EventOrgName,EventContactTell,EventContactEmail,EventFacebook,phpArray){
+
         var jArray= <?php echo json_encode($phpArray ); ?>;
           i=0
           while(!isEmpty(jArray[EventName+i])){
+            
             // alert(jArray[EventName+i]+"    :     "+jArray[EventName+"P"+i]);
             add_fields(jArray[EventName+i],jArray[EventName+"P"+i],EventName,i);
             index = i;
@@ -211,7 +223,7 @@ function add_fields(Type,Price,EventName,i) {
     console.log(Type+"   TTTTT");
     console.log(Price+"       PPPPPP");
     divtest.innerHTML = '<div  >ประเภทของบัตร <input class="form-control  " type="text" style="width:200px;" name="TT[]" value="'+Type+'"'+' /> ราคาของบัตร <input  class="form-control" type="text" style="width:200px;" namae="TT[]" value="'+Price+'"'+' /></div><hr>';
-    objTo.appendChild(divtest)
+    objTo.appendChild(divtest);
 }
 </script>
     </script>
