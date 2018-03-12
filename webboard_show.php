@@ -48,7 +48,6 @@ if ($type == "NotLogin") {
 		<div class="wb">
 		<?
         $result = mysqli_query($con, "SELECT * FROM `Webboard` WHERE `wbType` = '1' AND `wbTitle` = '$wbID'");
-        $status = 0;
         while ($row = mysqli_fetch_assoc($result)) {
      		$status = 1;
      		$wbID = $row['wbID'];
