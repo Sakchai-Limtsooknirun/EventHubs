@@ -1,5 +1,7 @@
 
 <?
+error_reporting(0);
+ini_set('display_errors', 0);
 $path = basename(realpath(__DIR__ . '/..'));
 echo "<base href='/$path/'>";
 include '../header.php';
@@ -46,9 +48,11 @@ if ($type == "NotLogin") {
               <th>คำแนะนำอื่นๆ</th>
          </tr>
                 ";
+
         $count = 1;
         $result = mysqli_query($con, "SELECT * FROM `EventSurvey` WHERE `EventID` = '$EventID' ORDER BY `SurveyID` DESC");
         $avgScoreAllAum = 0;
+        $status = null;
         while ($row = mysqli_fetch_assoc($result)) {
             $status      = 1;
             $SurveyID    = $row['SurveyID'];
