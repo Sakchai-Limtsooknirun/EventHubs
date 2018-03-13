@@ -32,7 +32,7 @@ class myPDF extends FPDF{
       $this->SetFont('angsa','',18);
 
 
-             
+
       $this->Cell(12,10,iconv( 'UTF-8','TIS-620','ID'),1,0,'c');
       $this->Cell(60,10,iconv( 'UTF-8','TIS-620','EventName'),1,0,'c');
       $this->Cell(40,10,iconv( 'UTF-8','TIS-620','type'),1,0,'c');
@@ -59,7 +59,7 @@ class myPDF extends FPDF{
       $EventNameSun = $row0['EventName'];
     //   echo "$EventNameSun";
     //   echo "<br>";
-      
+
       $typeE = $row0['Type'];
       $Location = $row0['Location'];
       $maxCap  =$row0['MaximumCapacity'];
@@ -73,7 +73,7 @@ class myPDF extends FPDF{
       while($row1 = mysqli_fetch_assoc($result1)){
     $OwnnerName = $row1['Firstname']." ".$row1['Lastname'];
 
-                       
+
       $this->Cell(12,10,iconv( 'UTF-8','TIS-620',$ID),1,0,'c');
       $this->Cell(60,10,iconv( 'UTF-8//IGNORE','TIS-620',"$EventNameSun"),1,0,'c');
       $this->Cell(40,10,iconv( 'UTF-8','TIS-620',$typeE),1,0,'c');
@@ -94,8 +94,9 @@ $pdf = new  myPDF();
 
 $pdf->AliasNbPages();
 $pdf->AddPage('L','A4',0);
-ob_end_clean();
+
 $pdf->TableDetail();
+ob_end_clean();
 $pdf->Output();
 
 
