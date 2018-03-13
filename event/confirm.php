@@ -31,7 +31,7 @@ echo "<br>";
 $actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/showmeyourticket/".$Token."";
 echo $actual_link."<br><br>" ;
 
-sendEmail($email,$name,$EventName,'c',$url,$Token);
+sendEmail($email,$name,$EventName,'c',$actual_link,$Token);
 
 
 $sql = "UPDATE EventHandler SET CardStatus=2 WHERE OwnerID=$UserID AND TicketID=$TicketID AND CardToken='$Token'";

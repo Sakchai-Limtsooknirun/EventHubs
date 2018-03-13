@@ -12,7 +12,7 @@ if ($type == "NotLogin"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>EventHubs.com ความสุขสร้างได้ง่ายๆ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

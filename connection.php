@@ -124,8 +124,7 @@ function sendEmail($email,$name,$eventName,$type,$url,$token){
   if($type == 'c'){
   $mail->Subject = "EventHubs - ยืนยันการเข้าร่วมกิจกรรมของคุณ :".$name;
   $strMessage .= " ได้มีการยืนยันจากทางเจ้าของกิจกรรม ".$eventName." ให้คุณมีสิทธในการเข้าร่วมกิจกรรม<br>แล้วพบกันในงานภายในวันเวลาที่กำหนด<br>";
-	$actual_link = "http://localhost:8888/projectMidterm/enter.php?id=".$token;
-	$strMessage .= "<a href='".$actual_link."'>ตั๋วเข้างาน</a><br>'";
+	$strMessage .= "<a href='".$url."'>ตั๋วเข้างาน</a><br>'";
 
 
   }else if($type == 'ca'){
