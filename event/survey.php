@@ -29,7 +29,8 @@ if ($type == "NotLogin") {
         $surveyStatus = getOneValue("SELECT `SurveyStatus` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
         $getShortUrl = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
         $actual_link = dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"))."/survey/".$getShortUrl."/";
-
+        $EventName = getOneValue("SELECT `ShortURL` AS 'get' FROM `EventOrganizers` WHERE `ID` = '$EventID'");
+        
         if ($surveyStatus == 0){
           $link = "<button class='btnlogin'><a href='event/surveyOr.php?id=$EventID&st=1'>ปิดแบบสอบถาม</a></button><br></br><center><p><a href='$actual_link'>ลิงค์แบบสอบถาม</a></p></center>";
         }else{

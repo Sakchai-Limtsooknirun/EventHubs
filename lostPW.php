@@ -30,6 +30,7 @@ if ($ck_email->num_rows == 1) {
       
   require_once('./PHPMailer_v5.0.2/class.phpmailer.php');
   $mail = new PHPMailer();
+  $mail->CharSet="utf-8";
   $mail->IsHTML(true);
   $mail->IsSMTP();
   $mail->SMTPAuth = true; // enable SMTP authentication
