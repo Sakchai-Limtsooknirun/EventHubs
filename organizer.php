@@ -159,7 +159,7 @@ id='visto' value=''> ตกลงตามเงื่อนไขและข�
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">อีเมล์ติดต่อ</label>
-    <input type="email" class="form-control" name="emailOr" value="<? echo$getEmail;?>"  required>
+    <input type="email" class="form-control" name="emailOr"   required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">ขนาดของกิจกรรม</label>
@@ -218,7 +218,3 @@ $('#visto').click(function(){
 });
 </script>
 </head>
-
-
-
-
